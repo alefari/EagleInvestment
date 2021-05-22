@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+.body {
+//   background-image: url(../src/assets/city1.jpg);
+  background-color: #FFDA6A;
+//   background-position: center; /* Center the image */
+//   background-repeat: no-repeat; /* Do not repeat the image */
+//   background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.label {
+  font-size: smaller;
+  letter-spacing: 2px;
+}
+
+.input {
+  background-color: #E9ECEF;
+}
+.form-control:focus {
+  box-shadow: none;
+  background-color: #DEE2E6;
+}
