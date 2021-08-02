@@ -8,6 +8,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FiltrosComponent } from './busqueda/filtros/filtros.component';
+import { PropiedadComponent } from './propiedad/propiedad.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,12 +21,17 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     NavbarComponent,
     LoginComponent,
     MainMenuComponent,
-    BusquedaComponent
+    BusquedaComponent,
+    FiltrosComponent,
+    PropiedadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

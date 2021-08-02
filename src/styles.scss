@@ -1,15 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
 .body {
 //   background-image: url(../src/assets/city1.jpg);
-  background-color: #FFDA6A;
+  // background-color: #ffda6a;
+  background-color: $yellow-200;
 //   background-position: center; /* Center the image */
 //   background-repeat: no-repeat; /* Do not repeat the image */
 //   background-size: cover; /* Resize the background image to cover the entire container */
 }
 
-.label {
+.fondo {
+  background-color: $yellow-200;
+}
+
+.label-small {
   font-size: smaller;
+}
+
+.spacing {
   letter-spacing: 2px;
 }
 
@@ -19,4 +28,8 @@
 .form-control:focus {
   box-shadow: none;
   background-color: #DEE2E6;
+}
+
+.form-check-input:focus {
+  box-shadow: none;
 }
