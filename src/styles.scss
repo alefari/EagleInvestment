@@ -1,10 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .body {
 //   background-image: url(../src/assets/city1.jpg);
   // background-color: #ffda6a;
-  background-color: $yellow-200;
+  font-family: 'Poppins', sans-serif;
+
+  // background-color: $yellow-200;
+  // background-color: $cyan-800;
+  // background-color: $cyan-800;
+  // background-color: #1B1F3B;
+
+
+
+  // background-color: #36454F;
+
 //   background-position: center; /* Center the image */
 //   background-repeat: no-repeat; /* Do not repeat the image */
 //   background-size: cover; /* Resize the background image to cover the entire container */
@@ -13,6 +27,23 @@
 .fondo {
   background-color: $yellow-200;
 }
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.fondo-dorado {
+  // background-color: hsl(14, 37%, 63%);
+  // background: rgb(196,142,126);
+  // background: linear-gradient(143deg, rgba(196,142,126,1) 0%, rgba(207,163,150,1) 75%, rgba(196,142,126,1) 100%);
+  background-color: hsl(14, 37%, 63%);
+  // background-color: #cfa396;
+}
+
+.font-dorado {
+  color: hsl(14, 37%, 63%);
+}
+
 
 .label-small {
   font-size: smaller;

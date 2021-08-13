@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-menu',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainMenuComponent implements OnInit {
 
-  constructor() { }
+  backgroundImageUrl: Observable<string | null>
+
+  constructor(private storage: AngularFireStorage) {
+    const ref = this.storage.ref('caracas.jpg');
+    this.backgroundImageUrl = ref.getDownloadURL();
+   }
 
   ngOnInit(): void {
+
   }
 
 }

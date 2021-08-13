@@ -14,6 +14,8 @@ import { PropiedadComponent } from './propiedad/propiedad.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { environment } from 'src/environments/environment';
     MainMenuComponent,
     BusquedaComponent,
     FiltrosComponent,
-    PropiedadComponent
+    PropiedadComponent,
+    AgentDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,42 @@
-h1 {
-  font-size: 5vw;
+.frase {
+  font-size: 4vw;
+}
+
+#cta {
+  background-image: url("../../assets/caracas.jpg");
+  background-size: cover;
+  background-position: center bottom;
 }
 
 // .input-group {
 //   padding: 0px 7em;
 // }
+.gradient {
+  background-image: var(--bs-gradient);
+}
+
+.font-playfair {
+  font-weight: 400;
+  // color: #C38D7C;
+}
+
+.vh-85 {
+  min-height: 85vh;
+}
+
+#servicios {
+  background-color: hsl(14, 37%, 68%);
+  background-image: var(--bs-gradient);
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.border-dorado {
+  border-color: #c48e7e;
+  border-width: thick 0 0 0;
+}
 
 #breathing-button {
   -webkit-animation: breathing 5s ease-out infinite normal;
@@ -12,14 +44,10 @@ h1 {
   -webkit-font-smoothing: antialiased;
   }
 
-  .bienvenida {
-    background-image: url('../../assets/caracas.jpg');
-    background-size: cover;
-  }
-
-  .fila1 {
-
-  }
+  // .bienvenida {
+  //   // background-image: url('../../assets/city1.jpg');
+  //   // background-size: cover;
+  // }
 
 
 @-webkit-keyframes breathing {

@@ -1,6 +1,9 @@
- <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-4 py-3 shadow"><!-- O FIXED TOP -->
+ <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white py-2 shadow"><!-- O FIXED TOP -->
   <div class="container">
-    <a class="navbar-brand fw-lighter fs-5 text-uppercase" href="#">Eagle Investment Projects C.A.</a>
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/logo.png" alt="" height="50" class="d-inline-block align-text-top">
+    </a>
+    <a class="navbar-brand fw-lighter fs-5 text-uppercase font-playfair" href="#">Eagle Investment Projects C.A.</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,8 +20,7 @@
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control form-control-sm rounded-0 border-dark border-end-0" type="search" placeholder="Busqueda por zona" aria-label="Search">
-        <button class="btn btn-outline-dark rounded-0" type="submit">Buscar</button>
+        <button routerLink="/busqueda" class="btn fondo-dorado text-white rounded-0 text-uppercase spacing label-small" type="submit">Buscar propiedades</button>
       </form>
     </div>
   </div>

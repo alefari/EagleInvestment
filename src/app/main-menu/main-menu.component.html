@@ -1,30 +1,36 @@
-  <section class="bienvenida">
-    <div class="container px-5">
-      <div class="row justify-content-center align-items-center h-100 min-vh-100">
-        <div class="col-xs-12 col-sm-10 col-md-7 col-lg-5 col-xl-6 p-0">
-          <h1 class="mb-3">
-            Encuentra tu casa ideal
+  <section class="bienvenida pb-5 vh-85" id="cta">
+    <!-- <img [src]="backgroundImageUrl | async" /> -->
+    <div class="container pt-3">
+      <!-- h-100 min-vh-100 justify-content-center -->
+      <div class="row align-items-center my-5 pt-5">
+        <div class="col-xs-12 col-sm-10 col-md-7 col-lg-7 col-xl-7 p-0">
+          <h1 class="mb-3 font-playfair frase text-white">
+            Expandiendo soluciones inmobiliarias.
           </h1>
           <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem eum debitis illum, perferendis recusandae vel consequatur sit ullam
             similique illo saepe amet suscipit dicta. Magnam atque itaque saepe maxime eveniet!</p>
-          <div class="input-group px-5" id="">
-            <input class="form-control form-control-lg shadow-lg rounded-0 border-0" type="text" placeholder="ingresa una zona" aria-label=".form-control-lg example">
-            <button class="btn btn-dark spacing rounded-0 border-0 shadow-lg px-4">
+          <!-- <div class="input-group px-5" id=""> -->
+            <!-- <input class="form-control form-control-lg shadow-lg rounded-0 border-0" type="text" placeholder="ingresa una zona" aria-label=".form-control-lg example"> -->
+            <button id="breathing-button" class="btn fondo-dorado gradient text-white spacing rounded-0 border-0 shadow-lg px-4 py-3">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
               </svg> -->
-              BUSCAR
+              BUSCAR PROPIEDADES
             </button>
-          </div>
+          <!-- </div> -->
         </div>
         <div class="col px-5">
-          <div class="card ms-5 mt-5 border-0 rounded-0 shadow float-end p-1 border-top border-primary border-5" style="width: 18rem;">
+          <div class="card mt-5 shadow float-end p-1 border-dorado" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title mb-4">¡Contacta a un agente!</h5>
-              <h6 class="card-subtitle mb-3 text-muted">Llama al 0412-3333798</h6>
-              <h6 class="card-subtitle mb-3 text-muted">Email: ale.jf09@gmail.com</h6>
-              <h6 class="card-subtitle mb-4 text-muted">Llama al 0412-3333798</h6>
-              <button class="btn btn-warning border-0 rounded-0 float-end label-small spacing py-2">¡REGISTRATE GRATIS!</button>
+              <h5 class="card-title mb-3">¡Vende tu propiedad con nosotros!</h5>
+              <h6 class="mb-2 text-muted">Llama al 0412-3333798</h6>
+              <h6 class="mb-4 text-muted">Email: ale.jf09@gmail.com</h6>
+              <button class="btn btn-info btn-sm border-0 rounded-0 float-end py-2 px-3">
+                ¡Contáctanos!
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -34,10 +40,82 @@
 
   </section>
 
+  <section id="servicios" class="pt-5 pb-5 shadow">
+    <div class="container">
+      <h1 class="font-playfair text-white">Nuestros servicios</h1>
+      <div class="row mt-5">
+        <div class="col">
+          <div class="card shadow h-100 mx-4 border-0 border-top border-success border-5 px-4 pb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-center align-items-center mb-4 mt-2">
 
-  <div class="container px-5">
-  <section class="bg-secondary">
-    <h1>Servicios</h1>
+                <div class="bg-success rounded-pill shadow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor" class="bi bi-briefcase-fill bg-gradient px-3 text-white" viewBox="0 0 16 16">
+                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                  </svg>
+                </div>
+
+
+              </div>
+              <h5 class="text-uppercase text-center card-title">Apoyo en trámites legales</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, facere explicabo asperiores dolores at praesentium deserunt consequatur.
+              </p>
+              <a href="#" class="icon-link float-end">
+                Contáctanos
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow h-100 mx-4 border-0 border-top border-primary border-5 px-4 pb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-center align-items-center mb-4 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor" class="bi bi-info-lg bg-primary bg-gradient px-3 rounded-pill text-white shadow" viewBox="0 0 16 16">
+                  <path d="m10.277 5.433-4.031.505-.145.67.794.145c.516.123.619.309.505.824L6.101 13.68c-.34 1.578.186 2.32 1.423 2.32.959 0 2.072-.443 2.577-1.052l.155-.732c-.35.31-.866.434-1.206.434-.485 0-.66-.34-.536-.939l1.763-8.278zm.122-3.673a1.76 1.76 0 1 1-3.52 0 1.76 1.76 0 0 1 3.52 0z"/>
+                </svg>
+              </div>
+              <h5 class="text-uppercase text-center card-title">Asesoría profesional gratuita</h5>
+              <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, facere explicabo asperiores dolores at praesentium deserunt consequatur.
+              </p>
+              <a href="#" class="icon-link float-end">
+                Contáctanos
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow h-100 mx-4 border-0 border-top border-secondary border-5 px-4 pb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-center align-items-center mb-4 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor" class="bi bi-hammer bg-secondary bg-gradient px-3 rounded-pill text-white shadow" viewBox="0 0 16 16">
+                  <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z"/>
+                </svg>
+              </div>
+              <h5 class="text-uppercase text-center card-title">Remodelaciones</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, facere explicabo asperiores dolores at praesentium deserunt consequatur.
+              </p>
+              <a href="#" class="icon-link float-end">
+                Contáctanos
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-</div>
+
