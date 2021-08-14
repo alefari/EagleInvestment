@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
