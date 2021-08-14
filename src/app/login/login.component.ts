@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import firebase from 'firebase/app';
+import { StringDecoder } from 'string_decoder';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +14,28 @@ export class LoginComponent implements OnInit {
   errorMessage: string = null;
   isLogin = true;
 
-  constructor(public auth: AngularFireAuth) { }
+  constructor(public auth: AngularFireAuth, private afs: AngularFirestore) { }
 
   ngOnInit(): void {
   }
 
   onSignUpEmail(authForm: NgForm) {
-    this.auth.createUserWithEmailAndPassword(authForm.value.email, authForm.value.password);
+    this.auth.createUserWithEmailAndPassword(authForm.value.email, authForm.value.password)
+    .then((credential) => {
+      this.addNewUserDB(credential.user.uid, credential.user.email, authForm.value.nombre, authForm.value.aplellido,);
+    });
+  }
+
+  addNewUserDB(uid: string, email: string, nombre: string, apellido: string) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuarios/${uid}`);
+      const data = {
+      uid: uid,
+      email: email,
+      nombre: nombre,
+      apellido: apellido,
+      roles: ['user']
+    }
+    console.log(userRef.set(data, {merge: true }));
   }
 
   onLoginEmail(authForm: NgForm) {
@@ -52,7 +69,18 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginGoogle() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
+      res => {
+        this.addNewUserDB(
+          res.user.uid,
+          res.additionalUserInfo.profile['email'],
+          res.additionalUserInfo.profile['given_name'],
+          res.additionalUserInfo.profile['family_name'] )
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
   logout() {
