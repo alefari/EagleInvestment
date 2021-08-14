@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NgForm } from '@angular/forms';
+import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,8 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   errorMessage: string = null;
+  isLogin = true;
+
   constructor(public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
@@ -23,6 +26,9 @@ export class LoginComponent implements OnInit {
       res => {
         this.errorMessage = null;
         console.log(res)
+        this.auth.user.subscribe(user => {
+          console.log(user.displayName)
+        })
       },
       error => {
         switch (error.code) {
@@ -43,6 +49,10 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  onLoginGoogle() {
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   }
 
   logout() {
