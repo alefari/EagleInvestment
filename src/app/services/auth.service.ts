@@ -2,18 +2,40 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { User } from '../models/user.model';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(public auth: AngularFireAuth, private afs: AngularFirestore) { }
+  // usuario = new BehaviorSubject<User>(null)
+  usuario: Observable<User>
+  constructor(public auth: AngularFireAuth, private afs: AngularFirestore) {
+    this.usuario = this.auth.authState.pipe(
+      switchMap(usr => {
+        if(usr) {
+          return this.afs.doc<User>(`usuarios/${usr.uid}`).valueChanges();
+        }
+        else {
+          return of(null);
+        }
+      })
+    )
+  }
 
   async signUpEmail(email: string, password: string, nombre: string, apellido: string): Promise<string> {
     return this.auth.createUserWithEmailAndPassword(email, password).then(
       credential => {
         this.addNewUserDB(credential.user.uid, credential.user.email, nombre, apellido);
+        const user = new User(
+          credential.user.uid,
+          credential.user.email,
+          nombre,
+          apellido,
+          ['user']
+        )
+        // this.usuario.next(user);
         return "Success";
       },
       error => {
@@ -24,9 +46,6 @@ export class AuthService {
   async loginEmail(email: string, password: string): Promise<string> {
     return this.auth.signInWithEmailAndPassword(email, password).then(
       res => {
-        this.auth.user.subscribe(user => {
-          console.log(user.displayName)
-        })
         return "Success";
       },
       error => {
@@ -56,6 +75,14 @@ export class AuthService {
     )
   }
 
+  public updateSessionUser(uid?: string) {
+
+
+    console.log(this.usuario);
+  }
+
+
+
   private async addNewUserDB(uid: string, email: string, nombre: string, apellido: string) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuarios/${uid}`);
       const data = {
@@ -68,7 +95,7 @@ export class AuthService {
     userRef.set(data, {merge: true }).catch(err => console.log(err))
   }
 
-  handleError(errorCode: string): string {
+  private handleError(errorCode: string): string {
     let errorMessage = null;
         switch (errorCode) {
           case 'auth/weak-password':
@@ -119,3 +146,4 @@ export class AuthService {
       return errorMessage
   }
 }
+

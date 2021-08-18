@@ -16,12 +16,21 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Usuario
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a role="button" (click)="log()" class="dropdown-item">Print</a></li>
+            <li><a role="button" (click)="auth.signOut()" class="dropdown-item">Logout</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
         </li>
       </ul>
       <form class="d-flex">
-        <button routerLink="/busqueda" class="btn fondo-dorado text-white rounded-0 text-uppercase spacing label-small" type="submit">Buscar propiedades</button>
+        <button routerLink="/busqueda" class="btn fondo-dorado text-white rounded-0 text-uppercase spacing label-small">Buscar propiedades</button>
+        <button class="btn fondo-dorado text-white rounded-0 text-uppercase spacing label-small" (click)="log()">Usuario</button>
       </form>
     </div>
   </div>
