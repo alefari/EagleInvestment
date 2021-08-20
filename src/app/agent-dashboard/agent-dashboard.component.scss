@@ -1,8 +1,6 @@
-.body {
-  min-height: -webkit-fill-available;
-}
 
-#sidebar {
-  min-height: -webkit-fill-available;
 
+.height-nav {
+  // min-height: 100vh !important;
+  min-height: calc(100vh - 77px) !important;
 }

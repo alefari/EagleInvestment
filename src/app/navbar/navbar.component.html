@@ -1,4 +1,4 @@
- <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white py-2 shadow"><!-- O FIXED TOP -->
+ <nav class="navbar flex-shrink-0 sticky-top navbar-expand-lg navbar-light bg-white py-2 shadow flex-nowrap"><!-- O FIXED TOP -->
   <div class="container">
     <a class="navbar-brand" href="#">
       <img src="../../assets/logo.png" alt="" height="50" class="d-inline-block align-text-top">
@@ -11,26 +11,25 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-3">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active" aria-current="page">Home</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!userFb" class="nav-item">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
-        <li class="nav-item dropdown">
+        <li *ngIf="userFb" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuario
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu rounded-0 border-0 shadow" aria-labelledby="navbarDropdown">
             <li><a role="button" (click)="log()" class="dropdown-item">Print</a></li>
-            <li><a role="button" (click)="auth.signOut()" class="dropdown-item">Logout</a></li>
+            <li *ngIf="usuario"><a [routerLink]="'/dashboard/'+usuario.uid" class="dropdown-item">Dashboard</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a role="button" (click)="auth.signOut()" class="dropdown-item">Logout</a></li>
           </ul>
         </li>
       </ul>
       <form class="d-flex">
         <button routerLink="/busqueda" class="btn fondo-dorado text-white rounded-0 text-uppercase spacing label-small">Buscar propiedades</button>
-        <button class="btn fondo-dorado text-white rounded-0 text-uppercase spacing label-small" (click)="log()">Usuario</button>
       </form>
     </div>
   </div>

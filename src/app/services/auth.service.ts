@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -11,7 +12,7 @@ import { User } from '../models/user.model';
 export class AuthService {
   // usuario = new BehaviorSubject<User>(null)
   usuario: Observable<User>
-  constructor(public auth: AngularFireAuth, private afs: AngularFirestore) {
+  constructor(public auth: AngularFireAuth, private afs: AngularFirestore, public router: Router) {
     this.usuario = this.auth.authState.pipe(
       switchMap(usr => {
         if(usr) {
@@ -35,7 +36,7 @@ export class AuthService {
           apellido,
           ['user']
         )
-        // this.usuario.next(user);
+        this.router.navigate(['/'])
         return "Success";
       },
       error => {
@@ -46,6 +47,7 @@ export class AuthService {
   async loginEmail(email: string, password: string): Promise<string> {
     return this.auth.signInWithEmailAndPassword(email, password).then(
       res => {
+        this.router.navigate(['/'])
         return "Success";
       },
       error => {
@@ -68,6 +70,7 @@ export class AuthService {
             err => console.log(err)
           )
         }
+        this.router.navigate(['/'])
       },
       error => {
         throw this.handleError(error.code)
