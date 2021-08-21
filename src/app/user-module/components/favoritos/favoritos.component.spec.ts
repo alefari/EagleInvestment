@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgentDashboardComponent } from './agent-dashboard.component';
+import { FavoritosComponent } from './favoritos.component';
 
-describe('AgentDashboardComponent', () => {
-  let component: AgentDashboardComponent;
-  let fixture: ComponentFixture<AgentDashboardComponent>;
+describe('FavoritosComponent', () => {
+  let component: FavoritosComponent;
+  let fixture: ComponentFixture<FavoritosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AgentDashboardComponent ]
+      declarations: [ FavoritosComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgentDashboardComponent);
+    fixture = TestBed.createComponent(FavoritosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
