@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/services/auth.service';
+import firebase from 'firebase';
+import { User } from 'src/app/models/user.model';
+
 
 @Component({
   selector: 'app-user-perfil',
@@ -6,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-perfil.component.scss']
 })
 export class UserPerfilComponent implements OnInit {
-
-  constructor() { }
+  usuario: User;
+  constructor(private auth: AuthService, private afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
+    this.auth.usuario.subscribe(res => {
+      this.usuario = res;
+    })
   }
 
 }

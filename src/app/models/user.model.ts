@@ -3,8 +3,8 @@ export class User {
   constructor(
     public uid: string,
     public email: string,
-    private nombre: string,
-    private apellido: string,
+    public nombre: string,
+    public apellido: string,
     public roles: string[]) {
   }
 
