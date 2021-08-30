@@ -29,13 +29,14 @@ export class AuthService {
     return this.auth.createUserWithEmailAndPassword(email, password).then(
       credential => {
         this.addNewUserDB(credential.user.uid, credential.user.email, nombre, apellido);
-        const user = new User(
-          credential.user.uid,
-          credential.user.email,
-          nombre,
-          apellido,
-          ['user']
-        )
+        // const user = new User(
+        //   credential.user.uid,
+        //   credential.user.email,
+        //   nombre,
+        //   apellido,
+        //   ['user'],
+        //   'Usuario'
+        // )
         this.router.navigate(['/'])
         return "Success";
       },
@@ -93,7 +94,8 @@ export class AuthService {
       email: email,
       nombre: nombre,
       apellido: apellido,
-      roles: ['user']
+      roles: ['user'],
+      titulo: "Usuario"
     }
     userRef.set(data, {merge: true }).catch(err => console.log(err))
   }

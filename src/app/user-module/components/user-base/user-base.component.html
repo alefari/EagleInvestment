@@ -1,9 +1,17 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 col-md-4 col-lg-3 col-xl-3 p-4 bg-light shadow height-nav">
-      <img src="../../assets/profile.jpg" class="rounded-circle d-inline-block mx-auto d-block my-3 shadow" height="150px" width="150px" alt="">
-      <h4 class="text-center mb-0">{{ usuario.nombre }} {{ usuario.apellido }}</h4>
-      <p class="text-center text-muted">Agente Eagle</p>
+      <div class="text-center">
+        <div *ngIf="loadingUser" class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div *ngIf="!loadingUser">
+        <img src="../../assets/profile.jpg" class="rounded-circle d-inline-block mx-auto d-block my-3 shadow" height="150px" width="150px" alt="">
+        <h4 class="text-center mb-0">{{ usuario.nombre }} {{ usuario.apellido }}</h4>
+        <p class="text-center text-muted">{{ usuario.titulo }}</p>
+      </div>
       <hr>
       <ul class="nav flex-column">
         <li class="nav-item">

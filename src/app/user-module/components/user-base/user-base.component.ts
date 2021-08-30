@@ -9,11 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class UserBaseComponent implements OnInit {
   usuario: User;
+  loadingUser = true;
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
     this.auth.usuario.subscribe(res => {
       this.usuario = res;
+      this.loadingUser = false;
     })
   }
 
