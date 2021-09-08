@@ -7,6 +7,7 @@ import { UserPerfilComponent } from './components/user-perfil/user-perfil.compon
 import { AdminComponent } from './components/admin/admin.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { NoFavoritosComponent } from './components/no-favoritos/no-favoritos.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NoFavoritosComponent } from './components/no-favoritos/no-favoritos.com
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule
   ]
 })
 export class UserModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,11 +12,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class UserBaseComponent implements OnInit {
   usuario: User;
   loadingUser = true;
-  constructor(private auth: AuthService) { }
+  profileUrl: Observable<string | null>;
+  constructor(private auth: AuthService, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.auth.usuario.subscribe(res => {
       this.usuario = res;
+      const ref  = this.storage.ref(`profilePictures/${this.usuario.uid}`)
+      this.profileUrl = ref.getDownloadURL();
       this.loadingUser = false;
     })
   }

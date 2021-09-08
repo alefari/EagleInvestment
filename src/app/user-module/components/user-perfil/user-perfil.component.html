@@ -1,33 +1,138 @@
 <div class="container pt-5">
-  <div class="row">
+  <div class="row mb-4">
     <div class="col">
-      <h1 class="font-playfair mb-4">Mi perfil</h1>
+      <span class="h1 px-3 font-playfair">Mi perfil</span>
+      <span role="button" class="badge bg-secondary align-middle" data-bs-toggle="modal" data-bs-target="#modalEditar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+        </svg>
+        Editar
+      </span>
     </div>
   </div>
-  <div class="row mb-3 justify-content-center">
+  <div class="row mb-5 justify-content-center">
     <div class="col-3">
-      <img src="../../assets/profile.jpg" class="rounded-circle img-fluid" alt="">
+      <img [src]="profileUrl | async" class="rounded-circle mx-auto d-block image-resize" height="150px" width="150px" alt="">
     </div>
-    <div class="col-4 align-self-center">
-      <h2>{{ usuario.nombre }} {{ usuario.apellido }}</h2>
+    <div *ngIf="usuario" class="col-4 align-self-center">
+      <h2>{{ usuario.nombre}} {{ usuario.apellido}}</h2>
       <h5 class="text-muted">{{ usuario.titulo }}</h5>
+      <!-- <div class="mb-3">
+        <label for="formFileSm" class="form-label">Small file input example</label>
+        <input (change)="uploadFile($event)" class="form-control form-control-sm" id="formFileSm" type="file">
+      </div> -->
+    <!-- <div>{{ uploadPercent | async }}</div> -->
+    <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <h1 class="font-playfair mb-4">Contacto</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col rounded shadow px-4 pt-4 mx-5">
+
+  <div class="row justify-content-center">
+    <div class="col-6 rounded border-top border-info border-4 shadow px-4 pt-4 mx-5">
       <p><span class="fw-bold">Correo: </span>ale.jf09@gmail.com</p>
       <p><span class="fw-bold">Teléfonos: </span>0412-3333798 / 0212-2570948</p>
       <p><span class="fw-bold">País: </span>Venezuela</p>
       <p><span class="fw-bold">Estado: </span>Miranda</p>
     </div>
-    <div class="col">
-
-    </div>
   </div>
 
+</div>
+
+<!-- Modal editar -->
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Editar perfil</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="" #editarForm="ngForm">
+        <div class="modal-body">
+
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="inputNombre" placeholder="Name" [ngModel]="usuario.nombre" name="nombre">
+                <label for="inputNombre">Nombre</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="inputApellido" placeholder="Surname" [ngModel]="usuario.apellido" name="apellido">
+                <label for="inputApellido">Apellido</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="inputEmail" placeholder="email@email.com" [ngModel]="usuario.email" name="email">
+                <label for="inputEmail">Email</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="inputTelefono" placeholder="0000-0000000" [ngModel]="usuario.telefono1" name="tlf1">
+                <label for="inputTelefono">Teléfono</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="inputTelefono2" placeholder="0000-0000000" [ngModel]="usuario.telefono2" name="tlf2">
+                <label for="inputTelefono2">Teléfono secundario</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-4">
+              <div class="form-floating">
+                <select type="text" class="form-select" id="selectPais" placeholder="Pais" [ngModel]="usuario.pais" name="pais">
+                  <option value="Venezuela">Venezuela</option>
+                </select>
+                <label for="selectPais">País</label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-floating">
+                <select type="text" class="form-select" id="selectEstado" placeholder="Estado" [ngModel]="usuario.estado" name="estado">
+                  <option value="Miranda">Miranda</option>
+                </select>
+                <label for="selectEstado">Estado</label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-floating">
+                <select type="text" class="form-select" id="selectCiudad" placeholder="Ciudad" [ngModel]="usuario.ciudad" name="ciudad">
+                  <option value="Caracas">Caracas</option>
+                </select>
+                <label for="selectCiudad">Ciudad</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Info Adicional" id="adicionalText" [ngModel]="usuario.infoAdicional" name="infoAdicional" style="height: 7em"></textarea>
+              <label for="adicionalText">Información adicional</label>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <label for="formFile" class="form-label">Imagen de perfil</label>
+              <input (change)="onSelectFile($event)" class="form-control form-control" id="formFile" type="file" ngModel name="imgPerfil">
+              <!-- (change)="uploadFile($event)" -->
+              <!-- <div>{{ uploadPercent | async }}</div> -->
+              <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded-0 border-0" data-bs-dismiss="modal">Cerrar</button>
+          <button [disabled]="!editarForm.dirty" (click)="updateUser(editarForm)" type="button" data-bs-dismiss="modal" class="btn rounded-0 border-0 fondo-dorado text-white">Guardar cambios</button>
+        </div>
+    </form>
+    </div>
+  </div>
 </div>

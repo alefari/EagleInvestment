@@ -8,11 +8,13 @@
       </div>
 
       <div *ngIf="!loadingUser">
-        <img src="../../assets/profile.jpg" class="rounded-circle d-inline-block mx-auto d-block my-3 shadow" height="150px" width="150px" alt="">
+        <img [src]="profileUrl | async" class="rounded-circle mx-auto d-block my-3 shadow image-resize" height="150px" width="150px" alt="">
         <h4 class="text-center mb-0">{{ usuario.nombre }} {{ usuario.apellido }}</h4>
         <p class="text-center text-muted">{{ usuario.titulo }}</p>
       </div>
+
       <hr>
+
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link rounded text-black" aria-current="page" routerLink="no-favoritos" routerLinkActive="text-white fondo-dorado bg-gradient shadow">
