@@ -1,8 +1,8 @@
-<div class="container pt-5">
+<div class="container pt-5 px-5">
   <div class="row mb-4">
     <div class="col">
-      <span class="h1 px-3 font-playfair">Mi perfil</span>
-      <span role="button" class="badge bg-secondary align-middle" data-bs-toggle="modal" data-bs-target="#modalEditar">
+      <span class="h1 me-4 font-playfair">Mi perfil</span>
+      <span role="button" class="badge bg-secondary align-self-center" data-bs-toggle="modal" data-bs-target="#modalEditar">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
           <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
         </svg>
@@ -12,7 +12,7 @@
   </div>
   <div class="row mb-5 justify-content-center">
     <div class="col-3">
-      <img [src]="profileUrl | async" class="rounded-circle mx-auto d-block image-resize" height="150px" width="150px" alt="">
+      <img [src]="profileUrl | async" class="rounded-circle float-end image-resize shadow" height="150px" width="150px" alt="">
     </div>
     <div *ngIf="usuario" class="col-4 align-self-center">
       <h2>{{ usuario.nombre}} {{ usuario.apellido}}</h2>
@@ -25,16 +25,31 @@
     <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
     </div>
   </div>
+  <div class="row mb-4 g-5">
+    <div class="col-12 col-xl-6">
+      <div class="rounded shadow pb-2">
+        <div class="h3 font-playfair rounded-top text-white fondo-dorado bg-gradient py-3 mb-3 px-4">Datos personales</div>
+        <div class="px-4">
+          <p><span class="fw-bold">País: </span>{{ usuario.pais }}</p>
+          <p><span class="fw-bold">Estado: </span>{{ usuario.estado }}</p>
+          <p><span class="fw-bold">Ciudad: </span>{{ usuario.ciudad }}</p>
+          <p><span class="fw-bold">Información adicional: </span>{{ usuario.infoAdicional }}</p>
+        </div>
+      </div>
 
-  <div class="row justify-content-center">
-    <div class="col-6 rounded border-top border-info border-4 shadow px-4 pt-4 mx-5">
-      <p><span class="fw-bold">Correo: </span>ale.jf09@gmail.com</p>
-      <p><span class="fw-bold">Teléfonos: </span>0412-3333798 / 0212-2570948</p>
-      <p><span class="fw-bold">País: </span>Venezuela</p>
-      <p><span class="fw-bold">Estado: </span>Miranda</p>
+    </div>
+    <div class="col-12 col-xl-6">
+      <div class="rounded shadow pb-2">
+        <div class="h3 font-playfair rounded-top text-white fondo-dorado bg-gradient py-3 mb-3 px-4">Información de contacto</div>
+        <div class="px-4">
+          <p><span class="fw-bold">Email: </span>{{ usuario.email }}</p>
+          <p><span class="fw-bold">Teléfono: </span>{{ usuario.telefono1 }}</p>
+          <p><span class="fw-bold">Teléfono secundario: </span>{{ usuario.telefono2 }}</p>
+        </div>
+      </div>
+
     </div>
   </div>
-
 </div>
 
 <!-- Modal editar -->
@@ -47,7 +62,6 @@
       </div>
       <form action="" #editarForm="ngForm">
         <div class="modal-body">
-
           <div class="row mb-4">
             <div class="col">
               <div class="form-floating">
