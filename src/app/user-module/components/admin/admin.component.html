@@ -70,16 +70,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Alejandro Fariña</td>
-          <td>Agente Eagle</td>
-          <td>ale.jf09@gmail.com</td>
-          <td>Venezuela</td>
-          <td>Miranda</td>
-          <td>Caracas</td>
-          <td>
-            <button class="btn btn-sm btn-info float-end">Detalles</button>
-          </td>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
+          <td>{{ usuario.cargo }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>{{ usuario.pais }}</td>
+          <td>{{ usuario.estado }}</td>
+          <td>{{ usuario.ciudad }}</td>
+          <td><button class="btn btn-sm btn-info float-end">Detalles</button></td>
         </tr>
       </tbody>
     </table>
