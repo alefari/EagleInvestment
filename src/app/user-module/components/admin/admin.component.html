@@ -30,37 +30,41 @@
           <th scope="col"></th>
         </tr>
       </thead>
+      <!-- HEADER CON FILTROS -->
       <thead class="fondo-dorado bg-gradient text-white border-0 mb-0">
         <tr class="border-0 mt-0">
           <th scope="col">
-            <input class="form-control form-control-sm" type="text">
+            <input class="form-control form-control-sm" type="text" #filtroNombre="ngModel" ngModel name="filtroNombre">
           </th>
           <th scope="col">
-            <select class="form-select form-select-sm">
+            <select class="form-select form-select-sm" #filtroRol="ngModel" ngModel name="filtroRol">
+              <option value="">Todos</option>
               <option value="Usuario">Usuario</option>
               <option value="Agente Eagle">Agente Eagle</option>
               <option value="Usuario">Administrador</option>
             </select>
           </th>
           <th scope="col">
-            <input class="form-control form-control-sm" type="text">
+            <input class="form-control form-control-sm" type="text" #filtroEmail="ngModel" ngModel name="filtroEmail">
           </th>
           <th scope="col">
-            <select class="form-select form-select-sm">
+            <select class="form-select form-select-sm" #filtroPais="ngModel" ngModel name="filtroPais">
+              <option value="">Todos</option>
               <option value="Usuario">Usuario</option>
               <option value="Agente Eagle">Agente Eagle</option>
               <option value="Usuario">Administrador</option>
             </select>
           </th>
           <th scope="col">
-            <select class="form-select form-select-sm">
+            <select class="form-select form-select-sm" #filtroEstado="ngModel" ngModel name="filtroEstado">
+              <option value="">Todos</option>
               <option value="Usuario">Usuario</option>
               <option value="Agente Eagle">Agente Eagle</option>
               <option value="Usuario">Administrador</option>
             </select>
           </th>
           <th scope="col">
-            <select class="form-select form-select-sm">
+            <select class="form-select form-select-sm" #filtroCiudad="ngModel" ngModel name="filtroCiudad">
               <option value="Usuario">Usuario</option>
               <option value="Agente Eagle">Agente Eagle</option>
               <option value="Usuario">Administrador</option>
@@ -69,16 +73,20 @@
           <th scope="col"></th>
         </tr>
       </thead>
+      <!-- BODY DE LA TABLA -->
       <tbody>
-        <tr *ngFor="let usuario of usuarios">
-          <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
-          <td>{{ usuario.cargo }}</td>
-          <td>{{ usuario.email }}</td>
-          <td>{{ usuario.pais }}</td>
-          <td>{{ usuario.estado }}</td>
-          <td>{{ usuario.ciudad }}</td>
-          <td><button class="btn btn-sm btn-info float-end">Detalles</button></td>
-        </tr>
+        <ng-container *ngFor="let usuario of usuarios">
+          <tr *ngIf="((usuario.nombre.toLowerCase() + ' ' + usuario.apellido.toLowerCase()).includes(filtroNombre.value.toLowerCase()))
+                      && (usuario.titulo == filtroRol.value || filtroRol.value == '')">
+            <td>{{ usuario.nombre + " " + usuario.apellido }}</td>
+            <td>{{ usuario.titulo }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.pais }}</td>
+            <td>{{ usuario.estado }}</td>
+            <td>{{ usuario.ciudad }}</td>
+            <td><button class="btn btn-sm btn-info float-end">Detalles</button></td>
+          </tr>
+        </ng-container>
       </tbody>
     </table>
     </div>
