@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,13 +8,19 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  errorMessage: string = null;
+  // errorMessage: string = null;
+  @Output() messageEvent = new EventEmitter();
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSignUpEmail(authForm: NgForm) {
+    this.messageEvent.emit({
+      errorMessage: null,
+      isLoading: true
+    })
     this.authService.signUpEmail(
       authForm.value.email,
       authForm.value.password,
@@ -22,11 +28,19 @@ export class SignupComponent implements OnInit {
       authForm.value.apellido
     ).then(
       res => {
-        console.log(res)
-        this.errorMessage = null
+        // console.log(res)
+        this.messageEvent.emit({
+          errorMessage: null,
+          isLoading: false
+        })
+        // this.errorMessage = null
       }
     ).catch(
-      err => this.errorMessage = err
+      err => this.messageEvent.emit({
+        errorMessage: err,
+        isLoading: false
+      })
+      // err => this.errorMessage = err
     );
   }
 

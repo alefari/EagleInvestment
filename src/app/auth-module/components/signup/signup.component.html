@@ -1,11 +1,5 @@
 <form #authForm="ngForm" (ngSubmit)="onSignUpEmail(authForm)">
 
-  <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center small" role="alert">
-    <div>
-      {{ errorMessage }}
-    </div>
-  </div>
-
   <div class="pb-2">
     <label class="text-muted label-small spacing">EMAIL</label>
     <input type="email" class="form-control rounded-0 border-0 input py-2" email required ngModel name="email">

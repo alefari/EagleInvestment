@@ -8,14 +8,28 @@
               <img src="../../assets/logo.png" alt="" height="100" class="mx-auto d-block">
               <h3 class="mt-1 pb-1 font-playfair text-center">{{isLogin ? 'Iniciar sesión' : 'Registrarse'}}</h3>
 
-              <app-login *ngIf="isLogin; else elseBlock"></app-login>
+              <div *ngIf="isLoading" class="d-flex justify-content-center">
+                <div style="width: 3rem; height: 3rem;" class="spinner-grow text-warning" role="status">
+                  <span class="visually-hidden">Cargando...</span>
+                </div>
+              </div>
 
-              <ng-template #elseBlock>
-                <app-signup></app-signup>
-              </ng-template>
+              <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center small" role="alert">
+                <div>
+                  {{ errorMessage }}
+                </div>
+              </div>
 
-              <div class="small text-center mb-2">
-                <a role="button" (click)="isLogin = !isLogin" class="text-muted">
+              <!-- <ng-container *ngIf="!isLoading"> -->
+                <app-login (messageEvent)="recieveMessage($event)" *ngIf="isLogin; else elseBlock"></app-login>
+
+                <ng-template #elseBlock>
+                  <app-signup (messageEvent)="recieveMessage($event)"></app-signup>
+                </ng-template>
+              <!-- </ng-container> -->
+
+              <div *ngIf="!isLoading" class="small text-center mb-2">
+                <a role="button" (click)="onChangeMode()" class="text-muted">
                   {{isLogin ? 'Crea una cuenta' : '¿Ya tienes una cuenta?, inicia sesión'}}
                 </a>
               </div>
