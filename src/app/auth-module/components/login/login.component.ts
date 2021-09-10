@@ -18,22 +18,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSignUpEmail(authForm: NgForm) {
-    this.authService.signUpEmail(
-      authForm.value.email,
-      authForm.value.password,
-      authForm.value.nombre,
-      authForm.value.apellido
-    ).then(
-      res => {
-        console.log(res)
-        this.errorMessage = null
-      }
-    ).catch(
-      err => this.errorMessage = err
-    );
-  }
-
   onLoginEmail(authForm: NgForm) {
     this.authService.loginEmail(
       authForm.value.email,

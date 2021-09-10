@@ -1,0 +1,44 @@
+<form #authForm="ngForm" (ngSubmit)="onSignUpEmail(authForm)">
+
+  <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center small" role="alert">
+    <div>
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <div class="pb-2">
+    <label class="text-muted label-small spacing">EMAIL</label>
+    <input type="email" class="form-control rounded-0 border-0 input py-2" email required ngModel name="email">
+  </div>
+
+  <div class="pb-2">
+    <div class="row">
+      <div class="col">
+        <label class="text-muted label-small spacing">NOMBRE</label>
+        <input type="text" class="form-control rounded-0 border-0 input py-2" required ngModel name="nombre">
+      </div>
+      <div class="col">
+        <label class="text-muted label-small spacing">APELLIDO</label>
+        <input type="text" class="form-control rounded-0 border-0 input py-2" required ngModel name="apellido">
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-2">
+    <label class="text-muted label-small spacing">CONTRASEÑA</label>
+    <input type="password" class="form-control rounded-0 border-0 input py-2" required #password="ngModel" ngModel name="password">
+  </div>
+  <div class="pb-3">
+    <label class="text-muted label-small spacing">CONFIRMAR CONTRASEÑA</label>
+    <input type="password" class="form-control rounded-0 border-0 input py-2" required #passwordConfirmation="ngModel" ngModel name="passwordConfirmation">
+  </div>
+
+  <div class="pt-2 mb-4 d-grid">
+    <button type="submit"
+      [disabled]="!authForm.valid"
+      class="btn btn-golden text-white shadow rounded-0 fondo-dorado bg-gradient border-0 py-3 ingresar-button">
+      REGISTRARSE
+    </button>
+  </div>
+
+</form>

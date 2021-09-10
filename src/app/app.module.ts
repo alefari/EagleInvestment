@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -16,18 +15,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent,
     MainMenuComponent,
     BusquedaComponent,
     FiltrosComponent,
     PropiedadComponent,
-    SignupComponent,
   ],
   imports: [
     BrowserModule,
