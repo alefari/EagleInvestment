@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import {Location} from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   // usuario = new BehaviorSubject<User>(null)
   usuario: Observable<User>
-  constructor(public auth: AngularFireAuth, private afs: AngularFirestore, public router: Router) {
+  constructor(public auth: AngularFireAuth, private afs: AngularFirestore, public router: Router, private _location: Location, private storage:AngularFireStorage) {
     this.usuario = this.auth.authState.pipe(
       switchMap(usr => {
         if(usr) {
@@ -37,7 +40,8 @@ export class AuthService {
         //   ['user'],
         //   'Usuario'
         // )
-        this.router.navigate(['/'])
+        this._location.back();
+        // this.router.navigate(['/'])
         return "Success";
       },
       error => {
@@ -48,7 +52,8 @@ export class AuthService {
   async loginEmail(email: string, password: string): Promise<string> {
     return this.auth.signInWithEmailAndPassword(email, password).then(
       res => {
-        this.router.navigate(['/'])
+        this._location.back();
+        // this.router.navigate(['/'])
         return "Success";
       },
       error => {
@@ -61,17 +66,20 @@ export class AuthService {
     return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
       res => {
         if(res.additionalUserInfo.isNewUser == true) {
+          // console.log(res.additionalUserInfo.profile['picture'])
           this.addNewUserDB(
             res.user.uid,
             res.additionalUserInfo.profile['email'],
             res.additionalUserInfo.profile['given_name'],
-            res.additionalUserInfo.profile['family_name']
+            res.additionalUserInfo.profile['family_name'],
+            res.additionalUserInfo.profile['picture']
           ).then(
             res => console.log(res),
             err => console.log(err)
           )
         }
-        this.router.navigate(['/'])
+        this._location.back();
+        // this.router.navigate(['/'])
       },
       error => {
         throw this.handleError(error.code)
@@ -79,25 +87,27 @@ export class AuthService {
     )
   }
 
-  public updateSessionUser(uid?: string) {
-
-
-    console.log(this.usuario);
-  }
-
-
-
-  private async addNewUserDB(uid: string, email: string, nombre: string, apellido: string) {
+  private async addNewUserDB(uid: string, email: string, nombre: string, apellido: string, pictureLink?: string) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuarios/${uid}`);
-      const data = {
+      const user: User = {
       uid: uid,
       email: email,
       nombre: nombre,
       apellido: apellido,
+      pais: 'Venezuela',
+      estado: 'Miranda',
+      ciudad: 'Caracas',
       roles: ['user'],
-      titulo: "Usuario"
+      titulo: 'Usuario',
+      profilePicUrl: 'profilePictures/default-profile.png'
     }
-    userRef.set(data, {merge: true }).catch(err => console.log(err))
+
+    // if(pictureLink) {
+    //   const ref = this.storage.ref(`profilePictures/${uid}`);
+    //   ref.put(pictureLink);
+    // }
+
+    userRef.set(user, {merge: true }).catch(err => console.log(err))
   }
 
   private handleError(errorCode: string): string {

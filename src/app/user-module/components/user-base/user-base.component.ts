@@ -18,7 +18,7 @@ export class UserBaseComponent implements OnInit {
   ngOnInit(): void {
     this.auth.usuario.subscribe(res => {
       this.usuario = res;
-      const ref  = this.storage.ref(`profilePictures/${this.usuario.uid}`)
+      const ref  = this.storage.ref(this.usuario.profilePicUrl)
       this.profileUrl = ref.getDownloadURL();
       this.loadingUser = false;
     })

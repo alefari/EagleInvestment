@@ -7,7 +7,6 @@ import { finalize } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 
-
 @Component({
   selector: 'app-user-perfil',
   templateUrl: './user-perfil.component.html',
@@ -30,7 +29,8 @@ export class UserPerfilComponent implements OnInit {
   ngOnInit(): void {
     this.auth.usuario.subscribe(res => {
       this.usuario = res;
-      const ref  = this.storage.ref(`profilePictures/${this.usuario.uid}`)
+      // const ref  = this.storage.ref(`profilePictures/${this.usuario.uid}`)
+      const ref  = this.storage.ref(this.usuario.profilePicUrl)
       this.profileUrl = ref.getDownloadURL();
     })
   }
@@ -44,6 +44,9 @@ export class UserPerfilComponent implements OnInit {
       uid: this.usuario.uid,
       email: form.value.email,
       nombre: form.value.nombre,
+      roles: this.usuario.roles,
+      titulo: this.usuario.titulo,
+      profilePicUrl: this.usuario.profilePicUrl,
       apellido: form.value.apellido,
       telefono1: form.value.tlf1,
       telefono2: form.value.tlf2,
@@ -52,24 +55,29 @@ export class UserPerfilComponent implements OnInit {
       estado: form.value.estado,
       ciudad: form.value.ciudad,
     }
-    console.log(usuarioEditado)
-
-    console.log(this.file)
+    Object.keys(usuarioEditado).forEach(key => usuarioEditado[key] === undefined ? delete usuarioEditado[key] : {});
 
     if(this.file) {
       console.log("Actualizando foto")
       const filePath = `profilePictures/${this.usuario.uid}`;
       const fileRef = this.storage.ref(filePath);
       const task = this.storage.upload(filePath, this.file);
-
-      this.uploadPercent = task.percentageChanges();
+      // this.uploadPercent = task.percentageChanges();
       task.snapshotChanges().pipe(
-        finalize(() => this.downloadURL = this.profileUrl = fileRef.getDownloadURL() )
+        finalize(() => {
+          this.downloadURL = this.profileUrl =  fileRef.getDownloadURL();
+          usuarioEditado.profilePicUrl = filePath;
+          console.log(usuarioEditado)
+          this.usersService.updateUser(usuarioEditado);
+        } )
       )
       .subscribe()
     }
+    else {
+      this.usersService.updateUser(usuarioEditado);
+    }
 
-    this.usersService.updateUser(usuarioEditado);
+
 
 
     //
