@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { BusquedaComponent } from './busqueda/busqueda.component';
-import { LoginComponent } from './auth-module/components/login/login.component';
-import { MainMenuComponent } from './main-menu/main-menu.component';
-import { PropiedadComponent } from './propiedad/propiedad.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { PropiedadComponent } from './components/propiedad/propiedad.component';
 
 const routes: Routes = [
   { path: '', component: MainMenuComponent },
