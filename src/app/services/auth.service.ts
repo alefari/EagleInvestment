@@ -37,7 +37,7 @@ export class AuthService {
         //   credential.user.email,
         //   nombre,
         //   apellido,
-        //   ['user'],
+        //   ['usuario'],
         //   'Usuario'
         // )
         this._location.back();
@@ -108,7 +108,7 @@ export class AuthService {
       pais: 'Venezuela',
       estado: 'Miranda',
       ciudad: 'Caracas',
-      roles: ['user'],
+      roles: ['usuario'],
       titulo: 'Usuario',
       profilePicUrl: 'profilePictures/default-profile.png'
     }

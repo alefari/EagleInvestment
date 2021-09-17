@@ -40,4 +40,39 @@ export class UsersService {
       console.log(error)
     })
   }
+
+  addRole(usuario: User, role: string) {
+    let userDoc = this.afs.doc<User>(`usuarios/${usuario.uid}`);
+    usuario.roles.push(role);
+    userDoc.update(usuario).then(
+      res => {
+      console.log("Actualizado", res);
+      },
+      err => {
+        console.log("ERROR", err)
+      }
+    )
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  removeRole(usuario: User, role: string) {
+    let userDoc = this.afs.doc<User>(`usuarios/${usuario.uid}`);
+    const index = usuario.roles.indexOf(role);
+    if (index > -1) {
+      usuario.roles.splice(index, 1);
+    }
+    userDoc.update(usuario).then(
+      res => {
+      console.log("Actualizado", res);
+      },
+      err => {
+        console.log("ERROR", err)
+      }
+    )
+    .catch(error => {
+      console.log(error)
+    })
+  }
 }

@@ -92,6 +92,8 @@
     </div>
 </div>
 
+
+
 <!-- MODAL DETALLES -->
 <div class="modal fade" id="modalDetalles" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -142,18 +144,72 @@
               </div>
             </div>
           </div>
+          <hr>
+          <div class="row mb-3 g-5">
+            <div class="col-12">
+              <div *ngIf="userDetalles && resetEmailSent" class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Se ha enviado un correo de recuperación de contraseña a {{ userDetalles.email }}.</strong> Pídele a {{userDetalles.nombre}} {{userDetalles.apellido}} que siga las instrucciones del correo para restablecer su contraseña.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <div *ngIf="userDetalles && resetEmailError" class="alert alert-warning alert-dismissible fade show" role="alert">
+                Error: {{resetEmailError}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="userDetalles" class="row mb-3 g-5">
+            <div class="col-12">
+              <div class="mb-3">
+                <button (click)="modificarRolesMode = !modificarRolesMode" class="btn btn-secondary me-2">{{ modificarRolesMode ? 'Cancelar' : 'Editar roles'}}</button>
+                <button [disabled]="resetEmailSent" (click)='resetPassword(userDetalles.email)' class="btn btn-info float-end">Restablecer Contraseña</button>
+              </div>
+            </div>
+
+          </div>
+          <div *ngIf="userDetalles && modificarRolesMode" class="row mb-3 g-5">
+            <div class="col-6">
+              <strong>Roles del usuario:</strong>
+
+              <ul class="list-group">
+                <li *ngFor="let rol of userDetalles.roles" class="list-group-item">
+                  {{rol}}
+                  <button [disabled]="rol == 'usuario'" (click)="removeRole(rol)" class="btn btn-danger btn-sm float-end rounded-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>Quitar
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-6">
+              <strong>Roles disponibles:</strong>
+              <ul class="list-group">
+                <li *ngIf="!userDetalles.roles.includes('agente')" class="list-group-item">
+                  Agente
+                  <button (click)="addRole('agente')" class="btn btn-success btn-sm float-end rounded-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>Agregar
+                  </button>
+                </li>
+                <li *ngIf="!userDetalles.roles.includes('administrador')" class="list-group-item">
+                  Administrador
+                  <button (click)="addRole('administrador')" class="btn btn-success btn-sm float-end rounded-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>Agregar
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div *ngIf="userDetalles && resetEmailSent" class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Se ha enviado un correo de recuperación de contraseña a {{ userDetalles.email }}.</strong> Pídele a {{userDetalles.nombre}} {{userDetalles.apellido}} que siga las instrucciones del correo para restablecer su contraseña.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <div *ngIf="userDetalles && resetEmailError" class="alert alert-warning alert-dismissible fade show" role="alert">
-          Error: {{resetEmailError}}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+
+
+
       </div>
       <div *ngIf="userDetalles" class="modal-footer">
-        <button [disabled]="resetEmailSent" (click)='resetPassword(userDetalles.email)' data-bs-toggle="alert" class="btn btn-info mr-auto">Restablecer Contraseña</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>

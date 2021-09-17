@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   userDetallesPicUrl: Observable<string | null> = null;
   resetEmailSent: boolean = false;
   resetEmailError: string = null;
+  modificarRolesMode: boolean = false;
 
   constructor(private usersService: UsersService, private storage: AngularFireStorage, private auth: AuthService) { }
 
@@ -43,6 +44,14 @@ export class AdminComponent implements OnInit {
       this.resetEmailSent = false;
       this.resetEmailError = err;
     })
+  }
+
+  addRole(role: string) {
+    this.usersService.addRole(this.userDetalles, role);
+  }
+
+  removeRole(role: string) {
+    this.usersService.removeRole(this.userDetalles, role);
   }
 
 }

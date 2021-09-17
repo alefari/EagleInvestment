@@ -16,7 +16,7 @@
       <hr>
 
       <ul class="nav flex-column">
-        <li class="nav-item">
+        <li *ngIf="usuario.roles.includes('usuario')" class="nav-item">
           <a class="nav-link rounded text-black" aria-current="page" routerLink="no-favoritos" routerLinkActive="text-white fondo-dorado bg-gradient shadow">
             <span class="align-text-bottom pe-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -26,7 +26,7 @@
             Favoritos
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="usuario.roles.includes('agente')" class="nav-item">
           <a class="nav-link rounded text-black" aria-current="page" routerLink="propiedades" routerLinkActive="text-white fondo-dorado bg-gradient shadow">
             <span class="align-text-bottom pe-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill align-top-" viewBox="0 0 16 16">
@@ -37,7 +37,7 @@
             Propiedades
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="usuario.roles.includes('usuario')" class="nav-item">
           <a class="nav-link rounded text-black" aria-current="page" routerLink="perfil" routerLinkActive="text-white fondo-dorado bg-gradient shadow">
             <span class="align-text-bottom pe-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
@@ -47,7 +47,7 @@
             Perfil
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="usuario.roles.includes('administrador')" class="nav-item">
           <a class="nav-link rounded text-black" aria-current="page" routerLink="admin" routerLinkActive="text-white fondo-dorado bg-gradient shadow">
             <span class="align-text-bottom pe-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
