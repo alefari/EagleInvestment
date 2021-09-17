@@ -84,10 +84,78 @@
             <td>{{ usuario.pais }}</td>
             <td>{{ usuario.estado }}</td>
             <td>{{ usuario.ciudad }}</td>
-            <td><button class="btn btn-sm btn-info float-end">Detalles</button></td>
+            <td><button (click)="setUserDetalles(usuario)" class="btn btn-sm btn-info float-end" data-bs-toggle="modal" data-bs-target="#modalDetalles">Detalles</button></td>
           </tr>
         </ng-container>
       </tbody>
     </table>
     </div>
+</div>
+
+<!-- MODAL DETALLES -->
+<div class="modal fade" id="modalDetalles" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Detalles del usuario</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div *ngIf="userDetalles" class="row mb-5 justify-content-center align-items-center">
+            <div class="col-3">
+              <img [src]="userDetallesPicUrl | async" class="rounded-circle float-end image-resize shadow" height="150px" width="150px" alt="">
+            </div>
+            <div class="col-5">
+
+              <h2>{{ userDetalles.nombre}} {{ userDetalles.apellido}}</h2>
+              <h5 class="text-muted">{{ userDetalles.titulo }}</h5>
+              <!-- <div class="mb-3">
+                <label for="formFileSm" class="form-label">Small file input example</label>
+                <input (change)="uploadFile($event)" class="form-control form-control-sm" id="formFileSm" type="file">
+              </div> -->
+            </div>
+            <!-- <div>{{ uploadPercent | async }}</div> -->
+            <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+          </div>
+          <div *ngIf="userDetalles" class="row mb-4 g-5">
+            <div class="col-12 col-xl-6">
+              <div class="rounded shadow pb-2">
+                <div class="h3 font-playfair rounded-top text-white fondo-dorado bg-gradient py-3 mb-3 px-4">Datos personales</div>
+                <div class="px-4">
+                  <p><span class="fw-bold">País: </span>{{ userDetalles.pais }}</p>
+                  <p><span class="fw-bold">Estado: </span>{{ userDetalles.estado }}</p>
+                  <p><span class="fw-bold">Ciudad: </span>{{ userDetalles.ciudad }}</p>
+                  <p *ngIf="userDetalles.infoAdicional"><span class="fw-bold">Información adicional: </span>{{ userDetalles.infoAdicional }}</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-12 col-xl-6">
+              <div class="rounded shadow pb-2">
+                <div class="h3 font-playfair rounded-top text-white fondo-dorado bg-gradient py-3 mb-3 px-4">Información de contacto</div>
+                <div class="px-4">
+                  <p><span class="fw-bold">Email: </span>{{ userDetalles.email }}</p>
+                  <p *ngIf="userDetalles.telefono1"><span class="fw-bold">Teléfono: </span>{{ userDetalles.telefono1 }}</p>
+                  <p *ngIf="userDetalles.telefono2"><span class="fw-bold">Teléfono secundario: </span>{{ userDetalles.telefono2 }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="userDetalles && resetEmailSent" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Se ha enviado un correo de recuperación de contraseña a {{ userDetalles.email }}.</strong> Pídele a {{userDetalles.nombre}} {{userDetalles.apellido}} que siga las instrucciones del correo para restablecer su contraseña.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div *ngIf="userDetalles && resetEmailError" class="alert alert-warning alert-dismissible fade show" role="alert">
+          Error: {{resetEmailError}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      <div *ngIf="userDetalles" class="modal-footer">
+        <button [disabled]="resetEmailSent" (click)='resetPassword(userDetalles.email)' data-bs-toggle="alert" class="btn btn-info mr-auto">Restablecer Contraseña</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -87,6 +87,17 @@ export class AuthService {
     )
   }
 
+  public async changePassword(email: string) {
+    return this.auth.sendPasswordResetEmail(email)
+    .then(res => {
+      return res
+    }
+    ).catch(err => {
+      throw this.handleError(err.code);
+    }
+    )
+  }
+
   private async addNewUserDB(uid: string, email: string, nombre: string, apellido: string, pictureLink?: string) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuarios/${uid}`);
       const user: User = {
@@ -132,7 +143,7 @@ export class AuthService {
 
           case 'auth/user-disabled':
           case 'auth/too-many-requests':
-            errorMessage = "Su usuario ha sido inhabilitado temporalmente, espere unos minutos o contacte un administrador.";
+            errorMessage = "Su usuario ha sido inhabilitado temporalmente por actividad inusual, espere unos minutos o contacte un administrador.";
           break;
 
           case 'auth/wrong-password':
@@ -155,8 +166,13 @@ export class AuthService {
             errorMessage = "Debe completar el inicio de sesión antes de cerrar la ventana emergente.";
           break;
 
+          case 'auth/invalid-email':
+          case 'auth/user-not-found':
+            errorMessage = "El email registrado en la cuenta no parece ser válido";
+          break;
+
           default:
-            errorMessage = "Se ha encontrado un error, verifique los datos ingresados e intente de nuevo.";
+            errorMessage = "Se ha encontrado un error, intente de nuevo o contacte a un administrador";
         }
       return errorMessage
   }
