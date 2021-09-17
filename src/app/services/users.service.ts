@@ -44,6 +44,7 @@ export class UsersService {
   addRole(usuario: User, role: string) {
     let userDoc = this.afs.doc<User>(`usuarios/${usuario.uid}`);
     usuario.roles.push(role);
+    usuario = this.adjustTitle(usuario);
     userDoc.update(usuario).then(
       res => {
       console.log("Actualizado", res);
@@ -63,6 +64,7 @@ export class UsersService {
     if (index > -1) {
       usuario.roles.splice(index, 1);
     }
+    usuario = this.adjustTitle(usuario);
     userDoc.update(usuario).then(
       res => {
       console.log("Actualizado", res);
@@ -74,5 +76,18 @@ export class UsersService {
     .catch(error => {
       console.log(error)
     })
+  }
+
+  adjustTitle(usuario: User): User {
+    if (usuario.roles.includes('administrador')) {
+      usuario.titulo = 'Administrador'
+    }
+    else if(usuario.roles.includes('agente')) {
+      usuario.titulo = 'Agente Eagle'
+    }
+    else {
+      usuario.titulo = "Usuario"
+    }
+    return usuario;
   }
 }
