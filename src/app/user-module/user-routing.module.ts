@@ -6,6 +6,9 @@ import { UserPerfilComponent } from './components/user-perfil/user-perfil.compon
 import { AdminComponent } from './components/admin/admin.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { NoFavoritosComponent } from './components/no-favoritos/no-favoritos.component';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { AdminSolicitudesComponent } from './components/admin-solicitudes/admin-solicitudes.component';
+import { AdminParametrosComponent } from './components/admin-parametros/admin-parametros.component';
 
 const routes: Routes = [
   {
@@ -15,7 +18,15 @@ const routes: Routes = [
       {path: 'no-favoritos', component: NoFavoritosComponent},
       {path: 'propiedades', component: UserPropiedadesComponent},
       {path: 'perfil', component: UserPerfilComponent},
-      {path: 'admin', component: AdminComponent},
+      {path: 'admin', component: AdminComponent,
+        children: [
+          {path: '', redirectTo: 'solicitudes'},
+          {path: 'usuarios', component: AdminUsersComponent},
+          {path: 'solicitudes', component: AdminSolicitudesComponent},
+          {path: 'parametros', component: AdminParametrosComponent},
+        ]
+      }
+
 
     ]
   }

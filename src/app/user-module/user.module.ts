@@ -8,6 +8,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { NoFavoritosComponent } from './components/no-favoritos/no-favoritos.component';
 import { FormsModule } from '@angular/forms';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { AdminSolicitudesComponent } from './components/admin-solicitudes/admin-solicitudes.component';
+import { AdminParametrosComponent } from './components/admin-parametros/admin-parametros.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { FormsModule } from '@angular/forms';
     UserPerfilComponent,
     AdminComponent,
     FavoritosComponent,
-    NoFavoritosComponent
+    NoFavoritosComponent,
+    AdminUsersComponent,
+    AdminSolicitudesComponent,
+    AdminParametrosComponent
   ],
   imports: [
     CommonModule,
