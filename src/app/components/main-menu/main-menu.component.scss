@@ -1,12 +1,31 @@
-.frase {
-  font-size: 4vw;
+.hero {
+  position: relative;
+  // height: 100vh;
+  // width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/../../assets/fondonueva2.jpg");
+  background-size: cover;
 }
 
-#cta {
-  background-image: url("/../../assets/caracas.jpg");
-  background-size: cover;
-  background-position: center bottom;
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  // background-color: rgba(0,0,0,0.4);
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
 }
+
+// #cta {
+//   background-image: url("/../../assets/fondonueva2.jpg");
+//   background-size: cover;
+//   background-position: center bottom;
+// }
 
 // .input-group {
 //   padding: 0px 7em;
@@ -20,77 +39,11 @@
   // color: #C38D7C;
 }
 
-#servicios {
-  background-color: hsl(14, 37%, 68%);
-  background-image: var(--bs-gradient);
-}
+// #servicios {
+//   background-color: hsl(14, 37%, 68%);
+//   background-image: var(--bs-gradient);
+// }
 
 .card-title {
   font-weight: 600;
 }
-
-.border-dorado {
-  border-color: #c48e7e;
-  border-width: thick 0 0 0;
-}
-
-#breathing-button {
-  -webkit-animation: breathing 5s ease-out infinite normal;
-  animation: breathing 5s ease-out infinite normal;
-  -webkit-font-smoothing: antialiased;
-  }
-
-  // .bienvenida {
-  //   // background-image: url('../../assets/city1.jpg');
-  //   // background-size: cover;
-  // }
-
-
-@-webkit-keyframes breathing {
-0% {
-  -webkit-transform: scale(0.9);
-  transform: scale(0.9);
-}
-
-25% {
-  -webkit-transform: scale(1);
-  transform: scale(1);
-}
-
-60% {
-  -webkit-transform: scale(0.9);
-  transform: scale(0.9);
-}
-
-100% {
-  -webkit-transform: scale(0.9);
-  transform: scale(0.9);
-}
-}
-
-@keyframes breathing {
-0% {
-  -webkit-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  transform: scale(0.9);
-}
-
-25% {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-60% {
-  -webkit-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  transform: scale(0.9);
-}
-
-100% {
-  -webkit-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  transform: scale(0.9);
-}
-}
-

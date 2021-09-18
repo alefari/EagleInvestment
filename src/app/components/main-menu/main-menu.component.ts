@@ -20,4 +20,9 @@ export class MainMenuComponent implements OnInit {
 
   }
 
+  scroll(elId: string) {
+    let el = document.getElementById(elId)
+    el.scrollIntoView();
+  }
+
 }
