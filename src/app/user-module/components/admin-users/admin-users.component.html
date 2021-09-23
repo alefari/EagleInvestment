@@ -35,7 +35,7 @@
             <option value="">Todos</option>
             <option value="Usuario">Usuario</option>
             <option value="Agente Eagle">Agente Eagle</option>
-            <option value="Usuario">Administrador</option>
+            <option value="Administrador">Administrador</option>
           </select>
         </th>
         <th scope="col">
@@ -44,9 +44,8 @@
         <th scope="col">
           <select class="form-select form-select-sm" #filtroPais="ngModel" ngModel name="filtroPais">
             <option value="">Todos</option>
-            <option value="Usuario">Usuario</option>
-            <option value="Agente Eagle">Agente Eagle</option>
-            <option value="Usuario">Administrador</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="United States of America">United States of America</option>
           </select>
         </th>
         <th scope="col">
@@ -54,7 +53,7 @@
             <option value="">Todos</option>
             <option value="Usuario">Usuario</option>
             <option value="Agente Eagle">Agente Eagle</option>
-            <option value="Usuario">Administrador</option>
+            <option value="Administrador">Administrador</option>
           </select>
         </th>
         <th scope="col">
@@ -70,8 +69,15 @@
     <!-- BODY DE LA TABLA -->
     <tbody>
       <ng-container *ngFor="let usuario of usuarios">
-        <tr *ngIf="((usuario.nombre.toLowerCase() + ' ' + usuario.apellido.toLowerCase()).includes(filtroNombre.value.toLowerCase()))
-                    && (usuario.titulo == filtroRol.value || filtroRol.value == '')">
+        <tr *ngIf="(
+          (usuario.nombre.toLowerCase() + ' ' + usuario.apellido.toLowerCase()).includes(filtroNombre.value.toLowerCase())
+          &&
+          (usuario.titulo == filtroRol.value || filtroRol.value == '')
+          &&
+          (usuario.email.toLowerCase()).includes(filtroEmail.value.toLowerCase())
+          &&
+          (usuario.pais == filtroPais.value || filtroPais.value == '')
+          )">
           <td>{{ usuario.nombre + " " + usuario.apellido }}</td>
           <td>{{ usuario.titulo }}</td>
           <td>{{ usuario.email }}</td>
