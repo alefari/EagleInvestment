@@ -1,16 +1,16 @@
-<div class="container-xl mt-5">
-  <div class="row justify-content-center">
+<div class="container-fluid">
+  <div class="row">
+    <!-- <div class="col-2 bg-light border-end border-secondary pb-5 d-none d-md-none d-lg-block">
 
-    <!-- FILTROS DE BUSQUEDA -->
-    <div class="col-2 border-end border-secondary pb-5 d-none d-md-none d-lg-block">
+    </div> -->
+    <div class="col-12 col-sm-4 col-md-4 col-lg-2 ps-5 pe-2 pt-5 bg-light height-nav">
       <app-filtros></app-filtros>
     </div>
-
-    <!-- TARJETAS DE BUSQUEDA -->
-    <div class="col-10">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 rows-cols-lg-4">
+    <div class="col pt-5 ps-4 pe-4">
+      <div class="row row-cols-1 row-cols-md-auto justify-content-evenly">
+        <!-- row row-cols-1 row-cols-sm-2 row-cols-md-3 rows-cols-lg-4 -->
         <div *ngFor="let item of arrayPrueba" class="col mb-4">
-          <div class="card rounded-0 border-0 h-100">
+          <div class="card card-hover rounded-0 border-0 h-100" style="min-width: 16rem; max-width: 20rem;">
             <!-- style="width: 16rem;" -->
             <!-- <img src="https://da28rauy2a860.cloudfront.net/completehome/wp-content/uploads/2021/01/21163931/001-Macquarie-zenith-facades_DSC8047_v4a-R.jpg" class="card-img-top rounded-0" alt="..."> -->
             <div id="carousel" class="carousel slide" data-bs-interval="false">
@@ -81,5 +81,5 @@
       </div>
 
     </div>
+    </div>
   </div>
-</div>
