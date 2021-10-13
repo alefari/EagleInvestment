@@ -23,63 +23,80 @@
   </div>
 </section>
 
-  <section id="servicios" class="py-3 height-nav align-items-center d-flex">
+  <section id="servicios" class="py-5 align-items-center d-flex">
     <div class="container">
       <h1 class="font-playfair text-white mb-2">Nuestros servicios</h1>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 mt-3 gy-3 gx-5 mb-3 justify-content-center">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 mt-3 gy-3 mb-3 justify-content-center">
 
-        <div class="px-4">
-          <div class="card shadow border-0 rounded h-100">
+        <div class="col">
+          <div class="card card-hover border-0 rounded h-100">
             <img src="/assets/asesoria.jpg" class="img-fluid rounded-top shadow">
-            <div class="card-body pb-3">
+            <div class="card-body pt-3 pb-0">
               <h5 class="card-title">Asesoría profesional</h5>
               <p class="card-text">Prestamos asesoría inmobiliaria de calidad, con coherencia entre lo que ofrecemos y el resultado final. Teniendo siempre tu satisfacción como prioridad.</p>
             </div>
-            <div class="card-footer bg-white border-0 pb-3">
-              <a  class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a>
-              <a (click)="scroll('asesoria')" role="button" class="font-dorado float-end pt-2 text-decoration-none">Conocer más
+            <div class="card-footer bg-white border-0 pb-3 pt-2">
+              <!-- <a  class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
+              <a (click)="scroll('asesoria')" role="button" class="font-dorado float-end pt-2 text-decoration-none stretched-link">Conocer más
                 <i class="bi bi-arrow-right ms-1 fs-6"></i>
               </a>
             </div>
           </div>
         </div>
 
-        <div class="px-4">
-          <div class="card shadow border-0 rounded h-100">
+        <div class="col">
+          <div class="card card-hover border-0 rounded h-100">
             <img src="/assets/lawyers.jpg" class="img-fluid rounded-top shadow">
-            <div class="card-body pb-3">
+            <div class="card-body pt-3 pb-0">
               <h5 class="card-title">Apoyo en trámites legales</h5>
               <p class="card-text">Ofrecemos apoyo legal profesional, con un equipo de abogados especialistas en inmobiliaria que le brindarán tranquilidad en todo el proceso.</p>
             </div>
-            <div class="card-footer bg-white border-0 pb-3">
-              <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a>
-              <a (click)="scroll('apoyo')" role="button" class="font-dorado float-end pt-2 text-decoration-none">Conocer más
+            <div class="card-footer bg-white border-0 pb-3 pt-2">
+              <!-- <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
+              <a (click)="scroll('apoyo')" role="button" class="font-dorado float-end pt-2 text-decoration-none stretched-link">Conocer más
                 <i class="bi bi-arrow-right ms-1 fs-6"></i>
               </a>
             </div>
           </div>
         </div>
 
-        <div class="px-4">
-          <div class="card shadow border-0 rounded h-100">
+        <div class="col">
+          <div class="card card-hover border-0 rounded h-100">
             <img src="/assets/appraisal.jpg" class="img-fluid rounded-top shadow">
-            <div class="card-body pb-3">
+            <div class="card-body pt-3 pb-0">
               <h5 class="card-title">Avalúo de inmuebles</h5>
               <p class="card-text">Realizamos un estudio y análisis minucioso de tu propiedad o acciones de empresa, para suministrarte el valor del bien que más se adapte al mercado.</p>
             </div>
-            <div class="card-footer bg-white border-0 pb-3">
-              <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a>
-              <a (click)="scroll('avaluos')" role="button" class="font-dorado float-end pt-2 text-decoration-none">Conocer más
+            <div class="card-footer bg-white border-0 pb-3 pt-2">
+              <!-- <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
+              <a (click)="scroll('avaluos')" role="button" class="font-dorado float-end pt-2 text-decoration-none stretched-link">Conocer más
                 <i class="bi bi-arrow-right ms-1 fs-6"></i>
               </a>
             </div>
           </div>
         </div>
+
+        <div class="col">
+          <div class="card card-hover border-0 rounded h-100">
+            <img src="/assets/remodeling.jpg" class="img-fluid rounded-top shadow">
+            <div class="card-body pt-3 pb-0">
+              <h5 class="card-title">Remodelaciones</h5>
+              <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis, ipsa nemo. Ab, odit quod fuga est vero tempore.</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3 pt-2">
+              <!-- <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
+              <a (click)="scroll('remodelaciones')" role="button" class="font-dorado float-end pt-2 text-decoration-none stretched-link">Conocer más
+                <i class="bi bi-arrow-right ms-1 fs-6"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section id="asesoria" class="py-5 bg-dark height-nav align-items-center d-flex">
+  <section id="asesoria" class="py-5 bg-dark align-items-center d-flex">
     <div class="container">
 
       <div class="row gy-4 gx-5 align-items-center">
@@ -105,14 +122,14 @@
     </div>
   </section>
 
-  <section id="apoyo" class="pt-5 pb-5 height-nav align-items-center d-flex">
+  <section id="apoyo" class="py-5 align-items-center d-flex">
     <div class="container">
       <div class="row gy-4 gx-5 align-items-center">
         <div class="col-12 col-md-5 col-lg-5  d-none d-lg-block">
           <img src="/assets/lawyers.jpg" class="img-fluid rounded shadow">
         </div>
-        <div class="col-12 col-lg-7">
-          <h1 class="font-playfair  mb-4">Apoyo en trámites legales</h1>
+        <div class="col-12 col-lg-7 text-white">
+          <h1 class="font-playfair mb-4">Apoyo en trámites legales</h1>
           <p class="">Cuando se trata de una de las mayores inversiones en su vida, ¿por qué arriesgarse? Contar con el apoyo de un abogado de bienes raíces al
             comprar o vender un inmueble es más que simplemente contar con alguien para que lea las letras pequeñas.
             Contar con un abogado especialista inmobiliario puede ofrecer <span class="fw-bold fst-italic">Claridad, Experiencia. Protección Cierre y Ahorros.</span>
@@ -127,40 +144,58 @@
     </div>
   </section>
 
-  <section id="avaluos" class="pt-5 pb-5 bg-dark height-nav align-items-center d-flex">
+  <section id="avaluos" class="py-5 bg-dark align-items-center d-flex">
     <div class="container">
 
       <div class="row gy-4 gx-5 align-items-center">
-        <div class="col-12 col-md-5 col-lg-5 d-none d-lg-block">
-          <img src="/assets/appraisal.jpg" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-12 col-lg-7">
+        <div class="col-12 col-lg-7 text-end">
           <h1 class="font-playfair text-white mb-4">Avalúo de inmuebles</h1>
           <p class="text-white fw-light"><span class="fst-italic">Eagle Investment Projects</span> realiza un estudio o análisis minucioso sobre una propiedad determinada. Este ejercicio es el
             que suministrará el valor de un bien inmueble, como lo puede ser una casa, un apartamento, una oficina, etc.
           </p>
           <p class="text-white fw-light">
-            Realizamos también el avalúo de las acciones de una empresa como negocio en marcha, y así como también de activos tangibles, tales como bienes muebles (maquinarias, mobiliario, equipos, vehículos). <br>
+            Realizamos también el avalúo de las acciones de una empresa como negocio en marcha, y así como también de activos tangibles, tales como bienes muebles (maquinarias, mobiliario, equipos, vehículos).
             En ciertos inmuebles de mayor envergadura nos apoyamos con especialistas acreditados por La Sociedad de Ingeniería de Tasación de Venezuela – <span class="fw-normal">SOITAVE</span> – es una asociación civil sin fines de lucro
             adscrita al Colegio de Ingenieros de Venezuela, que agrupa a los profesionales de la valuación.
           </p>
-            <button class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
+          <button class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
+        </div>
+        <div class="col-12 col-md-5 col-lg-5 d-none d-lg-block">
+          <img src="/assets/appraisal.jpg" class="img-fluid rounded shadow">
         </div>
 
       </div>
     </div>
   </section>
 
-  <section id="contratar" class="pt-5 pb-5 height-nav align-items-center d-flex">
+  <section id="remodelaciones" class="py-5 align-items-center d-flex">
+    <div class="container">
+      <div class="row gy-4 gx-5 align-items-center">
+        <div class="col-12 col-md-5 col-lg-5  d-none d-lg-block">
+          <img src="/assets/remodeling.jpg" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-12 col-lg-7 text-white">
+          <h1 class="font-playfair mb-4">Remodelaciones</h1>
+          <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, architecto illum blanditiis ipsam similique eveniet veritatis maiores error. Voluptatibus facilis eos rerum aut eveniet non cum harum minus quis obcaecati?</p>
+
+            <button class="btn btn-dark bg-gradient text-white">Solicitar Servicio</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contratar" class="py-5 align-items-center d-flex">
     <div class="container">
 
       <div class="row gy-4 gx-5 align-items-center">
 
-        <div class="col-12 col-md-7 col-lg-7">
+        <div class="col-12 col-md-7 col-lg-7 text-white ">
           <h1 class="font-playfair text-white mb-4">Solicita nuestros servicios</h1>
-          <p class="text-white fw-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde deserunt officiis modi quos cupiditate culpa? Ipsam earum hic ratione sequi quo dolores quidem quaerat dolorum iure doloribus. Omnis, est minima.
+          <p class="fw-light">
+            Desde Eagle Investment Projects te damos la bienvenida al primer paso de asesoría profesional para prestarle apoyo en cualquiera de nuestros servicios.
+            Llena el formulario y un representante de Eagle se pondra en contacto contigo en la brevedad posible.
           </p>
+          <p>¡Gracias por confiar en Eagle!</p>
         </div>
         <div class="col-12 col-md-4 offset-md-1">
           <div class="card">
