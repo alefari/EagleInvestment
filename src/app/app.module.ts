@@ -16,6 +16,7 @@ import { FiltrosComponent } from './components/busqueda/filtros/filtros.componen
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PropiedadComponent } from './components/propiedad/propiedad.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FiltrosComponent,
     PropiedadComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
