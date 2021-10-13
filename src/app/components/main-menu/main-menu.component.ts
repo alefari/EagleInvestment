@@ -22,7 +22,11 @@ export class MainMenuComponent implements OnInit {
 
   scroll(elId: string) {
     let el = document.getElementById(elId)
-    el.scrollIntoView(false);
+    const y = el.getBoundingClientRect().top + window.pageYOffset + -77;
+    window.scrollTo({top: y, behavior: 'smooth'});
+    // el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // el.scrollIntoView(false);
+
   }
 
 }
