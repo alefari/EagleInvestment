@@ -133,10 +133,6 @@ export class AuthService {
           break;
 
           case 'auth/invalid-email':
-            errorMessage = "El email ingresado no es válido, utilice otra dirección de correo.";
-          break;
-
-          case 'auth/invalid-email':
           case 'auth/user-not-found':
             errorMessage = "El email ingresado no es válido.";
           break;
@@ -164,11 +160,6 @@ export class AuthService {
 
           case 'auth/popup-closed-by-user':
             errorMessage = "Debe completar el inicio de sesión antes de cerrar la ventana emergente.";
-          break;
-
-          case 'auth/invalid-email':
-          case 'auth/user-not-found':
-            errorMessage = "El email registrado en la cuenta no parece ser válido";
           break;
 
           default:
