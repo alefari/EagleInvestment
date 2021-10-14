@@ -27,4 +27,8 @@ export class NavbarComponent implements OnInit {
     console.log(this.userFb, this.usuario)
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
 }

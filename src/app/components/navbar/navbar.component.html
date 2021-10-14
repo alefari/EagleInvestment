@@ -24,7 +24,7 @@
             <li><a role="button" (click)="log()" class="dropdown-item">Print</a></li>
             <li *ngIf="usuario"><a [routerLink]="'/dashboard/'+usuario.uid" class="dropdown-item">Dashboard</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a role="button" (click)="auth.signOut()" class="dropdown-item">Logout</a></li>
+            <li><a role="button" (click)="logout()" class="dropdown-item">Logout</a></li>
           </ul>
         </li>
       </ul>

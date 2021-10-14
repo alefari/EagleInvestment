@@ -28,6 +28,11 @@ export class AuthService {
     )
   }
 
+  async logout() {
+    this.auth.signOut();
+    this.router.navigate(['/'])
+  }
+
   async signUpEmail(email: string, password: string, nombre: string, apellido: string): Promise<string> {
     return this.auth.createUserWithEmailAndPassword(email, password).then(
       credential => {
