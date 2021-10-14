@@ -21,15 +21,14 @@
             Usuario
           </a>
           <ul class="dropdown-menu rounded-0 border-0 shadow" aria-labelledby="navbarDropdown">
-            <li><a role="button" (click)="log()" class="dropdown-item">Print</a></li>
-            <li *ngIf="usuario"><a [routerLink]="'/dashboard/'+usuario.uid" class="dropdown-item">Dashboard</a></li>
+            <li *ngIf="usuario"><a [routerLink]="'/dashboard/'+usuario.uid" class="dropdown-item">Tablero</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a role="button" (click)="logout()" class="dropdown-item">Logout</a></li>
           </ul>
         </li>
       </ul>
       <form class="d-flex">
-        <button routerLink="/busqueda" class="btn fondo-dorado text-white rounded-0 text-uppercase spacing label-small">Buscar propiedades</button>
+        <button routerLink="/busqueda" class="btn btn-sm fondo-dorado bg-gradient border-0s text-white">Inmuebles</button>
       </form>
     </div>
   </div>
