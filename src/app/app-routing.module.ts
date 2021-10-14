@@ -6,7 +6,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PropiedadComponent } from './components/propiedad/propiedad.component';
 
 const routes: Routes = [
-  { path: '', component: MainMenuComponent },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: 'inicio', component: MainMenuComponent },
   { path: 'busqueda', component: BusquedaComponent },
   { path: 'propiedad', component: PropiedadComponent },
   { path: '404', component: NotFoundComponent },
