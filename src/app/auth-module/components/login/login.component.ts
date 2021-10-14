@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   // errorMessage: string = null;
   isLoading = false;
+  alreadySentRecoveryMail = false;
   @Output() messageEvent = new EventEmitter();
 
   constructor(public auth: AngularFireAuth, private afs: AngularFirestore, private authService: AuthService) { }
@@ -76,6 +77,16 @@ export class LoginComponent implements OnInit {
       }
 
     );
+  }
+
+  passChange(form: NgForm) {
+    this.authService.changePassword(form.value.email);
+    this.alreadySentRecoveryMail = true;
+  }
+
+  onCloseModal(form: NgForm) {
+    form.resetForm();
+    this.alreadySentRecoveryMail = false;
   }
 
 }
