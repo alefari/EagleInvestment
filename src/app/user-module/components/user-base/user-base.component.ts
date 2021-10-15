@@ -24,4 +24,8 @@ export class UserBaseComponent implements OnInit {
     })
   }
 
+  onCerrarSesion() {
+    this.auth.logout();
+  }
+
 }
