@@ -1,0 +1,271 @@
+<div class="container">
+
+  <!-- TITULO Y BIENVENIDA -->
+  <div class="row justify-content-center my-5">
+    <div class="col-10">
+      <h1 class="font-playfair mb-4">Registro del cliente para vender su inmueble en Venezuela</h1>
+      <p>Estimado cliente, en Eagle Investment Projects le damos la cordial bienvenida al primer paso de asesoría profesional
+        para optar por la venta de un inmueble en Venezuela.
+      </p>
+      <p>
+        Por favor responda a todas las preguntas y en la brevedad posible un representante se estará comunicando con usted. Gracias de antemano
+        por confiar en nosotros.
+      </p>
+    </div>
+  </div>
+
+<form #venderForm="ngForm" (ngSubmit)="enviarFormulario(venderForm)" action="">
+  <!-- TARJETA INFORMACION PERSONAL -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-8 shadow border-top border-5 border-warning rounded p-4">
+      <div class="row pb-4 gy-4 align-items-end">
+        <h2 class="font-playfair pb-4">Información de contacto</h2>
+        <div class="col-12 col-md">
+          <label for="nombres" class="form-label">Nombres:</label>
+          <input type="text" ngModel name="nombres" required class="form-control" id="nombres">
+        </div>
+        <div class="col-12 col-md">
+          <label for="apellidos" class="form-label">Apellidos:</label>
+          <input type="text" ngModel name="apellidos" required class="form-control" id="apellidos">
+        </div>
+      </div>
+
+      <div class="row pb-4 gy-4 align-items-end">
+        <div class="col-12 col-md">
+          <label for="email" class="form-label">Correo:</label>
+          <input type="email" ngModel name="email" required class="form-control" id="email">
+        </div>
+        <div class="col-12 col-md">
+          <label for="telefono" class="form-label">Número de teléfono:</label>
+          <input type="text" ngModel name="telefono" required class="form-control" id="telefono">
+        </div>
+      </div>
+
+      <div class="row pb-4 gy-4 align-items-end">
+        <div class="col-12 col-md">
+          <label for="zonaDondeVive" class="form-label">Zona donde vive:</label>
+          <input type="text" ngModel name="zonaDondeVive" class="form-control" id="zonaDondeVive">
+        </div>
+        <div class="col-12 col-md">
+          <label for="horario" class="form-label">Mejor horario del día para comunicarnos con usted:</label>
+          <input type="text" ngModel name="horario" required class="form-control" id="horario">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TARJETA INFORMACION INMUEBLE -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-8 shadow border-top border-5 border-warning rounded p-4">
+
+      <div class="row pb-4 align-items-top">
+        <h2 class="font-playfair pb-4">Información sobre el inmueble</h2>
+        <div class="col pb-3 pe-4">
+          <label for="zonaDelInmueble" class="form-label">Zona donde se encuentra el inmueble</label>
+          <input type="text" ngModel name="zonaDelInmueble" required class="form-control" id="zonaDelInmueble">
+        </div>
+      </div>
+
+      <div class="row pb-4">
+        <div class="col">
+          <label for="exampleFormControlInput1" class="form-label me-4">Tipo de inmueble:</label>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoInmueble" id="tipoInmuebleCasa" value="Casa">
+            <label class="form-check-label" for="tipoInmuebleCasa">Casa</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoInmueble" id="tipoInmuebleApt" value="Apartamento">
+            <label class="form-check-label" for="tipoInmuebleApt">Apartamento</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoInmueble" id="tipoInmuebleTownhouse" value="Townhouse">
+            <label class="form-check-label" for="tipoInmuebleTownhouse">Townhouse</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoInmueble" id="tipoInmuebleVacacional" value="Vacacional o Secundario">
+            <label class="form-check-label" for="tipoInmuebleVacacional">Vacacional o secundario</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoInmueble" id="tipoInmuebleComercial" value="Comercial / Inversión">
+            <label class="form-check-label" for="tipoInmuebleComercial">Comercial / Inversión</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoInmueble" id="tipoInmuebleOtro" value="Otro">
+            <label class="form-check-label" for="tipoInmuebleOtro">Otro</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row pb-4 gy-3">
+        <div class="col">
+          <label for="exampleFormControlInput1" class="form-label">Estado de conservación del inmueble:</label>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="estadoInmueble" id="estadoOriginal" value="Original">
+            <label class="form-check-label" for="estadoOriginal">Original</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="estadoInmueble" id="estadoRemodelado" value="Remodelado hace mas de 10 años">
+            <label class="form-check-label" for="estadoRemodelado">Remodelado hace mas de 10 años</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="estadoInmueble" id="estadoActualizado" value="Actualizado recientemente">
+            <label class="form-check-label" for="estadoActualizado">Actualizado recientemente</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="estadoInmueble" id="estadoOtro" value="Otro">
+            <label class="form-check-label" for="estadoOtro">Otro</label>
+          </div>
+        </div>
+      </div>
+      <div class="row pb-4 gy-3">
+        <div class="col">
+          <label for="exampleFormControlInput1" class="form-label me-4">Tipo de calle donde se encuentra el inmueble:</label>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoCalle" id="calleCerrada" value="Calle cerrada">
+            <label class="form-check-label" for="calleCerrada">Calle cerrada</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="tipoCalle" id="calleAbierta" value="Calle abierta">
+            <label class="form-check-label" for="calleAbierta">Calle abierta</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row gy-4 align-items-end pb-4">
+        <div class="col-12 col-md-6 col-xl">
+          <label for="metrosCuadrados" class="form-label">Metros cuadrados de construcción:</label>
+          <input type="text" ngModel name="metrosCuadrados" class="form-control" id="metrosCuadrados">
+        </div>
+        <div class="col-12 col-md-6 col-xl">
+          <label for="numeroHabitaciones" class="form-label">Número de habitaciones:</label>
+          <input type="text" ngModel name="numeroHabitaciones" class="form-control" id="numeroHabitaciones">
+        </div>
+        <div class="col-12 col-md-6 col-xl">
+          <label for="numeroBanos" class="form-label">Número de baños:</label>
+          <input type="text" ngModel name="numeroBanos" class="form-control" id="numeroBanos">
+        </div>
+        <div class="col-12 col-md-6 col-xl">
+          <label for="numeroEstacionamientos" class="form-label">Número de puestos de estacionamiento:</label>
+          <input type="text" ngModel name="numeroEstacionamientos" class="form-control" id="numeroEstacionamientos">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+      <!-- TARJETA INFORMACION VENTA -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-12 col-md-8 shadow border-top border-5 border-warning rounded p-4">
+          <div class="row pb-4">
+            <div class="col">
+              <h2 class="font-playfair pb-4">Información sobre la venta</h2>
+              <label for="exampleFormControlInput1" class="form-label me-4">¿Tiene los documentos en regla?</label>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="documentos" id="enRegla" value="Si">
+                  <label class="form-check-label" for="enRegla">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="documentos" id="NoEnRegla" value="No">
+                  <label class="form-check-label" for="NoEnRegla">No</label>
+                </div>
+            </div>
+          </div>
+          <div class="row pb-4">
+            <div class="col">
+              <label for="exampleFormControlInput1" class="form-label me-4">¿Ha realizado una estimación del valor de su inmueble?</label>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="estimacion" id="estimacion" value="Si">
+                  <label class="form-check-label" for="estimacion">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="estimacion" id="noEstimacion" value="No">
+                  <label class="form-check-label" for="noEstimacion">No</label>
+                </div>
+            </div>
+          </div>
+          <div class="row pb-4">
+            <div class="col">
+              <label for="exampleFormControlInput1" class="form-label me-4">¿Sabe cuanto espera obtener por su inmueble?</label>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="montoInmueble" id="siSabe" value="Si">
+                  <label class="form-check-label" for="siSabe">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="montoInmueble" id="noSabe" value="No">
+                  <label class="form-check-label" for="noSabe">No</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="montoInmueble" id="analisis" value="Requiere análisis  del valor del inmueble">
+                  <label class="form-check-label" for="analisis">Requiero de un análisis del valor de mi inmueble</label>
+                </div>
+            </div>
+          </div>
+          <div class="row pb-4">
+            <div class="col pe-4">
+              <label for="inicioVenta" class="form-label">¿Aproximadamente desde cuándo está vendiendo?</label>
+              <input type="text" ngModel name="fechaInicioVenta" class="form-control" id="inicioVenta">
+            </div>
+            <div class="col align-self-end">
+              <label for="deseoVenta" class="form-label">¿Aproximadamente para cuándo quiere vender?</label>
+              <input type="text" ngModel name="fechaDeseoVenta" class="form-control" id="deseoVenta">
+            </div>
+          </div>
+          <div class="row pb-4">
+            <div class="col">
+              <label for="exampleFormControlInput1" class="form-label me-4">¿Conoce lo que significa la exclusiva de venta y sus ventajas?</label>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="conoceExclusiva" id="SiConoce" value="Si">
+                  <label class="form-check-label" for="SiConoce">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="conoceExclusiva" id="noConoce" value="No">
+                  <label class="form-check-label" for="noConoce">No</label>
+                </div>
+            </div>
+          </div>
+          <div class="row pb-4">
+            <div class="col">
+              <label for="exampleFormControlInput1" class="form-label me-4">¿Tiene actualmente algún asesor o inmobiliaria que lo esté apoyando?</label>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="poseeAsesor" id="siPosee" value="Si">
+                  <label class="form-check-label" for="siPosee">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" ngModel type="radio" name="poseeAsesor" id="noPosee" value="No">
+                  <label class="form-check-label" for="noPosee">No</label>
+                </div>
+            </div>
+          </div>
+
+    </div>
+  </div>
+  <!-- FIN TARJETA INFORMACION VENTA -->
+
+  <!-- TARJETA COMENTARIOS ADICIONALES -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-8 shadow border-top border-5 border-warning rounded p-4">
+      <div class="row pb-4 align-items-end">
+        <h2 class="font-playfair pb-4">Información adicional</h2>
+        <div class="mb-3">
+          <label for="infoAdicional" class="form-label">Ingrese cualquier información adicional que considere necesario compartir con nosotros:</label>
+          <textarea class="form-control" ngModel name="infoAdicional" id="infoAdicional" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-8">
+      <div class="d-grid">
+      <button class="btn btn-lg boton-dorado text-white bg-gradient" type="submit">Enviar formulario</button>
+
+      </div>
+    </div>
+
+  </div>
+
+</form>
+</div>

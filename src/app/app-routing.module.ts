@@ -21,6 +21,12 @@ const routes: Routes = [
     path: 'dashboard/:id',
     loadChildren: () => import("./user-module/user.module").then(m => m.UserModule)
   },
+
+  {
+    path: 'contacto',
+    loadChildren: () => import("./contacto-module/contacto.module").then(m => m.ContactoModule)
+  },
+
   { path: '**', redirectTo: '404' },
 
 
