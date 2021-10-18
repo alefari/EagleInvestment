@@ -16,7 +16,6 @@ export class Solicitud {
     public fechaInicioVenta: string,
     public horario: string,
     public infoAdicional: string,
-    public metrosCuadrados: string,
     public montoInmueble: string,
     public numeroBanos: string,
     public numeroEstacionamientos: string,
@@ -25,7 +24,18 @@ export class Solicitud {
     public tipoCalle: string,
     public tipoInmueble: string,
     public zonaDelInmueble: string,
-    public id?: string
+    public viaConocimiento: string,
+    public fecha: Date,
+    public id?: string,
+    public tipoTransaccion?: string,
+    public equipamiento?: string,
+    public metrosCuadrados?: string,
+    public piso?: string,
+    public rangoPrecio?: string,
+    public debeVender?: string,
+    public poseeMascota?: string,
+    public formaDePago?: string,
+
     ) {
   }
 

@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: '', component: UserBaseComponent,
     children: [
-      {path: '', redirectTo: 'propiedades'},
+      {path: '', redirectTo: 'perfil'},
       {path: 'no-favoritos', component: NoFavoritosComponent},
       {path: 'propiedades', component: UserPropiedadesComponent},
       {path: 'perfil', component: UserPerfilComponent},

@@ -4,11 +4,11 @@ import { Solicitud } from 'src/app/models/solicitud.model';
 import { SolicitudesService } from 'src/app/services/solicitudes.service';
 
 @Component({
-  selector: 'app-vender',
-  templateUrl: './vender.component.html',
-  styleUrls: ['./vender.component.scss']
+  selector: 'app-comprar',
+  templateUrl: './comprar.component.html',
+  styleUrls: ['./comprar.component.scss']
 })
-export class VenderComponent implements OnInit {
+export class ComprarComponent implements OnInit {
 
   constructor(private solicitudesService: SolicitudesService) { }
 
@@ -16,7 +16,7 @@ export class VenderComponent implements OnInit {
   }
 
   enviarFormulario(form: NgForm) {
-    let solicitud: Solicitud = {...form.value, pendiente: true, tipoSolicitud: 'Venta', fecha: new Date()}
+    let solicitud: Solicitud = {...form.value, pendiente: true, tipoSolicitud: 'Compra', fecha: new Date()}
     this.solicitudesService.addSolicitud(solicitud);
   }
 
