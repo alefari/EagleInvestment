@@ -17,6 +17,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PropiedadComponent } from './components/propiedad/propiedad.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ReclutamientoComponent } from './components/reclutamiento/reclutamiento.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     PropiedadComponent,
     FooterComponent,
     NotFoundComponent,
+    ReclutamientoComponent
   ],
   imports: [
     BrowserModule,

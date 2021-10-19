@@ -22,7 +22,7 @@ import { AdminParametrosComponent } from './components/admin-parametros/admin-pa
     NoFavoritosComponent,
     AdminUsersComponent,
     AdminSolicitudesComponent,
-    AdminParametrosComponent
+    AdminParametrosComponent,
   ],
   imports: [
     CommonModule,
