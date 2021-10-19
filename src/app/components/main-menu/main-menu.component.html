@@ -4,7 +4,7 @@
     <div class="container position-relative">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-8">
-        <h1 class="mb-3 font-playfair frase text-white display-4">
+        <h1 class="mb-3 font-playfair frase text-white display-3">
           Expandiendo soluciones inmobiliarias.
         </h1>
       </div>
@@ -33,7 +33,7 @@
             <img src="/assets/asesoria.jpg" class="img-fluid rounded-top shadow">
             <div class="card-body pt-3 pb-0">
               <h5 class="card-title">Asesoría profesional</h5>
-              <p class="card-text">Prestamos asesoría inmobiliaria de calidad, con coherencia entre lo que ofrecemos y el resultado final. Teniendo siempre tu satisfacción como prioridad.</p>
+              <p class="card-text d-none d-sm-block">Prestamos asesoría inmobiliaria de calidad, con coherencia entre lo que ofrecemos y el resultado final. Teniendo siempre tu satisfacción como prioridad.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-3 pt-2">
               <!-- <a  class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
@@ -49,7 +49,7 @@
             <img src="/assets/lawyers.jpg" class="img-fluid rounded-top shadow">
             <div class="card-body pt-3 pb-0">
               <h5 class="card-title">Apoyo en trámites legales</h5>
-              <p class="card-text">Ofrecemos apoyo legal profesional, con un equipo de abogados especialistas en inmobiliaria que le brindarán tranquilidad en todo el proceso.</p>
+              <p class="card-text d-none d-sm-block">Ofrecemos apoyo legal profesional, con un equipo de abogados especialistas en inmobiliaria que le brindarán tranquilidad en todo el proceso.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-3 pt-2">
               <!-- <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
@@ -65,7 +65,7 @@
             <img src="/assets/appraisal.jpg" class="img-fluid rounded-top shadow">
             <div class="card-body pt-3 pb-0">
               <h5 class="card-title">Avalúo de inmuebles</h5>
-              <p class="card-text">Realizamos un estudio y análisis minucioso de tu propiedad o acciones de empresa, para suministrarte el valor del bien que más se adapte al mercado.</p>
+              <p class="card-text d-none d-sm-block">Realizamos un estudio y análisis minucioso de tu propiedad o acciones de empresa, para suministrarte el valor del bien que más se adapte al mercado.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-3 pt-2">
               <!-- <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
@@ -81,7 +81,7 @@
             <img src="/assets/remodeling.jpg" class="img-fluid rounded-top shadow">
             <div class="card-body pt-3 pb-0">
               <h5 class="card-title">Remodelaciones</h5>
-              <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis, ipsa nemo. Ab, odit quod fuga est vero tempore.</p>
+              <p class="card-text d-none d-sm-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis, ipsa nemo. Ab, odit quod fuga est vero tempore.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-3 pt-2">
               <!-- <a href="#" class="btn text-white me-3 boton-dorado bg-gradient border-0">Solicitar</a> -->
@@ -113,7 +113,7 @@
             Por ello, Eagle cuenta con un equipo de profesionales a su disposición para hacerlos sentir seguros de que no tendrán esas
             preocupaciones. Un equipo eficiente en tiempo y calidad de respuesta, manejando honorarios muy amigables que proporcionarán tranquilidad en su bolsillo.
           </p>
-            <button class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
+            <button (click)="setServiceAndScroll('contratar', 'Asesoría profesional')" class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
         </div>
         <div class="col-12 col-md-5 col-lg-5 d-none d-lg-block">
           <img src="/assets/asesoria.jpg" class="img-fluid rounded shadow">
@@ -138,7 +138,7 @@
             Los ahorros financieros y el conocimiento que puede brindarle un abogado de bienes raíces no tienen precio.
             Eagle le ofrece la tranquilidad de saber que usted, su familia y sus inversiones están protegidos a medida que da los siguientes pasos para adquirir o vender su propiedad.
           </p>
-            <button class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
+            <button (click)="setServiceAndScroll('contratar', 'Apoyo en trámites legales')" class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
         </div>
       </div>
     </div>
@@ -158,7 +158,7 @@
             En ciertos inmuebles de mayor envergadura nos apoyamos con especialistas acreditados por La Sociedad de Ingeniería de Tasación de Venezuela – <span class="fw-normal">SOITAVE</span> – es una asociación civil sin fines de lucro
             adscrita al Colegio de Ingenieros de Venezuela, que agrupa a los profesionales de la valuación.
           </p>
-          <button class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
+          <button (click)="setServiceAndScroll('contratar', 'Avalúo de inmuebles')" class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
         </div>
         <div class="col-12 col-md-5 col-lg-5 d-none d-lg-block">
           <img src="/assets/appraisal.jpg" class="img-fluid rounded shadow">
@@ -177,52 +177,79 @@
         <div class="col-12 col-lg-7">
           <h1 class="font-playfair mb-4">Remodelaciones</h1>
           <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, architecto illum blanditiis ipsam similique eveniet veritatis maiores error. Voluptatibus facilis eos rerum aut eveniet non cum harum minus quis obcaecati?</p>
-
-            <button class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
+            <button (click)="setServiceAndScroll('contratar', 'Remodelaciones')" class="btn boton-dorado bg-gradient text-white">Solicitar Servicio</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contratar" class="py-5 align-items-center d-flex">
+  <section id="contratar" class="py-5 align-items-center d-flex bg-white">
     <div class="container">
 
       <div class="row gy-4 gx-5 align-items-center">
 
-        <div class="col-12 col-md-7 col-lg-7">
-          <h1 class="font-playfair mb-4">Solicita nuestros servicios</h1>
-          <p class="">
+        <div class="col">
+          <h1 class="font-playfair mb-5 display-4 text-end">Solicita nuestros servicios</h1>
+          <p class="text-end fs-4">
             Desde Eagle Investment Projects te damos la bienvenida al primer paso de asesoría profesional para prestarle apoyo en cualquiera de nuestros servicios.
             Llena el formulario y un representante de Eagle se pondra en contacto contigo en la brevedad posible.
           </p>
-          <p>¡Gracias por confiar en Eagle!</p>
+          <p class="text-end fs-4">¡Gracias por confiar en Eagle!</p>
         </div>
-        <div class="col-12 col-md-4 offset-md-1">
-          <div class="card">
+        <div class="col-12 col-md-11 col-lg-4 offset-md-1">
+          <div class="card shadow border-0 bg-light">
             <div class="card-body p-4">
-              <form>
+              <div class="div">
+                <div class="text-center">
+                  <div *ngIf="sendingSolicitud" class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="!sendingSolicitud && sentSolicitud" class="text-center">
+                <p><i class="bi bi-check-circle-fill fs-1 text-success"></i></p>
+                <p>¡Muy bien!, tu solicitud se ha enviado satisfactoriamente, te contactaremos en la brevedad possible.</p>
+              </div>
+              <form *ngIf="!sendingSolicitud && !sentSolicitud" #formSolicitud="ngForm" (ngSubmit)="onHacerSolicitud(formSolicitud)">
+                <div class="row">
+                  <div class="col-12 col-md">
+                    <div class="mb-3">
+                      <label for="nombres" class="form-label">Nombre</label>
+                      <input ngModel name="nombres" required type="text" class="form-control" id="nombres">
+                    </div>
+                  </div>
+                  <div class="col-12 col-md">
+                    <div class="mb-3">
+                      <label for="apellidos" class="form-label">Apellido</label>
+                      <input ngModel name="apellidos" required type="text" class="form-control" id="apellidos">
+                    </div>
+                  </div>
+                </div>
+
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1">
+                  <label for="email" class="form-label">Email</label>
+                  <input ngModel name="email" required type="email" class="form-control" id="email">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input ngModel name="telefono" required type="text" class="form-control" id="telefono">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Servicio que desea</label>
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>Seleccione uno</option>
-                    <option value="1">Asesoría profesional</option>
-                    <option value="2">Avalúo de inmuebles</option>
-                    <option value="3">Apoyo en trámites legales</option>
+                  <label for="servicio" class="form-label">Servicio que desea</label>
+                  <select ngModel [ngModel]='selectedService' name="servicio" required class="form-select" id="servicio" aria-label="Default select example">
+                    <option value="0">Seleccione uno</option>
+                    <option value="Asesoría profesional">Asesoría profesional</option>
+                    <option value="Avalúo de inmuebles">Avalúo de inmuebles</option>
+                    <option value="Apoyo en trámites legales">Apoyo en trámites legales</option>
+                    <option value="Remodelaciones">Remodelaciones</option>
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Información adicional (Opcional)</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <label for="infoAdicional" class="form-label">Información adicional que desee compartir (Opcional)</label>
+                  <textarea ngModel name="infoAdicional" class="form-control" id="infoAdicional" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn boton-dorado bg-gradient text-white">Submit</button>
+                <button [disabled]="!formSolicitud.valid" type="submit" class="btn boton-dorado bg-gradient text-white float-end">Enviar solicitud</button>
               </form>
             </div>
           </div>

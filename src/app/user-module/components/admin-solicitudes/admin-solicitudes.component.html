@@ -25,6 +25,7 @@
             <option value="Compra">Compra</option>
             <option value="Venta">Venta</option>
             <option value="Alquiler">Alquiler</option>
+            <option value="Alquiler">General</option>
           </select>
         </th>
 
@@ -81,10 +82,15 @@
         <p>Nombre: {{ solicitudDetalles.nombres + " " + solicitudDetalles.apellidos }} <br>
         Correo: {{ solicitudDetalles.email }} <br>
         Telefono: {{ solicitudDetalles.telefono }} <br>
-        Horario para contactar: {{ solicitudDetalles.horario }} <br>
-        Zona donde vive: {{ solicitudDetalles.zonaDondeVive }}
+        <span *ngIf="solicitudDetalles.tipoSolicitud != 'General'">Horario para contactar: {{ solicitudDetalles.horario }} <br>
+        Zona donde vive: {{ solicitudDetalles.zonaDondeVive }}</span>
+        <span *ngIf="solicitudDetalles.tipoSolicitud == 'General'">
+          Servicio en el que está interesado: {{ solicitudDetalles.servicio }} <br>
+          Información Adicional: {{ solicitudDetalles.infoAdicional }}
+        </span>
       </p>
 
+      <div *ngIf="solicitudDetalles.tipoSolicitud != 'General'">
         <h3 class="font-playfair mt-4">Información sobre la propiedad</h3>
         <table class="table my-3">
           <tbody>
@@ -195,7 +201,7 @@
             </tr>
           </tbody>
         </table>
-
+      </div>
       </div>
     </div>
     <div class="modal-footer">

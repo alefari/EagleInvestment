@@ -3,20 +3,21 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Solicitud } from '../models/solicitud.model';
+import { SolicitudGeneral } from '../models/solicitudGeneral.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SolicitudesService {
 
-  solicitudesColeccionRef: AngularFirestoreCollection<Solicitud>;
-  solicitudes: Observable<Solicitud[]>;
+  solicitudesColeccionRef: AngularFirestoreCollection<any>;
+  solicitudes: Observable<any[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.solicitudesColeccionRef = afs.collection<Solicitud>('solicitudes');
+    this.solicitudesColeccionRef = afs.collection<any>('solicitudes');
     this.solicitudes = this.solicitudesColeccionRef.snapshotChanges().pipe(
       map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Solicitud;
+        const data = a.payload.doc.data() as any;
         const id = a.payload.doc.id;
         return {id, ...data};
       }))
@@ -38,8 +39,19 @@ export class SolicitudesService {
     )
   }
 
-  public async editEstado(idSolicitud, nuevoEstado) {
-    let solicitudDocRef = this.afs.doc<Solicitud>(`solicitudes/${idSolicitud}`);
+  public async addSolicitudGeneral(solicitudGeneral: SolicitudGeneral) {
+    this.solicitudesColeccionRef.add(solicitudGeneral).then(
+      res => {
+        return true
+      },
+      err => {
+        throw err
+      }
+    )
+  }
+
+  public async editEstado(idSolicitud: string, nuevoEstado: string) {
+    let solicitudDocRef = this.afs.doc<any>(`solicitudes/${idSolicitud}`);
     solicitudDocRef.update({estado: nuevoEstado})
   }
 
