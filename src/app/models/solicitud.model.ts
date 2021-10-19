@@ -2,13 +2,12 @@ export class Solicitud {
 
   constructor(
     public tipoSolicitud: string,
-    public pendiente: boolean,
+    public estado: string,
     public nombres: string,
     public apellidos: string,
     public email: string,
     public telefono: string,
     public zonaDondeVive: string,
-    public conoceExclusiva: string,
     public documentos: string,
     public estadoInmueble: string,
     public estimacion: string,
@@ -20,14 +19,14 @@ export class Solicitud {
     public numeroBanos: string,
     public numeroEstacionamientos: string,
     public numeroHabitaciones: string,
-    public poseeAsesor: string,
     public tipoCalle: string,
     public tipoInmueble: string,
     public zonaDelInmueble: string,
     public viaConocimiento: string,
     public fecha: Date,
+    public poseeAsesor?: string,
+    public conoceExclusiva?: string,
     public id?: string,
-    public tipoTransaccion?: string,
     public equipamiento?: string,
     public metrosCuadrados?: string,
     public piso?: string,
@@ -35,6 +34,7 @@ export class Solicitud {
     public debeVender?: string,
     public poseeMascota?: string,
     public formaDePago?: string,
+    public firmaJuridica?: string
 
     ) {
   }

@@ -38,4 +38,9 @@ export class SolicitudesService {
     )
   }
 
+  public async editEstado(idSolicitud, nuevoEstado) {
+    let solicitudDocRef = this.afs.doc<Solicitud>(`solicitudes/${idSolicitud}`);
+    solicitudDocRef.update({estado: nuevoEstado})
+  }
+
 }

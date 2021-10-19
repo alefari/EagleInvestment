@@ -65,11 +65,11 @@
         <div class="col">
           <label for="exampleFormControlInput1" class="form-label">¿Que tipo de transacción busca?</label>
           <div class="form-check">
-            <input class="form-check-input" ngModel type="radio" name="tipoTransaccion" id="comprar" value="Comprar">
+            <input class="form-check-input" required ngModel type="radio" name="tipoSolicitud" id="comprar" value="Compra">
             <label class="form-check-label" for="comprar">Comprar</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" ngModel type="radio" name="tipoTransaccion" id="alquilar" value="Alquilar">
+            <input class="form-check-input" required ngModel type="radio" name="tipoSolicitud" id="alquilar" value="Alquiler">
             <label class="form-check-label" for="alquilar">Alquilar</label>
           </div>
         </div>
@@ -271,22 +271,22 @@
             <div class="col">
               <label for="exampleFormControlInput1" class="form-label me-4">En caso de haber elegido alquiler, ¿Tiene firma jurídica?</label>
                 <div class="form-check">
-                  <input class="form-check-input" ngModel type="radio" name="firmaJurdica" id="siFirma" value="Si">
+                  <input class="form-check-input" ngModel type="radio" name="firmaJuridica" id="siFirma" value="Si">
                   <label class="form-check-label" for="siFirma">Si</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" ngModel type="radio" name="firmaJurdica" id="noFirma" value="So">
+                  <input class="form-check-input" ngModel type="radio" name="firmaJuridica" id="noFirma" value="So">
                   <label class="form-check-label" for="noFirma">No</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" ngModel type="radio" name="firmaJurdica" id="noAplica" value="No Aplica">
+                  <input class="form-check-input" ngModel type="radio" name="firmaJuridica" id="noAplica" value="No Aplica">
                   <label class="form-check-label" for="noAplica">No Aplica</label>
                 </div>
             </div>
           </div>
           <div class="row pb-4">
             <div class="col align-self-end">
-              <label for="deseoVenta" class="form-label">¿Aproximadamente para cuándo quiere realizar esta negociación</label>
+              <label for="deseoVenta" class="form-label">¿Aproximadamente para cuándo quiere el inmueble?</label>
               <input type="text" ngModel name="fechaDeseoVenta" class="form-control" id="deseoVenta">
             </div>
           </div>
@@ -325,27 +325,27 @@
         <div class="col">
           <label for="exampleFormControlInput1" class="form-label me-4">¿Por cual vía conoció nuestros servicios?</label>
             <div class="form-check">
-              <input class="form-check-input" ngModel type="checkbox" name="viaConocimiento" id="facebook" value="Facebook">
+              <input class="form-check-input" ngModel type="radio" name="viaConocimiento" id="facebook" value="Facebook">
               <label class="form-check-label" for="facebook">Facebook</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" ngModel type="checkbox" name="viaConocimiento" id="instagram" value="Instagram">
+              <input class="form-check-input" ngModel type="radio" name="viaConocimiento" id="instagram" value="Instagram">
               <label class="form-check-label" for="instagram">Instagram</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" ngModel type="checkbox" name="viaConocimiento" id="amigo" value="Un amigo lo refirió">
+              <input class="form-check-input" ngModel type="radio" name="viaConocimiento" id="amigo" value="Un amigo lo refirió">
               <label class="form-check-label" for="amigo">Un amigo lo refirió</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" ngModel type="checkbox" name="viaConocimiento" id="chats" value="Chats">
+              <input class="form-check-input" ngModel type="radio" name="viaConocimiento" id="chats" value="Chats">
               <label class="form-check-label" for="chats">Chats</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" ngModel type="checkbox" name="viaConocimiento" id="paginaWeb" value="Página web">
+              <input class="form-check-input" ngModel type="radio" name="viaConocimiento" id="paginaWeb" value="Página web">
               <label class="form-check-label" for="paginaWeb">Página web</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" ngModel type="checkbox" name="viaConocimiento" id="otro" value="Otro">
+              <input class="form-check-input" ngModel type="radio" name="viaConocimiento" id="otro" value="Otro">
               <label class="form-check-label" for="otro">Otro</label>
             </div>
         </div>

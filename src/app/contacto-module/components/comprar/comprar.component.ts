@@ -16,7 +16,7 @@ export class ComprarComponent implements OnInit {
   }
 
   enviarFormulario(form: NgForm) {
-    let solicitud: Solicitud = {...form.value, pendiente: true, tipoSolicitud: 'Compra', fecha: new Date()}
+    let solicitud: Solicitud = {...form.value, pendiente: true, fecha: new Date()}
     this.solicitudesService.addSolicitud(solicitud);
   }
 
