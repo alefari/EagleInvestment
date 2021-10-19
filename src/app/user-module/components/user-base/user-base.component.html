@@ -15,7 +15,7 @@
 
       <hr>
 
-      <ul class="nav flex-column">
+      <ul *ngIf="!loadingUser" class="nav flex-column">
         <li *ngIf="usuario.roles.includes('usuario')" class="nav-item">
           <a class="nav-link rounded text-black" aria-current="page" routerLink="no-favoritos" routerLinkActive="text-white fondo-dorado bg-gradient shadow">
             <span class="align-text-bottom pe-2">
