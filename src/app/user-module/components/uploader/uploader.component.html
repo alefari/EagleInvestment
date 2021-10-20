@@ -14,7 +14,11 @@
 </div>
 
 <h3>Cargas:</h3>
-
-<div *ngFor="let file of files">
-  <app-upload-task [file]="file"></app-upload-task>
+<div class="container-fluid overflow-hidden">
+  <div  class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-5">
+    <div *ngFor="let file of files" class="col">
+      <app-upload-task [file]="file"></app-upload-task>
+    </div>
+  </div>
 </div>
+

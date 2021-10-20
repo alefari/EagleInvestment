@@ -16,7 +16,7 @@ export class UploadTaskComponent implements OnInit {
   task: AngularFireUploadTask;
   percentage: Observable<number>;
   snapshot: Observable<any>;
-  downloadURL;
+  downloadURL: string;
 
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
 

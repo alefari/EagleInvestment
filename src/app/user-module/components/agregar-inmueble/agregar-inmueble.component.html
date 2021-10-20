@@ -1,5 +1,5 @@
 <div class="container-fluid mb-5">
-  <form #propiedadForm="ngForm" (ngSubmit)='true' action="">
+  <form #inmuebleForm="ngForm" (ngSubmit)='true' action="">
 
       <div class="div mb-3">
         <h5 class="">Información básica del inmueble:</h5>
@@ -9,26 +9,25 @@
       <div class="mb-5 row align-items-end">
 
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">País:</label>
-            <select ngModel required name="pais" class="form-select" aria-label="Default select example">
-              <option value="Venta">Venezuela</option>
-              <option value="Alquiler">Estados Unidos</option>
+          <label for="pais" class="form-label">País:</label>
+            <select ngModel required name="pais" class="form-select" id="pais">
+              <option value="Venezuela">Venezuela</option>
+              <option value="Estados Unidos">Estados Unidos</option>
             </select>
         </div>
 
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Estado:</label>
-          <select ngModel required name="estado" class="form-select" aria-label="Default select example">
-            <option value="Venta">Miranda</option>
-            <option value="Alquiler">Distrito Capital</option>
+          <label for="estado" class="form-label">Estado:</label>
+          <select ngModel required name="estado" class="form-select" id="estado">
+            <option value="Miranda">Miranda</option>
+            <option value="Distrito Capital">Distrito Capital</option>
           </select>
         </div>
 
         <div class="col">
-            <label for="exampleFormControlInput1" class="form-label">Ciudad:</label>
-            <select ngModel required name="ciudad" class="form-select" aria-label="Default select example">
-              <option value="Venta">Caracas</option>
-              <option value="Alquiler"></option>
+            <label for="ciudad" class="form-label">Ciudad:</label>
+            <select ngModel required name="ciudad" class="form-select" id="ciudad">
+              <option value="Caracas">Caracas</option>
             </select>
         </div>
 
@@ -37,18 +36,18 @@
       <div class="mb-5 row align-items-end">
 
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Tipo de inmueble:</label>
-            <select ngModel required name="tipoInmueble" class="form-select" aria-label="Default select example">
-              <option value="Venta">Casa</option>
-              <option value="Alquiler">Apartamento</option>
+          <label for="tipoInmueble" class="form-label">Tipo de inmueble:</label>
+            <select ngModel required name="tipoInmueble" class="form-select" id="tipoInmueble">
+              <option value="Casa">Casa</option>
+              <option value="Apartamento">Apartamento</option>
             </select>
         </div>
 
         <label for="staticEmail" class="col-auto col-form-label">en</label>
 
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Operación:</label>
-          <select ngModel required name="operacion" class="form-select" aria-label="Default select example">
+          <label for="operacion" class="form-label">Operación:</label>
+          <select ngModel required name="operacion" class="form-select" id="operacion">
             <option value="Venta">Venta</option>
             <option value="Alquiler">Alquiler</option>
           </select>
@@ -57,17 +56,17 @@
         <label for="staticEmail" class="col-auto col-form-label text-end">en</label>
 
         <div class="col">
-            <label for="exampleFormControlInput1" class="form-label">Zona del inmueble:</label>
-            <input ngModel required name="zona"  type="text" class="form-control" id="exampleFormControlInput1" placeholder="Colinas de los Ruices">
+            <label for="zona" class="form-label">Zona del inmueble:</label>
+            <input ngModel required name="zona"  type="text" class="form-control" id="zona" placeholder="Colinas de los Ruices">
         </div>
 
         <label for="staticEmail" class="col-auto col-form-label text-end">a</label>
 
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Precio:</label>
+          <label for="precio" class="form-label">Precio:</label>
           <div class="input-group">
             <span class="input-group-text">$</span>
-            <input ngModel required name="precio" type="number" class="form-control">
+            <input ngModel required name="precio" type="number" id="precio" class="form-control">
           </div>
         </div>
 
@@ -75,23 +74,23 @@
 
       <div class="row mb-5 align-items-end">
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Metros cuadrados <strong>totales:</strong></label>
+          <label for="metrosTotales" class="form-label">Metros cuadrados <strong>totales:</strong></label>
           <div class="input-group">
-            <input ngModel required name="metrosTotales" type="text" class="form-control">
+            <input ngModel required name="metrosTotales" type="text" id="metrosTotales" class="form-control">
             <span class="input-group-text">m<sup>2</sup></span>
           </div>
         </div>
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Estacionamientos:</label>
-          <input ngModel required name="estacionamientos" type="text" class="form-control" id="exampleFormControlInput1">
+          <label for="estacionamientos" class="form-label">Estacionamientos:</label>
+          <input ngModel required name="estacionamientos" type="text" class="form-control" id="estacionamientos">
         </div>
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Número de habitaciones:</label>
-          <input ngModel required name="habitaciones" type="text" class="form-control" id="exampleFormControlInput1">
+          <label for="habitaciones" class="form-label">Número de habitaciones:</label>
+          <input ngModel required name="habitaciones" type="text" class="form-control" id="habitaciones">
         </div>
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Número de baños:</label>
-          <input ngModel required name="banos" type="text" class="form-control" id="exampleFormControlInput1">
+          <label for="banos" class="form-label">Número de baños:</label>
+          <input ngModel required name="banos" type="text" class="form-control" id="banos">
         </div>
 
       </div>
@@ -106,8 +105,8 @@
       <div class="row mb-3 align-items-end">
 
         <div class="col">
-          <label for="exampleFormControlInput1" class="form-label">Dirección completa del inmueble:</label>
-          <input ngModel required name="direccion" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Colinas de los Ruices">
+          <label for="direccion" class="form-label">Dirección completa del inmueble:</label>
+          <input ngModel required name="direccion" type="text" class="form-control" id="direccion" placeholder="Urbanización Caurimare, calle B, quinta Rosa.">
         </div>
 
       </div>
@@ -115,9 +114,9 @@
       <div class="row mb-3 align-items-end">
 
         <div class="col-auto">
-          <label for="exampleFormControlInput1" class="form-label">Metros cuadrados de <strong>construcción:</strong></label>
+          <label for="metrosConstruccion" class="form-label">Metros cuadrados de <strong>construcción:</strong></label>
           <div class="input-group">
-            <input ngModel required name="metrosConstruccion" type="text" class="form-control">
+            <input ngModel required name="metrosConstruccion" type="text" class="form-control" id="metrosConstruccion">
             <span class="input-group-text">m<sup>2</sup></span>
           </div>
         </div>
@@ -126,8 +125,8 @@
       <div class="row mb-5 align-items-end">
 
         <div class="col">
-            <label for="exampleFormControlTextarea1" class="form-label">Descripción del inmueble:</label>
-            <textarea ngModel required name="descripción" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="descripcion" class="form-label">Descripción del inmueble:</label>
+            <textarea ngModel required name="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
         </div>
 
       </div>
@@ -140,7 +139,7 @@
       </div>
 
       <div class="row">
-        <div class="col col-xl-8">
+        <div class="col">
 
           <app-uploader></app-uploader>
         </div>
@@ -148,7 +147,7 @@
 
       <div class="row">
         <div class="col">
-          <button class="btn boton-dorado text-white border-0 shadow">Crear inmueble</button>
+          <button (click)="onCrearInmueble(inmuebleForm)" class="btn boton-dorado text-white border-0 shadow">Crear inmueble</button>
         </div>
       </div>
 
