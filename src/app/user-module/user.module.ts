@@ -11,6 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminSolicitudesComponent } from './components/admin-solicitudes/admin-solicitudes.component';
 import { AdminParametrosComponent } from './components/admin-parametros/admin-parametros.component';
+import { AgregarInmuebleComponent } from './components/agregar-inmueble/agregar-inmueble.component';
+import { AgentComponent } from './components/agent/agent.component';
+import { AgentPropiedadesComponent } from './components/user-propiedades/agent-propiedades.component';
+import { DropzoneDirective } from './directives/dropzone.directive';
+import { UploaderComponent } from './components/uploader/uploader.component';
+import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 
 
 @NgModule({
@@ -23,6 +29,12 @@ import { AdminParametrosComponent } from './components/admin-parametros/admin-pa
     AdminUsersComponent,
     AdminSolicitudesComponent,
     AdminParametrosComponent,
+    AgregarInmuebleComponent,
+    AgentComponent,
+    AgentPropiedadesComponent,
+    DropzoneDirective,
+    UploaderComponent,
+    UploadTaskComponent
   ],
   imports: [
     CommonModule,

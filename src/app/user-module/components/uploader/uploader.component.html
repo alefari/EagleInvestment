@@ -1,0 +1,20 @@
+<div class="dropzone align-items-center justify-content-center py-5 flex-column bg-white my-4 d-flex"
+  appDropzone
+  (hovered)="toggleHover($event)"
+  (dropped)="onDrop($event)"
+  [class.hovering]="isHovering"
+  >
+
+  <h3>Subir imágenes</h3>
+  <p>Arrastra las imagenes aqui o selecciónalas manualmente:</p>
+  <label class="file-label">
+    <input id="files" multiple class="form-control" type="file" (change)="onDrop($event.target.files)">
+  </label>
+
+</div>
+
+<h3>Cargas:</h3>
+
+<div *ngFor="let file of files">
+  <app-upload-task [file]="file"></app-upload-task>
+</div>

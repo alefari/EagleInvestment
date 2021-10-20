@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserPropiedadesComponent } from './user-propiedades.component';
+import { UploaderComponent } from './uploader.component';
 
-describe('AgentDashboardComponent', () => {
-  let component: UserPropiedadesComponent;
-  let fixture: ComponentFixture<UserPropiedadesComponent>;
+describe('UploaderComponent', () => {
+  let component: UploaderComponent;
+  let fixture: ComponentFixture<UploaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserPropiedadesComponent ]
+      declarations: [ UploaderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserPropiedadesComponent);
+    fixture = TestBed.createComponent(UploaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
