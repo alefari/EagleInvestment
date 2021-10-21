@@ -1,0 +1,170 @@
+<div class="container-fluid mb-5">
+  <form *ngIf="inmueble" #editarForm="ngForm" (ngSubmit)='true' action="">
+
+    <div class="div mb-3">
+      <h1 class="font-playfair">Editar Inmueble</h1>
+      <h5 class="">Información básica del inmueble:</h5>
+      <p>La siguiente información se mostrará en la tarjeta de presentación del inmueble.</p>
+    </div>
+
+    <div class="mb-5 row align-items-end">
+      <div class="col">
+        <label for="pais" class="form-label">País:</label>
+          <select [(ngModel)]="inmueble.pais" ngModel required name="pais" class="form-select" id="pais">
+            <option value="Venezuela">Venezuela</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+          </select>
+      </div>
+      <div class="col">
+        <label for="estado" class="form-label">Estado:</label>
+        <select [(ngModel)]="inmueble.estado" ngModel required name="estado" class="form-select" id="estado">
+          <option value="Miranda">Miranda</option>
+          <option value="Distrito Capital">Distrito Capital</option>
+        </select>
+      </div>
+      <div class="col">
+          <label for="ciudad" class="form-label">Ciudad:</label>
+          <select [(ngModel)]="inmueble.ciudad" ngModel required name="ciudad" class="form-select" id="ciudad">
+            <option value="Caracas">Caracas</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="mb-5 row align-items-end">
+      <div class="col">
+        <label for="tipoInmueble" class="form-label">Tipo de inmueble:</label>
+          <select [(ngModel)]="inmueble.tipoInmueble" ngModel required name="tipoInmueble" class="form-select" id="tipoInmueble">
+            <option value="Casa">Casa</option>
+            <option value="Apartamento">Apartamento</option>
+          </select>
+      </div>
+      <label for="staticEmail" class="col-auto col-form-label">en</label>
+      <div class="col">
+        <label for="operacion" class="form-label">Operación:</label>
+        <select [(ngModel)]="inmueble.operacion" ngModel required name="operacion" class="form-select" id="operacion">
+          <option value="Venta">Venta</option>
+          <option value="Alquiler">Alquiler</option>
+        </select>
+      </div>
+      <label for="staticEmail" class="col-auto col-form-label text-end">en</label>
+      <div class="col">
+        <label for="zona" class="form-label">Zona del inmueble:</label>
+        <input [(ngModel)]="inmueble.zona" ngModel required name="zona"  type="text" class="form-control" id="zona" placeholder="Colinas de los Ruices">
+      </div>
+      <label for="staticEmail" class="col-auto col-form-label text-end">a</label>
+      <div class="col">
+        <label for="precio" class="form-label">Precio:</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input [(ngModel)]="inmueble.precio" ngModel required name="precio" type="number" id="precio" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5 align-items-end">
+      <div class="col">
+        <label for="metrosTotales" class="form-label">Metros cuadrados <strong>totales:</strong></label>
+        <div class="input-group">
+          <input [(ngModel)]="inmueble.metrosTotales" ngModel required name="metrosTotales" type="number" id="metrosTotales" class="form-control">
+          <span class="input-group-text">m<sup>2</sup></span>
+        </div>
+      </div>
+      <div class="col">
+        <label for="estacionamientos" class="form-label">Estacionamientos:</label>
+        <input [(ngModel)]="inmueble.estacionamientos" ngModel required name="estacionamientos" type="number" class="form-control" id="estacionamientos">
+      </div>
+      <div class="col">
+        <label for="habitaciones" class="form-label">Número de habitaciones:</label>
+        <input [(ngModel)]="inmueble.habitaciones" ngModel required name="habitaciones" type="number" class="form-control" id="habitaciones">
+      </div>
+      <div class="col">
+        <label for="banos" class="form-label">Número de baños:</label>
+        <input [(ngModel)]="inmueble.banos" ngModel required name="banos" type="number" class="form-control" id="banos">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row mb-3">
+      <h5 class="">Información detallada del inmueble:</h5>
+      <p>La siguiente información se mostrará en la página de detalles del inmueble.</p>
+    </div>
+
+    <div class="row mb-3 align-items-end">
+      <div class="col">
+        <label for="direccion" class="form-label">Dirección completa del inmueble:</label>
+        <input [(ngModel)]="inmueble.direccion" ngModel required name="direccion" type="text" class="form-control" id="direccion" placeholder="Urbanización Caurimare, calle B, quinta Rosa.">
+      </div>
+    </div>
+
+    <div class="row mb-3 align-items-end">
+      <div class="col-auto">
+        <label for="metrosConstruccion" class="form-label">Metros cuadrados de <strong>construcción:</strong></label>
+        <div class="input-group">
+          <input [(ngModel)]="inmueble.metrosConstruccion" ngModel required name="metrosConstruccion" type="text" class="form-control" id="metrosConstruccion">
+          <span class="input-group-text">m<sup>2</sup></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5 align-items-end">
+      <div class="col">
+          <label for="descripcion" class="form-label">Descripción del inmueble:</label>
+          <textarea [(ngModel)]="inmueble.descripcion" ngModel required name="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- SECCION DE IMAGENES -->
+    <div class="row mb-3">
+      <h5 class="">Imágenes del inmueble:</h5>
+    </div>
+
+    <div  class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-5 mb-4">
+      <div *ngFor="let url of inmueble.imagenesURL" class="col">
+        <img [src]="url" class="img-fluid" alt="">
+        <a (click)="onEliminarImg(url)" class="link-danger" role="button">Eliminar imagen</a>
+      </div>
+    </div>
+
+
+      <div class="row">
+        <h5 class="">Agregar imagenes:</h5>
+        <div class="col">
+          <div class="dropzone align-items-center justify-content-center py-5 flex-column bg-white my-4 d-flex"
+          appDropzone
+          (hovered)="toggleHover($event)"
+          (dropped)="onDrop($event)"
+          [class.hovering]="isHovering"
+          >
+
+          <h3>Subir imágenes</h3>
+          <p>Arrastra las imagenes aqui o selecciónalas manualmente:</p>
+          <label class="file-label">
+            <input id="files" multiple class="form-control" type="file" (change)="onDrop($event.target.files)">
+          </label>
+
+        </div>
+
+        <h4>Nuevas imágenes:</h4>
+        <div class="container-fluid overflow-hidden">
+          <div  class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-5">
+            <div *ngFor="let file of files" class="col">
+              <app-upload-task (removeUrl)="removeUrl($event)" (urlEvent)="receiveUrl($event)" [file]="file"></app-upload-task>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col">
+          <!-- <button (click)="printUrls()" class="btn boton-dorado text-white border-0 shadow">PrintUrls</button> -->
+          <button (click)="onCancelar()" class="btn btn-danger text-white border-0 shadow">Cancelar</button>
+          <button (click)="onGuardarCambios()" [disabled]="!editarForm.dirty && !dropzoneDirty" class="btn boton-dorado bg-gradient text-white border-0 shadow float-end">Guardar Cambios</button>
+        </div>
+      </div>
+
+  </form>
+</div>

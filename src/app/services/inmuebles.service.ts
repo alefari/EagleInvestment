@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Inmueble } from '../models/inmueble.model';
@@ -28,6 +28,17 @@ export class InmueblesService {
 
   getInmuebles() {
     return this.inmuebles;
+  }
+
+  getInmueble(id: string) {
+    let itemDoc = this.afs.doc<Inmueble>(`inmuebles/${id}`);
+    let inmueble:Observable<any> = itemDoc.valueChanges();
+    return inmueble;
+  }
+
+  updateInmueble(idInmueble: string, nuevoInmueble: Inmueble) {
+    let inmuebleDocRef = this.afs.doc<any>(`inmuebles/${idInmueble}`);
+    inmuebleDocRef.update(nuevoInmueble);
   }
 
   getInmueblesAgent(uidAgente: string) {

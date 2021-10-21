@@ -11,6 +11,7 @@ import { AdminSolicitudesComponent } from './components/admin-solicitudes/admin-
 import { AdminParametrosComponent } from './components/admin-parametros/admin-parametros.component';
 import { AgentComponent } from './components/agent/agent.component';
 import { AgregarInmuebleComponent } from './components/agregar-inmueble/agregar-inmueble.component';
+import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inmueble.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
           {path: '', redirectTo: 'propiedades'},
           {path: 'propiedades', component: AgentPropiedadesComponent},
           {path: 'nuevo-inmueble', component: AgregarInmuebleComponent},
+          {path: 'editar-inmueble/:id', component: EditarInmuebleComponent},
         ]
       }
 

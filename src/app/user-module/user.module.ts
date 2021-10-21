@@ -16,6 +16,7 @@ import { AgentComponent } from './components/agent/agent.component';
 import { AgentPropiedadesComponent } from './components/user-propiedades/agent-propiedades.component';
 import { DropzoneDirective } from './directives/dropzone.directive';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
+import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inmueble.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { UploadTaskComponent } from './components/upload-task/upload-task.compon
     AgentComponent,
     AgentPropiedadesComponent,
     DropzoneDirective,
-    UploadTaskComponent
+    UploadTaskComponent,
+    EditarInmuebleComponent
   ],
   imports: [
     CommonModule,
