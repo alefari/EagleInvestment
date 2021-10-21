@@ -2,6 +2,7 @@
   <form #inmuebleForm="ngForm" (ngSubmit)='true' action="">
 
     <div class="div mb-3">
+      <h1 class="font-playfair">Nuevo Inmueble</h1>
       <h5 class="">Información básica del inmueble:</h5>
       <p>La siguiente información se mostrará en la tarjeta de presentación del inmueble.</p>
     </div>
@@ -152,7 +153,8 @@
       <div class="row mt-5">
         <div class="col">
           <!-- <button (click)="printUrls()" class="btn boton-dorado text-white border-0 shadow">PrintUrls</button> -->
-          <button (click)="onCrearInmueble(inmuebleForm)" class="btn boton-dorado text-white border-0 shadow">Crear inmueble</button>
+          <button (click)="onCancelar()" class="btn btn-danger border-0 shadow">Cancelar</button>
+          <button (click)="onCrearInmueble(inmuebleForm)" class="btn boton-dorado text-white border-0 shadow float-end">Crear inmueble</button>
         </div>
       </div>
 

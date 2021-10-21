@@ -1,10 +1,11 @@
+<div *ngIf="!eliminada && !cancelada">
 <div *ngIf="percentage | async as pct">
   <div *ngIf="pct != 100">
     <progress [value]="pct" max="100"></progress>
     {{ pct | number}}%
   </div>
 </div>
-<div *ngIf="!eliminada">
+
   <div *ngIf="snapshot | async as snap">
     <!-- {{ snap.bytesTransferred }}bytes of {{ snap.totalBytes }}bytes -->
     <div *ngIf="downloadURL as url">
@@ -16,10 +17,13 @@
 
     <button class="btn btn-secondary" (click)="task.pause()" *ngIf="isActive(snap)">Pausar</button>
     <button class="btn btn-primary" (click)="task.resume()" *ngIf="(snap.state === 'paused')">Reanudar</button>
-    <button class="btn btn-danger" (click)="task.cancel()" *ngIf="isActive(snap)">Cancelar</button>
+    <button class="btn btn-danger" (click)="onCancelarImg()" *ngIf="isActive(snap)">Cancelar</button>
 
   </div>
 </div>
 <div *ngIf="eliminada">
   Imagen eliminada.
+</div>
+<div *ngIf="cancelada">
+  Subida cancelada.
 </div>

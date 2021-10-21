@@ -20,6 +20,7 @@ export class UploadTaskComponent implements OnInit {
   snapshot: Observable<any>;
   downloadURL: string;
   eliminada: boolean = false;
+  cancelada: boolean = false;
 
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
 
@@ -54,6 +55,12 @@ export class UploadTaskComponent implements OnInit {
   onEliminarImg(url:string) {
     this.removeUrl.emit(url)
     this.eliminada = true;
+    // this.snapshot = null;
+  }
+
+  onCancelarImg() {
+    this.task.cancel();
+    this.cancelada = true;
     // this.snapshot = null;
   }
 

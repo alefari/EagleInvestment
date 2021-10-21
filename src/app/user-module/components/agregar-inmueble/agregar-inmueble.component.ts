@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Inmueble } from 'src/app/models/inmueble.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,7 +18,9 @@ export class AgregarInmuebleComponent implements OnInit {
   constructor(private inmueblesService: InmueblesService,
               public auth: AngularFireAuth,
               private authService: AuthService,
-              private storage: AngularFireStorage) { }
+              private storage: AngularFireStorage,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   usuario: User;
   isHovering: boolean;
@@ -33,6 +36,7 @@ export class AgregarInmuebleComponent implements OnInit {
   onCrearInmueble(form: NgForm) {
     let nuevoInmueble: Inmueble = {...form.value, uidAgente: this.usuario.uid, imagenesURL: this.imageUrls};
     this.inmueblesService.addInmueble(nuevoInmueble);
+    this.router.navigate(['../../'], { relativeTo: this.route });
   }
 
   toggleHover(event: boolean) {
@@ -59,6 +63,10 @@ export class AgregarInmuebleComponent implements OnInit {
 
   printUrls() {
     console.log(this.imageUrls);
+  }
+
+  onCancelar() {
+    this.router.navigate(['../../'], { relativeTo: this.route });
   }
 
 }
