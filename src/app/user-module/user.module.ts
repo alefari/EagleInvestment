@@ -15,7 +15,6 @@ import { AgregarInmuebleComponent } from './components/agregar-inmueble/agregar-
 import { AgentComponent } from './components/agent/agent.component';
 import { AgentPropiedadesComponent } from './components/user-propiedades/agent-propiedades.component';
 import { DropzoneDirective } from './directives/dropzone.directive';
-import { UploaderComponent } from './components/uploader/uploader.component';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 
 
@@ -33,7 +32,6 @@ import { UploadTaskComponent } from './components/upload-task/upload-task.compon
     AgentComponent,
     AgentPropiedadesComponent,
     DropzoneDirective,
-    UploaderComponent,
     UploadTaskComponent
   ],
   imports: [

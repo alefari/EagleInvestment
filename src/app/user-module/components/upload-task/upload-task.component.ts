@@ -12,12 +12,14 @@ import { finalize, tap } from 'rxjs/operators';
 export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
-  @Output() messageEvent = new EventEmitter<String>();
+  @Output() urlEvent = new EventEmitter<String>();
+  @Output() removeUrl = new EventEmitter<String>();
 
   task: AngularFireUploadTask;
   percentage: Observable<number>;
   snapshot: Observable<any>;
   downloadURL: string;
+  eliminada: boolean = false;
 
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
 
@@ -26,7 +28,7 @@ export class UploadTaskComponent implements OnInit {
   }
 
   startUpload() {
-    const path = `test/${Date.now()}_${this.file.name}`;
+    const path = `imagenesInmuebles/${Date.now()}_${this.file.name}`;
     const ref = this.storage.ref(path);
     this.task = this.storage.upload(path, this.file);
     this.percentage = this.task.percentageChanges();
@@ -46,7 +48,13 @@ export class UploadTaskComponent implements OnInit {
   }
 
   sendUrl(url: string) {
-    this.messageEvent.emit(url);
+    this.urlEvent.emit(url);
+  }
+
+  onEliminarImg(url:string) {
+    this.removeUrl.emit(url)
+    this.eliminada = true;
+    // this.snapshot = null;
   }
 
 }

@@ -142,16 +142,16 @@
         <div class="container-fluid overflow-hidden">
           <div  class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-5">
             <div *ngFor="let file of files" class="col">
-              <app-upload-task (messageEvent)="receiveUrl($event)" [file]="file"></app-upload-task>
+              <app-upload-task (removeUrl)="removeUrl($event)" (urlEvent)="receiveUrl($event)" [file]="file"></app-upload-task>
             </div>
           </div>
         </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mt-5">
         <div class="col">
-          <button (click)="printUrls()" class="btn boton-dorado text-white border-0 shadow">PrintUrls</button>
+          <!-- <button (click)="printUrls()" class="btn boton-dorado text-white border-0 shadow">PrintUrls</button> -->
           <button (click)="onCrearInmueble(inmuebleForm)" class="btn boton-dorado text-white border-0 shadow">Crear inmueble</button>
         </div>
       </div>

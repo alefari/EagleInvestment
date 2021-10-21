@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { NgForm } from '@angular/forms';
 import { Inmueble } from 'src/app/models/inmueble.model';
 import { User } from 'src/app/models/user.model';
@@ -13,7 +14,10 @@ import { InmueblesService } from 'src/app/services/inmuebles.service';
 })
 export class AgregarInmuebleComponent implements OnInit {
 
-  constructor(private inmueblesService: InmueblesService, public auth: AngularFireAuth, private authService: AuthService) { }
+  constructor(private inmueblesService: InmueblesService,
+              public auth: AngularFireAuth,
+              private authService: AuthService,
+              private storage: AngularFireStorage) { }
 
   usuario: User;
   isHovering: boolean;
@@ -41,8 +45,16 @@ export class AgregarInmuebleComponent implements OnInit {
     }
   }
 
-  receiveUrl($event) {
+  receiveUrl($event: string) {
     this.imageUrls.push($event);
+  }
+
+  removeUrl($event: string) {
+    this.storage.refFromURL($event).delete();
+    const index = this.imageUrls.indexOf($event);
+    if (index > -1) {
+      this.imageUrls.splice(index, 1);
+    }
   }
 
   printUrls() {

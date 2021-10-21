@@ -4,18 +4,22 @@
     {{ pct | number}}%
   </div>
 </div>
+<div *ngIf="!eliminada">
+  <div *ngIf="snapshot | async as snap">
+    <!-- {{ snap.bytesTransferred }}bytes of {{ snap.totalBytes }}bytes -->
+    <div *ngIf="downloadURL as url">
+      <h5>Resultado:</h5>
+      <img class="img-fluid" [src]="url" alt=""><br>
+      <a (click)="onEliminarImg(url)" class="link-danger" role="button">Eliminar imagen</a>
+      <!-- <a [href]="url" target="_blank" rel="noopener">Download Me!</a> -->
+    </div>
 
-<div *ngIf="snapshot | async as snap">
-  <!-- {{ snap.bytesTransferred }}bytes of {{ snap.totalBytes }}bytes -->
-  <div *ngIf="downloadURL as url">
-    <h3>Resultado:</h3>
-    <img class="img-fluid" [src]="url" alt=""><br>
-    <a class="link-danger" role="button">Eliminar</a>
-    <!-- <a [href]="url" target="_blank" rel="noopener">Download Me!</a> -->
+    <button class="btn btn-secondary" (click)="task.pause()" *ngIf="isActive(snap)">Pausar</button>
+    <button class="btn btn-primary" (click)="task.resume()" *ngIf="(snap.state === 'paused')">Reanudar</button>
+    <button class="btn btn-danger" (click)="task.cancel()" *ngIf="isActive(snap)">Cancelar</button>
+
   </div>
-
-  <button class="btn btn-secondary" (click)="task.pause()" *ngIf="isActive(snap)">Pausar</button>
-  <button class="btn btn-primary" (click)="task.resume()" *ngIf="(snap.state === 'paused')">Reanudar</button>
-  <button class="btn btn-danger" (click)="task.cancel()" *ngIf="isActive(snap)">Cancelar</button>
-
+</div>
+<div *ngIf="eliminada">
+  Imagen eliminada.
 </div>
