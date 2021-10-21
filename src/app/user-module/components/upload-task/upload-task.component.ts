@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ import { finalize, tap } from 'rxjs/operators';
 export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
+  @Output() messageEvent = new EventEmitter<String>();
 
   task: AngularFireUploadTask;
   percentage: Observable<number>;
@@ -33,7 +34,8 @@ export class UploadTaskComponent implements OnInit {
       tap(console.log),
       finalize(async() => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
-        this.db.collection('files').add({downloadURL: this.downloadURL, path})
+        this.db.collection('files').add({downloadURL: this.downloadURL, path});
+        this.sendUrl(this.downloadURL);
       })
     );
   }
@@ -41,6 +43,10 @@ export class UploadTaskComponent implements OnInit {
   isActive(snapshot) {
     return snapshot.state === 'running'
     && snapshot.bytesTransferred < snapshot.totalBytes;
+  }
+
+  sendUrl(url: string) {
+    this.messageEvent.emit(url);
   }
 
 }
