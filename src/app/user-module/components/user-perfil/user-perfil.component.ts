@@ -18,6 +18,7 @@ export class UserPerfilComponent implements OnInit {
   downloadURL: Observable<string>;
   profileUrl: Observable<string | null>;
   file;
+  isLoading: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -27,11 +28,13 @@ export class UserPerfilComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.auth.usuario.subscribe(res => {
       this.usuario = res;
       // const ref  = this.storage.ref(`profilePictures/${this.usuario.uid}`)
       const ref  = this.storage.ref(this.usuario.profilePicUrl)
       this.profileUrl = ref.getDownloadURL();
+      this.isLoading = false;
     })
   }
 

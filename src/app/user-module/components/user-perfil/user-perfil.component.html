@@ -10,11 +10,22 @@
       </span>
     </div>
   </div>
+
+  <div *ngIf="isLoading" class="d-flex justify-content-center">
+    <div style="width: 3rem; height: 3rem;" class="spinner-grow text-warning" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <div  *ngIf="usuario">
+
+
   <div class="row mb-5 justify-content-center">
     <div class="col-3">
       <img [src]="profileUrl | async" class="rounded-circle float-end image-resize shadow" height="150px" width="150px" alt="">
     </div>
-    <div *ngIf="usuario" class="col-4 align-self-center">
+
+    <div class="col-4 align-self-center">
       <h2>{{ usuario.nombre}} {{ usuario.apellido}}</h2>
       <h5 class="text-muted">{{ usuario.titulo }}</h5>
       <!-- <div class="mb-3">
@@ -67,9 +78,10 @@
     </div>
   </div>
 </div>
+</div>
 
 <!-- Modal editar -->
-<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+<div  *ngIf="usuario" class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-secondary text-white">
