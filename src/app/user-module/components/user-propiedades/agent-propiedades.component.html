@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <div class="row">
     <div class="col">
-      <h1 class="font-playfair mb-4">Mis propiedades</h1>
+      <h1 class="font-playfair">Mis inmuebles</h1>
     </div>
   </div>
   <div class="row">
@@ -18,35 +18,27 @@
     <table class="table">
       <thead class="fondo-dorado bg-gradient text-white">
         <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Tipo</th>
+          <th scope="col">Operación</th>
+          <th scope="col">Inmueble</th>
+          <th scope="col">Ciudad</th>
           <th scope="col">Zona</th>
+          <th scope="col">Precio</th>
+          <th scope="col"></th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Casa</td>
-          <td>Otto</td>
+        <tr *ngFor="let inmueble of inmuebles">
+          <td>{{ inmueble.operacion }}</td>
+          <td>{{ inmueble.tipoInmueble }}</td>
+          <td>{{ inmueble.ciudad }}</td>
+          <td>{{ inmueble.zona }}</td>
+          <td>{{ inmueble.precio }}</td>
           <td>
-            <button class="btn btn-sm btn-info float-end">Detalles</button>
+            <button class="btn btn-sm btn-info float-end">Ver</button>
           </td>
-        </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>Apartamento</td>
-          <td>Thornton</td>
           <td>
-            <button class="btn btn-sm btn-info float-end">Detalles</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Larry the Bird</td>
-          <td>Local</td>
-          <td>Larry the Bird</td>
-          <td>
-            <button class="btn btn-sm btn-info float-end">Detalles</button>
+            <button class="btn btn-sm btn-secondary float-end">Editar</button>
           </td>
         </tr>
       </tbody>
