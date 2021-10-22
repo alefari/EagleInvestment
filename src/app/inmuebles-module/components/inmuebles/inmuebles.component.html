@@ -1,8 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <!-- <div class="col-2 bg-light border-end border-secondary pb-5 d-none d-md-none d-lg-block">
 
-    </div> -->
     <div class="col-12 col-sm-4 col-md-4 col-lg-2 ps-5 pe-2 pt-5 bg-light height-nav">
       <app-filtros></app-filtros>
     </div>
@@ -17,13 +15,16 @@
             <div [attr.id]="'carousel'+i" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <!-- FIJAR TAMAÑO DE TARJETAS -->
-                  <div class="carousel-item active">
+                  <div *ngIf="!inmueble.imagenesURL[0]" class="carousel-item active">
+                    <img src="https://megastorecelulares.com/img/not-found.15ffdca4.png" class="card-img-top rounded-0 d-block cover" alt="...">
+                  </div>
+                  <div *ngIf="inmueble.imagenesURL[0]" class="carousel-item active">
                     <img [src]="inmueble.imagenesURL[0]" class="card-img-top rounded-0 d-block cover" alt="...">
                   </div>
-                  <div class="carousel-item">
+                  <div *ngIf="inmueble.imagenesURL[1]" class="carousel-item">
                     <img [src]="inmueble.imagenesURL[1]" class="card-img-top rounded-0 d-block cover" alt="...">
                   </div>
-                  <div class="carousel-item">
+                  <div *ngIf="inmueble.imagenesURL[1]" class="carousel-item">
                     <img [src]="inmueble.imagenesURL[2]" class="card-img-top rounded-0 d-block cover" alt="...">
                   </div>
 
@@ -72,7 +73,7 @@
                 </div>
               </div>
               <div class="card-body ">
-              <a class="stretched-link text-reset text-decoration-none" href="#">
+              <a class="stretched-link text-reset text-decoration-none" [routerLink]="'inmueble/'+inmueble.id">
                 <h4 class="card-title mb-0">$ {{inmueble.precio | number}}</h4>
               </a>
               <p class="card-text">{{inmueble.tipoInmueble}} en {{inmueble.operacion}} en {{inmueble.zona}}.</p>

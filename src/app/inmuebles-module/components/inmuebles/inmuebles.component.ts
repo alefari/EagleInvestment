@@ -4,16 +4,15 @@ import { Inmueble } from 'src/app/models/inmueble.model';
 import { InmueblesService } from 'src/app/services/inmuebles.service';
 
 @Component({
-  selector: 'app-busqueda',
-  templateUrl: './busqueda.component.html',
-  styleUrls: ['./busqueda.component.scss']
+  selector: 'app-inmuebles',
+  templateUrl: './inmuebles.component.html',
+  styleUrls: ['./inmuebles.component.scss']
 })
-export class BusquedaComponent implements OnInit {
+export class InmueblesComponent implements OnInit {
   faBed = faBed;
   faBath = faBath;
   faRuler = faRuler;
   faCar = faCar;
-  arrayPrueba = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
   inmuebles: Inmueble[];
 
   constructor(private servicioInmuebles: InmueblesService) { }

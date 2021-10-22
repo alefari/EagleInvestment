@@ -36,7 +36,7 @@ export class AgregarInmuebleComponent implements OnInit {
   onCrearInmueble(form: NgForm) {
     let nuevoInmueble: Inmueble = {...form.value, uidAgente: this.usuario.uid, imagenesURL: this.imageUrls};
     this.inmueblesService.addInmueble(nuevoInmueble);
-    this.router.navigate(['../../'], { relativeTo: this.route });
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   toggleHover(event: boolean) {
@@ -66,7 +66,7 @@ export class AgregarInmuebleComponent implements OnInit {
   }
 
   onCancelar() {
-    this.router.navigate(['../../'], { relativeTo: this.route });
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
 }

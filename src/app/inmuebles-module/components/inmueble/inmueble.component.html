@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row gx-4">
+    <div class="col-12 col-lg-7">
+      <div class="heightCarrousel ">
+        <div id="carouselId" class="carousel slide shadow" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button *ngFor="let url of inmueble.imagenesURL; let i = index" type="button" data-bs-target="#carouselId" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i==0}" aria-current="true" aria-label="Slide 1"></button>
+          </div>
+          <div class="carousel-inner">
+            <div *ngFor="let url of inmueble.imagenesURL; let i = index" [ngClass]="{'active': i==0}" class="carousel-item">
+              <img [src]="url" class="" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-5">
+      <div class="card rounded-0 shadow border-0">
+        <div class="card-body p-5">
+          <h2 class="font-playfair mb-4">{{inmueble.tipoInmueble}} en {{inmueble.operacion}} en {{inmueble.zona}}</h2>
+          <h2 class="mb-4">{{ (inmueble.precio | currency).replace(',','x').replace('.',',').replace('x','.') }}</h2>
+          <p>
+            <fa-icon class="text-secondary me-3" [icon]="faBed" size="lg"></fa-icon>Habitaciones: {{inmueble.habitaciones}} </p>
+            <p><fa-icon class="text-secondary me-3" [icon]="faBath" size="lg"></fa-icon>Baños: {{inmueble.banos}} </p>
+            <p><fa-icon class="text-secondary me-3" [icon]="faRuler" size="lg"></fa-icon>Metros totales: {{inmueble.metrosTotales}} m<sup>2</sup> </p>
+            <p><fa-icon class="text-secondary me-3" [icon]="faPencilRuler" size="lg"></fa-icon>Metros de construcción: {{inmueble.metrosConstruccion}} m<sup>2</sup> </p>
+            <p><fa-icon class="text-secondary me-3" [icon]="faCar" size="lg"></fa-icon>Estacionamientos: {{inmueble.estacionamientos}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

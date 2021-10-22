@@ -11,10 +11,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { BusquedaComponent } from './components/busqueda/busqueda.component';
-import { FiltrosComponent } from './components/busqueda/filtros/filtros.component';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { PropiedadComponent } from './components/propiedad/propiedad.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReclutamientoComponent } from './components/reclutamiento/reclutamiento.component';
@@ -24,9 +22,6 @@ import { ReclutamientoComponent } from './components/reclutamiento/reclutamiento
     AppComponent,
     NavbarComponent,
     MainMenuComponent,
-    BusquedaComponent,
-    FiltrosComponent,
-    PropiedadComponent,
     FooterComponent,
     NotFoundComponent,
     ReclutamientoComponent

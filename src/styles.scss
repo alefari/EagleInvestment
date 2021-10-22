@@ -18,6 +18,10 @@
 .vh-75 {
   min-height: 75vh;
 }
+.vh-50 {
+  min-height: 50vh;
+  max-height: 50vh;
+}
 
 .fondo {
   background-color: $yellow-200;
