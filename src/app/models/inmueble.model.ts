@@ -16,7 +16,7 @@ export class Inmueble {
     public direccion: string,
     public descripcion: string,
     public imagenesURL: string[],
-    public idAgente: string,
+    public uidAgente: string,
 
     ) {
   }

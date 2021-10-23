@@ -90,4 +90,12 @@ export class UsersService {
     }
     return usuario;
   }
+
+  getUser(id: string) {
+    let itemDoc = this.afs.doc<User>(`usuarios/${id}`);
+    let usuario:Observable<any> = itemDoc.valueChanges();
+    console.log(usuario)
+    return usuario;
+
+  }
 }
