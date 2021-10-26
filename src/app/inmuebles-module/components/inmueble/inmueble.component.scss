@@ -7,10 +7,13 @@
 
 #carouselId .carousel-item img {
   object-fit: cover;
-  object-position: center;
-  height: 60vh;
+  object-position: center center;
+  width: 100%;
   overflow: hidden;
 }
+// .carousel-inner {
+//   min-height: 50vh;
+// }
 
 // .heightCarousel {
 

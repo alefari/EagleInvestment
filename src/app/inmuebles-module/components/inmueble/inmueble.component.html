@@ -6,7 +6,7 @@
           <div class="carousel-indicators">
             <button *ngFor="let url of inmueble.imagenesURL; let i = index" type="button" data-bs-target="#carouselId" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i==0}" aria-current="true" aria-label="Slide 1"></button>
           </div>
-          <div class="carousel-inner">
+          <div class="carousel-inner bg-light">
             <div *ngFor="let url of inmueble.imagenesURL; let i = index" [ngClass]="{'active': i==0}" class="carousel-item">
               <img [src]="url" class="" alt="...">
             </div>
@@ -59,11 +59,13 @@
           <h3 class="font-playfair mb-4">Información del agente</h3>
           <div class="row">
             <div class="col-auto">
-              <img [src]="profileUrl | async" class="rounded-circle float-end image-resize shadow" height="125px" width="125px" alt="">
+              <a class="text-decoration-none text-black" [routerLink]="'/inmuebles/agente/'+usuario.uid">
+                <img [src]="profileUrl | async" class="rounded-circle float-end image-resize shadow" height="125px" width="125px" alt="">
+              </a>
             </div>
 
             <div class="col-auto align-self-center">
-              <h4>{{ usuario.nombre}} {{ usuario.apellido}}</h4>
+              <a class="text-decoration-none text-black" [routerLink]="'/inmuebles/agente/'+usuario.uid"><h4>{{ usuario.nombre}} {{ usuario.apellido}}</h4></a>
               <h5 class="text-muted mb-4">{{ usuario.titulo }}</h5>
               <a *ngIf="usuario.telefono1" [href]="'https://wa.me/'+usuario.telefono1" class="text-decoration-none font-dorado">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-whatsapp me-2" viewBox="0 0 16 16">

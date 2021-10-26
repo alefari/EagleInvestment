@@ -42,7 +42,7 @@ export class InmueblesService {
   }
 
   getInmueblesAgent(uidAgente: string) {
-    this.inmuebles = this.afs.collection<Inmueble>('inmuebles', ref => ref.where('uidAgente', '==', uidAgente))
+    this.inmueblesAgent = this.afs.collection<Inmueble>('inmuebles', ref => ref.where('uidAgente', '==', uidAgente))
     .snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Inmueble;
@@ -50,7 +50,7 @@ export class InmueblesService {
         return {id, ...data};
       }))
     )
-    return this.inmuebles;
+    return this.inmueblesAgent;
   }
 
   public async addInmueble(inmueble: Inmueble) {

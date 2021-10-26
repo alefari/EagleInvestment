@@ -1,8 +1,171 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-12 col-sm-4 col-md-4 col-lg-2 ps-5 pe-2 pt-5 bg-light height-nav">
-      <app-filtros></app-filtros>
+    <div class="col-12 col-sm-4 col-md-4 col-lg-2 px-4 pt-5 bg-light height-nav">
+      <form action="">
+        <h2 class="mb-3">Filtros:</h2>
+        <div class="mb-3">
+          <label for="ciudad"><h6>País</h6></label>
+          <select class="form-select form-select-sm" aria-label="ciudad">
+            <option value="">Todos</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="ciudad"><h6>Estado</h6></label>
+          <select class="form-select form-select-sm" aria-label="ciudad">
+            <option value="">Todos</option>
+            <option value="Miranda">Miranda</option>
+            <option value="Distrito capital">Distrito capital</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="ciudad"><h6>Ciudad</h6></label>
+          <select class="form-select form-select-sm" aria-label="ciudad">
+            <option value="">Todos</option>
+            <option value="Caracas">Caracas</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="ciudad"><h6>Inmueble</h6></label>
+          <select class="form-select form-select-sm" aria-label="ciudad">
+            <option value="">Casa</option>
+            <option value="Apartamento">Apartamento</option>
+            <option value="Townhouse">Townhouse</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="ciudad"><h6>Operación</h6></label>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Venta
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Alquiler
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="ciudad"><h6>Superficie construida</h6></label>
+          <select class="form-select form-select-sm" aria-label="ciudad">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="ciudad"><h6>Precio</h6></label>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Menos de $50.000
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              $50.000 - $100.000
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              $100.000 - $150.000
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              $150.000 - $200.000
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Más de $200.000
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="ciudad"><h6>Habitaciones</h6></label>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              1 habitación
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              2 habitaciones
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              3 habitaciones
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              4 habitaciones o más
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="ciudad"><h6>Baños</h6></label>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              1 baño
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              2 baños
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              3 baños
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              4 baños o más
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="ciudad"><h6>Ciudad</h6></label>
+          <select class="form-select form-select-sm" aria-label="ciudad">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+      </form>
     </div>
     <div class="col pt-5 ps-4 pe-4">
       <div class="row row-cols-1 row-cols-md-auto justify-content-evenly">
