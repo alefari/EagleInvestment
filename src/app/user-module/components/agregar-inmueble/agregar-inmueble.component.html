@@ -10,22 +10,24 @@
     <div class="mb-5 row align-items-end">
       <div class="col">
         <label for="pais" class="form-label">País:</label>
-          <select ngModel required name="pais" class="form-select" id="pais">
-            <option value="Venezuela">Venezuela</option>
-            <option value="Estados Unidos">Estados Unidos</option>
+          <select ngModel required #pais="ngModel" name="pais" class="form-select" id="pais">
+            <option *ngFor="let pais of paises" [value]="pais.nombre">{{ pais.nombre }}</option>
           </select>
       </div>
       <div class="col">
         <label for="estado" class="form-label">Estado:</label>
         <select ngModel required name="estado" class="form-select" id="estado">
-          <option value="Miranda">Miranda</option>
-          <option value="Distrito Capital">Distrito Capital</option>
+          <ng-container *ngIf="pais.value">
+            <option *ngFor="let estado of paises[getIndexPais(pais.value)].estados" [value]="estado">{{ estado }}</option>
+          </ng-container>
         </select>
       </div>
       <div class="col">
           <label for="ciudad" class="form-label">Ciudad:</label>
           <select ngModel required name="ciudad" class="form-select" id="ciudad">
-            <option value="Caracas">Caracas</option>
+            <ng-container *ngIf="pais.value">
+              <option *ngFor="let ciudad of paises[getIndexPais(pais.value)].ciudades" [value]="ciudad">{{ ciudad }}</option>
+            </ng-container>
           </select>
       </div>
     </div>
@@ -35,7 +37,11 @@
         <label for="tipoInmueble" class="form-label">Tipo de inmueble:</label>
           <select ngModel required name="tipoInmueble" class="form-select" id="tipoInmueble">
             <option value="Casa">Casa</option>
-            <option value="Apartamento">Apartamento</option>
+            <option value="Casa + Anexo">Casa + Anexo</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Vacacional o secundario">Vacacional o secundario</option>
+            <option value="Comercial / Inversión">Comercial / Inversión</option>
+            <option value="Otro">Otro</option>
           </select>
       </div>
       <label for="staticEmail" class="col-auto col-form-label">en</label>

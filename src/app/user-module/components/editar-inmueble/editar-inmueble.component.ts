@@ -4,9 +4,11 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Inmueble } from 'src/app/models/inmueble.model';
+import { Pais } from 'src/app/models/pais.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { InmueblesService } from 'src/app/services/inmuebles.service';
+import { PaisesService } from 'src/app/services/paises.service';
 
 @Component({
   selector: 'app-editar-inmueble',
@@ -17,7 +19,7 @@ export class EditarInmuebleComponent implements OnInit, OnDestroy {
 
   constructor(private inmueblesService: InmueblesService,
               public auth: AngularFireAuth,
-              private authService: AuthService,
+              private servicioPaises: PaisesService,
               private storage: AngularFireStorage,
               private route: ActivatedRoute,
               private router: Router,) { }
@@ -30,11 +32,15 @@ export class EditarInmuebleComponent implements OnInit, OnDestroy {
   inmueble: Inmueble;
   imagenesEliminar: string[] = [];
   dropzoneDirty = false;
+  paises: Pais[];
 
   ngOnInit(): void {
     this.idInmueble = this.route.snapshot.params['id'];
     this.inmueblesService.getInmueble(this.idInmueble).subscribe(inmueble => {
       this.inmueble = {...inmueble};
+    })
+    this.servicioPaises.getPaises().subscribe(paises => {
+      this.paises = paises.sort((a, b) => (a.nombre > b.nombre ? 1 : -1))
     })
     // this.authService.usuario.subscribe(usuario => {
     //   this.usuario = usuario;
@@ -115,6 +121,11 @@ export class EditarInmuebleComponent implements OnInit, OnDestroy {
       this.storage.refFromURL(url).delete();
     })
     this.router.navigate(['../../'], { relativeTo: this.route });
+  }
+
+  getIndexPais(paisElegido: string) {
+    console.log()
+    return this.paises.findIndex(pais => pais.nombre == paisElegido)
   }
 
 }
