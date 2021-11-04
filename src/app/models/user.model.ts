@@ -9,6 +9,7 @@ export class User {
     public roles: string[],
     public titulo: string,
     public pais: string,
+    public favoritos: string[],
     public telefono1?: string,
     public telefono2?: string,
     public infoAdicional?: string,

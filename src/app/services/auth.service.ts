@@ -115,7 +115,8 @@ export class AuthService {
       ciudad: 'Caracas',
       roles: ['usuario'],
       titulo: 'Usuario',
-      profilePicUrl: 'profilePictures/default-profile.png'
+      profilePicUrl: 'profilePictures/default-profile.png',
+      favoritos: []
     }
 
     // if(pictureLink) {

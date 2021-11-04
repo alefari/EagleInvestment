@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentData } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Inmueble } from '../models/inmueble.model';
@@ -14,6 +15,9 @@ export class InmueblesService {
 
   inmueblesColeccionAgentRef: AngularFirestoreCollection<Inmueble>;
   inmueblesAgent: Observable<Inmueble[]>;
+
+  inmueblesColeccionFavoritosRef: AngularFirestoreCollection<Inmueble>;
+  inmueblesFavoritos: Inmueble[];
 
   constructor(private afs: AngularFirestore) {
     this.inmueblesColeccionRef = afs.collection<Inmueble>('inmuebles');
@@ -52,6 +56,14 @@ export class InmueblesService {
     )
     return this.inmueblesAgent;
   }
+
+  // async getFavoritos(userFavoritos: string[]) {
+  //   console.log(userFavoritos)
+  //   this.inmuebles.subscribe(res => {
+  //     this.inmueblesFavoritos = res.filter(inmueble => userFavoritos.includes(inmueble.id))
+  //     return this.inmueblesFavoritos;
+  //   })
+  // }
 
   public async addInmueble(inmueble: Inmueble) {
     this.inmueblesColeccionRef.add(inmueble).then(

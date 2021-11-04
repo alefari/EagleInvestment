@@ -6,7 +6,6 @@ import { UserBaseComponent } from './components/user-base/user-base.component';
 import { UserPerfilComponent } from './components/user-perfil/user-perfil.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
-import { NoFavoritosComponent } from './components/no-favoritos/no-favoritos.component';
 import { FormsModule } from '@angular/forms';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminSolicitudesComponent } from './components/admin-solicitudes/admin-solicitudes.component';
@@ -17,7 +16,7 @@ import { AgentPropiedadesComponent } from './components/user-propiedades/agent-p
 import { DropzoneDirective } from './directives/dropzone.directive';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inmueble.component';
-
+import { SharedModule } from '../shared-module/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inm
     UserPerfilComponent,
     AdminComponent,
     FavoritosComponent,
-    NoFavoritosComponent,
     AdminUsersComponent,
     AdminSolicitudesComponent,
     AdminParametrosComponent,
@@ -34,12 +32,13 @@ import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inm
     AgentPropiedadesComponent,
     DropzoneDirective,
     UploadTaskComponent,
-    EditarInmuebleComponent
+    EditarInmuebleComponent,
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
   ]
 })
 export class UserModule { }
