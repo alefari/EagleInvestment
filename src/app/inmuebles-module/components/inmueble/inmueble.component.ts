@@ -23,34 +23,48 @@ export class InmuebleComponent implements OnInit {
   faCar = faCar;
   faPencilRuler = faPencilRuler;
   isLoading: boolean = false;
+  agente: User;
   usuario: User;
   profileUrl: Observable<string | null>;
-  constructor(private route: ActivatedRoute, private inmueblesService: InmueblesService, private usersService: UsersService, private storage: AngularFireStorage) { }
+  constructor(private route: ActivatedRoute,
+              private inmueblesService: InmueblesService,
+              private usersService: UsersService,
+              private storage: AngularFireStorage,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     this.idInmueble = this.route.snapshot.params['id'];
     this.inmueblesService.getInmueble(this.idInmueble).subscribe(inmueble => {
       this.inmueble = {...inmueble};
-      console.log(inmueble)
-      this.getUser();
-
-
+      this.getUserAgente();
     })
-
-
-
+    this.authService.usuario.subscribe(usuario => {
+      this.usuario = usuario
+    })
 
   }
 
-  getUser() {
+  getUserAgente() {
     this.usersService.getUser(this.inmueble.uidAgente).subscribe(user => {
-      this.usuario = user;
-      console.log(this.usuario)
-      const ref  = this.storage.ref(this.usuario.profilePicUrl)
+      this.agente = user;
+      const ref  = this.storage.ref(this.agente.profilePicUrl)
       this.profileUrl = ref.getDownloadURL();
       this.isLoading = false;
     })
+  }
+
+  toggleFavoritos() {
+    if (this.usuario.favoritos.includes(this.idInmueble)) {
+      const index = this.usuario.favoritos.indexOf(this.idInmueble)
+      if(index > -1) {
+        this.usuario.favoritos.splice(index, 1);
+      }
+    }
+    else {
+      this.usuario.favoritos.push(this.idInmueble);
+    }
+    this.usersService.updateUser(this.usuario)
   }
 
 }

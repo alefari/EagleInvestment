@@ -4,58 +4,69 @@
     <div class="col-12 col-sm-4 col-md-4 col-lg-2 px-4 pt-5 bg-light height-nav">
       <form action="">
         <h2 class="mb-3">Filtros:</h2>
+        <button class="btn btn-secondary" (click)="printFiltros()">print Filtros</button>
         <div class="mb-3">
           <label for="ciudad"><h6>País</h6></label>
-          <select class="form-select form-select-sm" aria-label="ciudad">
+          <select [(ngModel)]="filtros.pais" name="pais" class="form-select form-select-sm" aria-label="ciudad">
             <option value="">Todos</option>
-            <option value="Venezuela">Venezuela</option>
-            <option value="Estados Unidos">Estados Unidos</option>
+            <option *ngFor="let pais of paises" [value]="pais.nombre">{{ pais.nombre }}</option>
           </select>
         </div>
         <div class="mb-3">
           <label for="ciudad"><h6>Estado</h6></label>
-          <select class="form-select form-select-sm" aria-label="ciudad">
+          <select [(ngModel)]="filtros.estado" name="estado" [disabled]="!(filtros.pais != '')" class="form-select form-select-sm" aria-label="ciudad">
             <option value="">Todos</option>
-            <option value="Miranda">Miranda</option>
-            <option value="Distrito capital">Distrito capital</option>
+            <ng-container *ngIf="filtros.pais != ''">
+              <option *ngFor="let estado of paises[getIndexPais()].estados" [value]="estado">{{ estado }}</option>
+            </ng-container>
           </select>
         </div>
         <div class="mb-3">
           <label for="ciudad"><h6>Ciudad</h6></label>
-          <select class="form-select form-select-sm" aria-label="ciudad">
+          <select [(ngModel)]="filtros.ciudad" name="ciudad" [disabled]="!(filtros.pais != '')" class="form-select form-select-sm" aria-label="ciudad">
             <option value="">Todos</option>
-            <option value="Caracas">Caracas</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <ng-container *ngIf="filtros.pais != ''">
+              <option *ngFor="let ciudad of paises[getIndexPais()].ciudades" [value]="ciudad">{{ ciudad }}</option>
+            </ng-container>
           </select>
         </div>
 
         <div class="mb-3">
           <label for="ciudad"><h6>Inmueble</h6></label>
-          <select class="form-select form-select-sm" aria-label="ciudad">
-            <option value="">Casa</option>
+          <select [(ngModel)]="filtros.inmueble" name="inmueble" class="form-select form-select-sm" aria-label="ciudad">
+            <option value="">Todos</option>
+            <option value="Casa">Casa</option>
             <option value="Apartamento">Apartamento</option>
             <option value="Townhouse">Townhouse</option>
+            <option value="Vacacional o Secundario">Vacacional o secundario</option>
+            <option value="Comercial / Inversión">Comercial / Inversión</option>
+            <option value="Otros">Otros</option>
           </select>
         </div>
 
         <div class="mb-3">
           <label for="ciudad"><h6>Operación</h6></label>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
+            <input [(ngModel)]="filtros.operacion" class="form-check-input" type="radio" value="" name="radioOperacion" id="opTodas">
+            <label class="form-check-label" for="opTodas">
+              Todas
+            </label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input [(ngModel)]="filtros.operacion" class="form-check-input" type="radio" value="Venta" name="radioOperacion" id="opVenta">
+            <label class="form-check-label" for="opVenta">
               Venta
             </label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
+            <input [(ngModel)]="filtros.operacion" class="form-check-input" type="radio" value="Alquiler" name="radioOperacion" id="opAlquiler">
+            <label class="form-check-label" for="opAlquiler">
               Alquiler
             </label>
           </div>
         </div>
 
-        <div class="mb-2">
+        <!-- <div class="mb-2">
           <label for="ciudad"><h6>Superficie construida</h6></label>
           <select class="form-select form-select-sm" aria-label="ciudad">
             <option selected>Open this select menu</option>
@@ -63,106 +74,82 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-        </div>
+        </div> -->
 
         <div class="mb-3">
           <label for="ciudad"><h6>Precio</h6></label>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Menos de $50.000
-            </label>
+            <input [(ngModel)]="filtros.rangoPrecio" class="form-check-input" type="radio" name="filtroPrecio" value="" id="precioTodas">
+            <label class="form-check-label" for="precioTodas">Todo</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              $50.000 - $100.000
-            </label>
+            <input [(ngModel)]="filtros.rangoPrecio" class="form-check-input" type="radio" name="filtroPrecio" value="Menos de $50.000" id="precioMenos50k">
+            <label class="form-check-label" for="precioMenos50k">Menos de $50.000</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              $100.000 - $150.000
-            </label>
+            <input [(ngModel)]="filtros.rangoPrecio" class="form-check-input" type="radio" name="filtroPrecio" value="$50.000 - $100.000" id="precio50a100k">
+            <label class="form-check-label" for="precio50a100k">$50.000 - $100.000</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              $150.000 - $200.000
-            </label>
+            <input [(ngModel)]="filtros.rangoPrecio" class="form-check-input" type="radio" name="filtroPrecio" value="$100.000 - $150.000" id="precio100a150k">
+            <label class="form-check-label" for="precio100a150k">$100.000 - $150.000</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Más de $200.000
-            </label>
+            <input [(ngModel)]="filtros.rangoPrecio" class="form-check-input" type="radio" name="filtroPrecio" value="$150.000 - $200.000" id="precio150a200k">
+            <label class="form-check-label" for="precio150a200k">$150.000 - $200.000</label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input [(ngModel)]="filtros.rangoPrecio" class="form-check-input" type="radio" name="filtroPrecio" value="Más de $200.000" id="precioMas200k">
+            <label class="form-check-label" for="precioMas200k">Más de $200.000</label>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="ciudad"><h6>Habitaciones</h6></label>
+          <label for="ciudad"><h6>Habitaciones máx.</h6></label>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              1 habitación
-            </label>
+            <input [(ngModel)]="filtros.habitaciones" class="form-check-input" type="radio" name="habitaciones" value="" id="habitacionesTodo">
+            <label class="form-check-label" for="habitacionesTodo">Todo</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              2 habitaciones
-            </label>
+            <input [(ngModel)]="filtros.habitaciones" class="form-check-input" type="radio" name="habitaciones" value="1" id="1 habitación">
+            <label class="form-check-label" for="1 habitación">1 habitación</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              3 habitaciones
-            </label>
+            <input [(ngModel)]="filtros.habitaciones" class="form-check-input" type="radio" name="habitaciones" value="2" id="2 habitaciones">
+            <label class="form-check-label" for="2 habitaciones">2 habitaciones</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              4 habitaciones o más
-            </label>
+            <input [(ngModel)]="filtros.habitaciones" class="form-check-input" type="radio" name="habitaciones" value="3" id="3 habitaciones">
+            <label class="form-check-label" for="3 habitaciones">3 habitaciones</label>
+          </div>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input [(ngModel)]="filtros.habitaciones" class="form-check-input" type="radio" name="habitaciones" value="4" id="4 habitaciones o más">
+            <label class="form-check-label" for="4 habitaciones o más">4 habitaciones o más</label>
           </div>
         </div>
 
         <div class="mb-3">
           <label for="ciudad"><h6>Baños</h6></label>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              1 baño
-            </label>
+            <input [(ngModel)]="filtros.banos" class="form-check-input" type="radio" name="banos" value="" id="banosTodo">
+            <label class="form-check-label" for="banosTodo">Todo</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              2 baños
-            </label>
+            <input [(ngModel)]="filtros.banos" class="form-check-input" type="radio" name="banos" value="1" id="1bano">
+            <label class="form-check-label" for="1bano">1 baño</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              3 baños
-            </label>
+            <input [(ngModel)]="filtros.banos" class="form-check-input" type="radio" name="banos" value="2" id="2banos">
+            <label class="form-check-label" for="2banos">2 baños</label>
           </div>
           <div class="form-check form-control-sm py-0 mb-0">
-            <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              4 baños o más
-            </label>
+            <input [(ngModel)]="filtros.banos" class="form-check-input" type="radio" name="banos" value="3" id="3banos">
+            <label class="form-check-label" for="3banos">3 baños</label>
           </div>
-        </div>
-
-        <div class="mb-2">
-          <label for="ciudad"><h6>Ciudad</h6></label>
-          <select class="form-select form-select-sm" aria-label="ciudad">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
+          <div class="form-check form-control-sm py-0 mb-0">
+            <input [(ngModel)]="filtros.banos" class="form-check-input" type="radio" name="banos" value="4" id="4banos">
+            <label class="form-check-label" for="4banos">4 baños o más</label>
+          </div>
         </div>
 
       </form>
@@ -170,83 +157,23 @@
     <div class="col pt-5 ps-4 pe-4">
       <div class="row row-cols-1 row-cols-md-auto justify-content-evenly">
         <!-- row row-cols-1 row-cols-sm-2 row-cols-md-3 rows-cols-lg-4 -->
-        <div *ngFor="let inmueble of inmuebles; let i = index" class="col mb-4">
-          <div class="card card-hover rounded-0 border-0 h-100" style="min-width: 16rem; max-width: 20rem;">
-            <!-- style="width: 16rem;" -->
-            <!-- <img src="https://da28rauy2a860.cloudfront.net/completehome/wp-content/uploads/2021/01/21163931/001-Macquarie-zenith-facades_DSC8047_v4a-R.jpg" class="card-img-top rounded-0" alt="..."> -->
-
-            <div [attr.id]="'carousel'+i" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <!-- FIJAR TAMAÑO DE TARJETAS -->
-                  <div *ngIf="!inmueble.imagenesURL[0]" class="carousel-item active">
-                    <img src="https://megastorecelulares.com/img/not-found.15ffdca4.png" class="card-img-top rounded-0 d-block cover" alt="...">
-                  </div>
-                  <div *ngIf="inmueble.imagenesURL[0]" class="carousel-item active">
-                    <img [src]="inmueble.imagenesURL[0]" class="card-img-top rounded-0 d-block cover" alt="...">
-                  </div>
-                  <div *ngIf="inmueble.imagenesURL[1]" class="carousel-item">
-                    <img [src]="inmueble.imagenesURL[1]" class="card-img-top rounded-0 d-block cover" alt="...">
-                  </div>
-                  <div *ngIf="inmueble.imagenesURL[1]" class="carousel-item">
-                    <img [src]="inmueble.imagenesURL[2]" class="card-img-top rounded-0 d-block cover" alt="...">
-                  </div>
-
-              </div>
-              <button class="carousel-control-prev zi" type="button" [attr.data-bs-target]="'#carousel'+i" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-              </button>
-              <button class="carousel-control-next zi" type="button" [attr.data-bs-target]="'#carousel'+i" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-              </button>
-            </div>
-              <div class="row border-bottom py-2 px-2 mx-0">
-                <div class="col border-end">
-                  <div class="row text-center">
-                    <fa-icon class="text-secondary" [icon]="faBed" size="lg"></fa-icon>
-                  </div>
-                  <div class="row text-center">
-                    <span class="fw-light form-text">{{inmueble.habitaciones}}</span>
-                  </div>
-                </div>
-                <div class="col border-end">
-                  <div class="row text-center">
-                    <fa-icon class="text-secondary" [icon]="faBath" size="lg"></fa-icon>
-                  </div>
-                  <div class="row text-center">
-                    <span class="fw-light form-text">{{inmueble.banos}}</span>
-                  </div>
-                </div>
-                <div class="col border-end">
-                  <div class="row text-center">
-                    <fa-icon class="text-secondary" [icon]="faRuler" size="lg"></fa-icon>
-                  </div>
-                  <div class="row text-center">
-                    <span class="fw-light form-text">{{inmueble.metrosTotales}}m<sup>2</sup></span>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="row text-center">
-                    <fa-icon class="text-secondary" [icon]="faCar" size="lg"></fa-icon>
-                  </div>
-                  <div class="row text-center">
-                    <span class="fw-light form-text">{{inmueble.estacionamientos}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body ">
-              <a class="stretched-link text-reset text-decoration-none" [routerLink]="'inmueble/'+inmueble.id">
-                <h4 class="card-title mb-0">$ {{inmueble.precio | number}}</h4>
-              </a>
-              <p class="card-text">{{inmueble.tipoInmueble}} en {{inmueble.operacion}} en {{inmueble.zona}}.</p>
-              <p class="card-text"><small>{{inmueble.ciudad}}, {{inmueble.pais}}</small></p>
-
-
-            </div>
+        <ng-container *ngFor="let inmueble of inmuebles; let i = index">
+          <div class="col mb-4"
+            *ngIf="((filtros.pais == inmueble.pais) || filtros.pais == '')
+            && ((filtros.estado == inmueble.estado) || filtros.estado == '')
+            && ((filtros.ciudad == inmueble.ciudad) || filtros.ciudad == '')
+            && ((filtros.inmueble == inmueble.tipoInmueble) || filtros.inmueble == '')
+            && ((filtros.operacion == inmueble.operacion) || filtros.operacion == '')
+            && (checkRangoPrecio(inmueble.precio))
+            && (checkHabitaciones(inmueble.habitaciones))
+            && (checkBanos(inmueble.banos))
+            ">
+            <app-card [inmueble]="inmueble" [i]="i"></app-card>
           </div>
-        </div>
+
+        </ng-container>
       </div>
+
 
     </div>
     </div>
