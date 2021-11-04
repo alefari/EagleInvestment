@@ -16,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReclutamientoComponent } from './components/reclutamiento/reclutamiento.component';
+import { SharedModule } from './shared-module/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ReclutamientoComponent } from './components/reclutamiento/reclutamiento
     MainMenuComponent,
     FooterComponent,
     NotFoundComponent,
-    ReclutamientoComponent
+    ReclutamientoComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +35,11 @@ import { ReclutamientoComponent } from './components/reclutamiento/reclutamiento
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }

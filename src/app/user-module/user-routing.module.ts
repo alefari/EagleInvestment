@@ -5,7 +5,6 @@ import { UserBaseComponent } from './components/user-base/user-base.component';
 import { UserPerfilComponent } from './components/user-perfil/user-perfil.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
-import { NoFavoritosComponent } from './components/no-favoritos/no-favoritos.component';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminSolicitudesComponent } from './components/admin-solicitudes/admin-solicitudes.component';
 import { AdminParametrosComponent } from './components/admin-parametros/admin-parametros.component';
@@ -18,7 +17,7 @@ const routes: Routes = [
     path: '', component: UserBaseComponent,
     children: [
       {path: '', redirectTo: 'perfil'},
-      {path: 'no-favoritos', component: NoFavoritosComponent},
+      {path: 'favoritos', component: FavoritosComponent},
       {path: 'perfil', component: UserPerfilComponent},
 
       {path: 'admin', component: AdminComponent,

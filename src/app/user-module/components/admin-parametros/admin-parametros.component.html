@@ -1,1 +1,87 @@
-<p>admin-parametros works!</p>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="font-playfair">Ubicaciones</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button disabled role="link" routerLink="../nuevo-inmueble" class="btn boton-dorado bg-gradient text-white shadow float-end">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg me-2" viewBox="0 0 16 16">
+          <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+        </svg>
+        Nuevo Pais
+      </button>
+    </div>
+  </div>
+  <div class="table-responsive pt-4 ">
+    <table class="table">
+      <thead class="fondo-dorado bg-gradient text-white">
+        <tr>
+          <th scope="col">Pais</th>
+          <th scope="col">Estados</th>
+          <th scope="col">Ciudades</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pais of paises">
+          <td>{{ pais.nombre }}</td>
+          <td><span *ngFor="let estado of pais.estados">{{ estado }}, </span></td>
+          <td><span *ngFor="let ciudad of pais.ciudades">{{ ciudad }}, </span></td>
+          <td>
+            <button class="btn btn-sm btn-secondary float-end" data-bs-toggle="modal" data-bs-target="#modalEstado">Nuevo estado</button>
+          </td>
+          <td>
+            <button (click)="paisElegido = pais" class="btn btn-sm btn-info float-end" data-bs-toggle="modal" data-bs-target="#modalCiudad">Nueva ciudad</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCiudad" tabindex="-1" aria-labelledby="modalCiudad" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="paisElegido" class="modal-title" id="exampleModalLabel">Nueva ciudad para {{ paisElegido.nombre }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Ciudad</label>
+          <input ngModel name="inputCiudad" #inputCiudad="ngModel" type="text" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="addCiudad(inputCiudad.value)" [disabled]="!inputCiudad.dirty" type="button" class="btn boton-dorado bg-gradient" data-bs-dismiss="modal">Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEstado" tabindex="-1" aria-labelledby="modalEstado" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="paisElegido" class="modal-title" id="exampleModalLabel">Nuevo estado para {{ paisElegido.nombre }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Estado</label>
+          <input ngModel name="inputEstado" #inputEstado="ngModel" type="text" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="addEstado(inputEstado.value)" [disabled]="!inputEstado.dirty" type="button" class="btn boton-dorado bg-gradient" data-bs-dismiss="modal">Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -49,6 +49,7 @@ export class UserPerfilComponent implements OnInit {
       nombre: form.value.nombre,
       roles: this.usuario.roles,
       titulo: this.usuario.titulo,
+      favoritos: this.usuario.favoritos,
       profilePicUrl: this.usuario.profilePicUrl,
       apellido: form.value.apellido,
       telefono1: form.value.tlf1,
