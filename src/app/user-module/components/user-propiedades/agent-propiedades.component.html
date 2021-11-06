@@ -35,7 +35,7 @@
           <td>{{ inmueble.zona }}</td>
           <td>{{ inmueble.precio }}</td>
           <td>
-            <button class="btn btn-sm btn-info float-end">Ver</button>
+            <button [routerLink]="'/inmuebles/inmueble/'+inmueble.id" class="btn btn-sm btn-info float-end">Ver</button>
           </td>
           <td>
             <button [routerLink]="'../editar-inmueble/'+inmueble.id" class="btn btn-sm btn-secondary float-end">Editar</button>
