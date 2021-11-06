@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import { Pais } from 'src/app/models/pais.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { PaisesService } from 'src/app/services/paises.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -17,13 +19,17 @@ export class AdminUsersComponent implements OnInit {
   resetEmailSent: boolean = false;
   resetEmailError: string = null;
   modificarRolesMode: boolean = false;
+  paises: Pais[];
 
-  constructor(private usersService: UsersService, private storage: AngularFireStorage, private auth: AuthService) { }
+  constructor(private usersService: UsersService, private storage: AngularFireStorage, private auth: AuthService, private servicioPaises: PaisesService) { }
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(users => {
       this.usuarios = users.sort((a, b) => (a.nombre > b.nombre ? 1 : -1))
-    })
+    });
+    this.servicioPaises.getPaises().subscribe(paises => {
+      this.paises = paises.sort((a, b) => (a.nombre > b.nombre ? 1 : -1))
+    });
   }
 
   setUserDetalles(usuario: User) {
@@ -52,6 +58,12 @@ export class AdminUsersComponent implements OnInit {
 
   removeRole(role: string) {
     this.usersService.removeRole(this.userDetalles, role);
+  }
+
+  getIndexPais(paisElegido: string) {
+    if(paisElegido) {
+      return this.paises.findIndex(pais => pais.nombre == paisElegido)
+    }
   }
 
 }

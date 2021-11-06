@@ -44,23 +44,23 @@
         <th scope="col">
           <select class="form-select form-select-sm" #filtroPais="ngModel" ngModel name="filtroPais">
             <option value="">Todos</option>
-            <option value="Venezuela">Venezuela</option>
-            <option value="United States of America">United States of America</option>
+            <option *ngFor="let pais of paises" [value]="pais.nombre">{{ pais.nombre }}</option>
           </select>
         </th>
         <th scope="col">
           <select class="form-select form-select-sm" #filtroEstado="ngModel" ngModel name="filtroEstado">
             <option value="">Todos</option>
-            <option value="Usuario">Usuario</option>
-            <option value="Agente Eagle">Agente Eagle</option>
-            <option value="Administrador">Administrador</option>
+            <ng-container *ngIf="filtroPais.value != ''">
+              <option *ngFor="let estado of paises[getIndexPais(filtroPais.value)].estados" [value]="estado">{{ estado }}</option>
+            </ng-container>
           </select>
         </th>
         <th scope="col">
           <select class="form-select form-select-sm" #filtroCiudad="ngModel" ngModel name="filtroCiudad">
-            <option value="Usuario">Usuario</option>
-            <option value="Agente Eagle">Agente Eagle</option>
-            <option value="Usuario">Administrador</option>
+            <option value="">Todos</option>
+            <ng-container *ngIf="filtroPais.value != ''">
+              <option *ngFor="let ciudad of paises[getIndexPais(filtroPais.value)].ciudades" [value]="ciudad">{{ ciudad }}</option>
+            </ng-container>
           </select>
         </th>
         <th scope="col"></th>
@@ -77,6 +77,10 @@
           (usuario.email.toLowerCase()).includes(filtroEmail.value.toLowerCase())
           &&
           (usuario.pais == filtroPais.value || filtroPais.value == '')
+          &&
+          (usuario.estado == filtroEstado.value || filtroEstado.value == '')
+          &&
+          (usuario.pais == filtroCiudad.value || filtroCiudad.value == '')
           )">
           <td>{{ usuario.nombre + " " + usuario.apellido }}</td>
           <td>{{ usuario.titulo }}</td>
