@@ -20,7 +20,7 @@ export class Inmueble {
     public estadoConservacion: string,
     public seguridad: string,
     public equipamiento: string,
-    public activo: boolean,
+    public activo: string,
     public id?: string
     ) {
   }

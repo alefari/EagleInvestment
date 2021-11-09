@@ -15,6 +15,7 @@ export class AgentPropiedadesComponent implements OnInit {
 
   usuario: User;
   inmuebles: Inmueble[];
+  inmuebleDelete: Inmueble = null;
 
   ngOnInit(): void {
     this.authService.usuario.subscribe(usuario => {
@@ -27,7 +28,23 @@ export class AgentPropiedadesComponent implements OnInit {
 
   toggleActivo(inmueble:Inmueble) {
     let nuevoInmueble = {...inmueble}
-    nuevoInmueble.activo = !nuevoInmueble.activo;
+    if(nuevoInmueble.activo == 'activo') {
+      nuevoInmueble.activo = 'inactivo';
+    }
+    else if(nuevoInmueble.activo == 'inactivo') {
+      nuevoInmueble.activo = 'activo';
+    }
+    this.servicioInmuebles.updateInmueble(nuevoInmueble.id, nuevoInmueble)
+  }
+
+  assignDelete(inmueble: Inmueble) {
+    this.inmuebleDelete = inmueble;
+  }
+
+  deleteInmueble() {
+    let nuevoInmueble = {...this.inmuebleDelete};
+    nuevoInmueble.activo = 'eliminado';
+    this.inmuebleDelete = null;
     this.servicioInmuebles.updateInmueble(nuevoInmueble.id, nuevoInmueble)
   }
 

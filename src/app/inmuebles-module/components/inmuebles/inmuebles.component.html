@@ -158,7 +158,7 @@
         <!-- row row-cols-1 row-cols-sm-2 row-cols-md-3 rows-cols-lg-4 -->
         <ng-container *ngFor="let inmueble of inmuebles; let i = index">
           <div class="col mb-4"
-            *ngIf="(inmueble.activo == true)
+            *ngIf="(inmueble.activo == 'activo')
             && ((filtros.pais == inmueble.pais) || filtros.pais == '')
             && ((filtros.estado == inmueble.estado) || filtros.estado == '')
             && ((filtros.ciudad == inmueble.ciudad) || filtros.ciudad == '')

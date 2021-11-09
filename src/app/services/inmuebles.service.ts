@@ -45,6 +45,11 @@ export class InmueblesService {
     inmuebleDocRef.update(nuevoInmueble);
   }
 
+  deleteInmueble(idInmueble: string) {
+    let inmuebleDocRef = this.afs.doc<any>(`inmuebles/${idInmueble}`);
+    inmuebleDocRef.delete();
+  }
+
   getInmueblesAgent(uidAgente: string) {
     this.inmueblesAgent = this.afs.collection<Inmueble>('inmuebles', ref => ref.where('uidAgente', '==', uidAgente))
     .snapshotChanges().pipe(
@@ -66,6 +71,7 @@ export class InmueblesService {
   // }
 
   public async addInmueble(inmueble: Inmueble) {
+    inmueble.activo = 'activo';
     this.inmueblesColeccionRef.add(inmueble).then(
       res => {
         return true;
