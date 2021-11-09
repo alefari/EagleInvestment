@@ -25,10 +25,11 @@
           <th scope="col">Precio</th>
           <th scope="col"></th>
           <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let inmueble of inmuebles">
+        <tr *ngFor="let inmueble of inmuebles" [ngClass]="{'resuelto': inmueble.activo == false}">
           <td>{{ inmueble.operacion }}</td>
           <td>{{ inmueble.tipoInmueble }}</td>
           <td>{{ inmueble.ciudad }}</td>
@@ -39,6 +40,9 @@
           </td>
           <td>
             <button [routerLink]="'../editar-inmueble/'+inmueble.id" class="btn btn-sm btn-secondary float-end">Editar</button>
+          </td>
+          <td>
+            <button (click)='toggleActivo(inmueble)' class="btn btn-sm btn-warning float-end" [ngClass]="{'btn-light': inmueble.activo == false}" >{{ inmueble.activo ? 'Inhabilitar' : 'Habilitar'}}</button>
           </td>
         </tr>
       </tbody>

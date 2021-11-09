@@ -25,6 +25,12 @@ export class AgentPropiedadesComponent implements OnInit {
     })
   }
 
+  toggleActivo(inmueble:Inmueble) {
+    let nuevoInmueble = {...inmueble}
+    nuevoInmueble.activo = !nuevoInmueble.activo;
+    this.servicioInmuebles.updateInmueble(nuevoInmueble.id, nuevoInmueble)
+  }
+
 
 
 }
