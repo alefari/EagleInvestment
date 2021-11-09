@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Solicitud } from 'src/app/models/solicitud.model';
 import { SolicitudesService } from 'src/app/services/solicitudes.service';
 
@@ -9,8 +9,12 @@ import { SolicitudesService } from 'src/app/services/solicitudes.service';
   styleUrls: ['./comprar.component.scss']
 })
 export class ComprarComponent implements OnInit {
-
-  constructor(private solicitudesService: SolicitudesService) { }
+  // protected aFormGroup: FormGroup;
+  sitekey: string;
+  captchaDone: boolean = false;
+  constructor(private solicitudesService: SolicitudesService) {
+    this.sitekey = '6LfOoyMdAAAAAIC72eI0xWcCOMLMcvkHrosc3D2M';
+   }
 
   ngOnInit(): void {
   }
@@ -18,6 +22,10 @@ export class ComprarComponent implements OnInit {
   enviarFormulario(form: NgForm) {
     let solicitud: Solicitud = {...form.value, pendiente: true, fecha: new Date()}
     this.solicitudesService.addSolicitud(solicitud);
+  }
+
+  handleSuccess($event: Event) {
+    this.captchaDone = true;
   }
 
 }

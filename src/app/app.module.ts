@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReclutamientoComponent } from './components/reclutamiento/reclutamiento.component';
 import { SharedModule } from './shared-module/shared.module';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SharedModule } from './shared-module/shared.module';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    SharedModule
+    SharedModule,
+    NgxCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent],

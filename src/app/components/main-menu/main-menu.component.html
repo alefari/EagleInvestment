@@ -249,7 +249,15 @@
                   <label for="infoAdicional" class="form-label">Información adicional que desee compartir (Opcional)</label>
                   <textarea ngModel name="infoAdicional" class="form-control" id="infoAdicional" rows="3"></textarea>
                 </div>
-                <button [disabled]="!formSolicitud.valid" type="submit" class="btn boton-dorado bg-gradient text-white float-end">Enviar solicitud</button>
+                <div class="row justify-content-center mb-3">
+                  <div class="col-12 col-md-8">
+                    <div class="d-flex justify-content-center">
+                      <ngx-recaptcha2 #captchaElem [siteKey]="sitekey" (success)="handleSuccess($event)">
+                      </ngx-recaptcha2>
+                    </div>
+                  </div>
+                </div>
+                <button [disabled]="!formSolicitud.valid || !captchaDone" type="submit" class="btn boton-dorado bg-gradient text-white float-end">Enviar solicitud</button>
               </form>
             </div>
           </div>

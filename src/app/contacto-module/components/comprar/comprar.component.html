@@ -361,11 +361,21 @@
 
   <div class="row justify-content-center mb-5">
     <div class="col-12 col-md-8">
-      <div class="d-grid">
-      <button [disabled]="!comprarForm.valid" class="btn btn-lg boton-dorado text-white bg-gradient" type="submit">Enviar formulario</button>
+      <div class="d-flex justify-content-center">
+        <ngx-recaptcha2 #captchaElem [siteKey]="sitekey" (success)="handleSuccess($event)">
+        </ngx-recaptcha2>
       </div>
     </div>
   </div>
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-8">
+      <div class="d-grid">
+      <button [disabled]="!comprarForm.valid || !captchaDone" class="btn btn-lg boton-dorado text-white bg-gradient" type="submit">Enviar formulario</button>
+      </div>
+    </div>
+  </div>
+
+
 
 </form>
 </div>

@@ -17,9 +17,12 @@ export class MainMenuComponent implements OnInit {
   selectedService: string = '0';
   sendingSolicitud: boolean = false;
   sentSolicitud: boolean = false;
+  sitekey: string;
+  captchaDone: boolean = false;
 
 
   constructor(private storage: AngularFireStorage, private solicitudesService: SolicitudesService) {
+    this.sitekey = '6LfOoyMdAAAAAIC72eI0xWcCOMLMcvkHrosc3D2M';
     // const ref = this.storage.ref('caracas.jpg');
     // this.backgroundImageUrl = ref.getDownloadURL();
    }
@@ -31,6 +34,10 @@ export class MainMenuComponent implements OnInit {
   setServiceAndScroll(elId: string, service: string) {
     this.selectedService = service;
     this.scroll(elId);
+  }
+
+  handleSuccess($event: Event) {
+    this.captchaDone = true;
   }
 
   scroll(elId: string) {
