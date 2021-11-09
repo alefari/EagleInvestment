@@ -104,12 +104,34 @@
     </div>
 
     <div class="row mb-3 align-items-end">
-      <div class="col-auto">
+      <div class="col">
         <label for="metrosConstruccion" class="form-label">Metros cuadrados de <strong>construcción:</strong></label>
         <div class="input-group">
           <input ngModel required name="metrosConstruccion" type="text" class="form-control" id="metrosConstruccion">
           <span class="input-group-text">m<sup>2</sup></span>
         </div>
+      </div>
+      <div class="col-auto">
+        <label for="estadoConservacion" class="form-label">Estado de conservación:</label>
+        <select ngModel required name="estadoConservacion" class="form-select" id="estadoConservacion">
+            <option value="Original">Original</option>
+            <option value="Remodelado hace más de 10 años">Remodelado hace más de 10 años</option>
+            <option value="Actualizado recientemente">Actualizado recientemente</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="seguridad" class="form-label">Seguridad:</label>
+        <select ngModel required name="seguridad" class="form-select" id="seguridad">
+            <option value="Calle cerrada">Calle cerrada</option>
+            <option value="Calle abierta">Calle abierta</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="equipamiento" class="form-label">Equipamiento:</label>
+        <select ngModel required name="equipamiento" class="form-select" id="equipamiento">
+            <option value="Amoblado">Amoblado</option>
+            <option value="Sin amoblar">Sin amoblar</option>
+        </select>
       </div>
     </div>
 
