@@ -29,7 +29,7 @@
 
   <div class="pt-2 mb-4 d-grid">
     <button type="submit"
-      [disabled]="!authForm.valid"
+      [disabled]="!authForm.valid || password.value != passwordConfirmation.value"
       class="btn btn-golden text-white shadow rounded-0 fondo-dorado bg-gradient border-0 py-3 ingresar-button">
       REGISTRARSE
     </button>

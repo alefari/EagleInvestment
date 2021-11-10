@@ -14,7 +14,12 @@
     </div>
   </div>
 
-<form #venderForm="ngForm" (ngSubmit)="enviarFormulario(venderForm)" action="">
+  <div *ngIf="sent" class="text-center">
+    <p><i class="bi bi-check-circle-fill fs-1 text-success"></i></p>
+    <p>¡Muy bien!, tu solicitud se ha enviado satisfactoriamente, te contactaremos en la brevedad possible.</p>
+  </div>
+
+<form *ngIf="!sent" #venderForm="ngForm" (ngSubmit)="enviarFormulario(venderForm)" action="">
   <!-- TARJETA INFORMACION PERSONAL -->
   <div class="row justify-content-center mb-5">
     <div class="col-12 col-md-8 shadow border-top border-5 border-warning rounded p-4">

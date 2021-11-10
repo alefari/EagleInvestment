@@ -11,6 +11,7 @@ import { SolicitudesService } from 'src/app/services/solicitudes.service';
 export class VenderComponent implements OnInit {
   sitekey: string;
   captchaDone: boolean = false;
+  sent: boolean = false;
   constructor(private solicitudesService: SolicitudesService) {
     this.sitekey = '6LfOoyMdAAAAAIC72eI0xWcCOMLMcvkHrosc3D2M';
    }
@@ -21,6 +22,7 @@ export class VenderComponent implements OnInit {
   enviarFormulario(form: NgForm) {
     let solicitud: Solicitud = {...form.value, pendiente: true, tipoSolicitud: 'Venta', fecha: new Date()}
     this.solicitudesService.addSolicitud(solicitud);
+    this.sent = true;
   }
 
   handleSuccess($event: Event) {
