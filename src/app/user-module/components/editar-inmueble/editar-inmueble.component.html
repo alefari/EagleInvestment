@@ -37,7 +37,11 @@
         <label for="tipoInmueble" class="form-label">Tipo de inmueble:</label>
           <select [(ngModel)]="inmueble.tipoInmueble" ngModel required name="tipoInmueble" class="form-select" id="tipoInmueble">
             <option value="Casa">Casa</option>
-            <option value="Apartamento">Apartamento</option>
+            <option value="Casa + Anexo">Casa + Anexo</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Vacacional o secundario">Vacacional o secundario</option>
+            <option value="Comercial / Inversión">Comercial / Inversión</option>
+            <option value="Otro">Otro</option>
           </select>
       </div>
       <label for="staticEmail" class="col-auto col-form-label">en</label>
@@ -97,15 +101,41 @@
         <label for="direccion" class="form-label">Dirección completa del inmueble:</label>
         <input [(ngModel)]="inmueble.direccion" ngModel required name="direccion" type="text" class="form-control" id="direccion" placeholder="Urbanización Caurimare, calle B, quinta Rosa.">
       </div>
+      <div class="col-2">
+        <label for="codigoPostal" class="form-label">Código postal:</label>
+        <input [(ngModel)]="inmueble.codigoPostal" ngModel name="codigoPostal" type="number" class="form-control" id="codigoPostal">
+      </div>
     </div>
 
     <div class="row mb-3 align-items-end">
-      <div class="col-auto">
+      <div class="col">
         <label for="metrosConstruccion" class="form-label">Metros cuadrados de <strong>construcción:</strong></label>
         <div class="input-group">
           <input [(ngModel)]="inmueble.metrosConstruccion" ngModel required name="metrosConstruccion" type="text" class="form-control" id="metrosConstruccion">
           <span class="input-group-text">m<sup>2</sup></span>
         </div>
+      </div>
+      <div class="col-auto">
+        <label for="estadoConservacion" class="form-label">Estado de conservación:</label>
+        <select [(ngModel)]="inmueble.estadoConservacion" ngModel required name="estadoConservacion" class="form-select" id="estadoConservacion">
+            <option value="Original">Original</option>
+            <option value="Remodelado hace más de 10 años">Remodelado hace más de 10 años</option>
+            <option value="Actualizado recientemente">Actualizado recientemente</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="seguridad" class="form-label">Seguridad:</label>
+        <select [(ngModel)]="inmueble.seguridad" ngModel required name="seguridad" class="form-select" id="seguridad">
+            <option value="Calle cerrada">Calle cerrada</option>
+            <option value="Calle abierta">Calle abierta</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="equipamiento" class="form-label">Equipamiento:</label>
+        <select [(ngModel)]="inmueble.equipamiento" ngModel required name="equipamiento" class="form-select" id="equipamiento">
+            <option value="Amoblado">Amoblado</option>
+            <option value="Sin amoblar">Sin amoblar</option>
+        </select>
       </div>
     </div>
 

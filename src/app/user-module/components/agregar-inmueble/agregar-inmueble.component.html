@@ -101,6 +101,10 @@
         <label for="direccion" class="form-label">Dirección completa del inmueble:</label>
         <input ngModel required name="direccion" type="text" class="form-control" id="direccion" placeholder="Urbanización Caurimare, calle B, quinta Rosa.">
       </div>
+      <div class="col-2">
+        <label for="codigoPostal" class="form-label">Código postal:</label>
+        <input ngModel name="codigoPostal" type="number" class="form-control" id="codigoPostal">
+      </div>
     </div>
 
     <div class="row mb-3 align-items-end">
@@ -182,7 +186,7 @@
         <div class="col">
           <!-- <button (click)="printUrls()" class="btn boton-dorado text-white border-0 shadow">PrintUrls</button> -->
           <button (click)="onCancelar()" class="btn btn-danger border-0 shadow">Cancelar</button>
-          <button (click)="onCrearInmueble(inmuebleForm)" class="btn boton-dorado text-white border-0 shadow float-end">Crear inmueble</button>
+          <button [disabled]="!inmuebleForm.valid" (click)="onCrearInmueble(inmuebleForm)" class="btn boton-dorado text-white border-0 shadow float-end">Crear inmueble</button>
         </div>
       </div>
 

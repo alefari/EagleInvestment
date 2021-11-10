@@ -26,6 +26,12 @@
         <div class="card-body px-5 py-4">
           <h2 class="font-playfair mb-4">Descripción del inmueble</h2>
           <p>{{ inmueble.descripcion }}</p>
+          <h4 class="font-playfair mb-4">Información adicional</h4>
+          <ul>
+            <li *ngIf="inmueble.estadoConservacion">{{ inmueble.estadoConservacion }}</li>
+            <li *ngIf="inmueble.seguridad">{{ inmueble.seguridad }}</li>
+            <li *ngIf="inmueble.equipamiento">{{ inmueble.equipamiento }}</li>
+          </ul>
         </div>
 
       </div>

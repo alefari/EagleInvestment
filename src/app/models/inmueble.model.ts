@@ -21,6 +21,7 @@ export class Inmueble {
     public seguridad: string,
     public equipamiento: string,
     public activo: string,
+    public codigoPostal: number,
     public id?: string
     ) {
   }
