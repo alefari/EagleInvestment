@@ -11,6 +11,7 @@ import { AdminParametrosComponent } from './components/admin-parametros/admin-pa
 import { AgentComponent } from './components/agent/agent.component';
 import { AgregarInmuebleComponent } from './components/agregar-inmueble/agregar-inmueble.component';
 import { EditarInmuebleComponent } from './components/editar-inmueble/editar-inmueble.component';
+import { RolesGuard } from '../auth-module/roles.guard';
 
 const routes: Routes = [
   {
@@ -26,7 +27,9 @@ const routes: Routes = [
           {path: 'usuarios', component: AdminUsersComponent},
           {path: 'solicitudes', component: AdminSolicitudesComponent},
           {path: 'parametros', component: AdminParametrosComponent},
-        ]
+        ],
+        canActivate: [RolesGuard],
+        data: {allowedRoles: ['administrador']}
       },
 
       {path: 'agente', component: AgentComponent,
@@ -35,7 +38,9 @@ const routes: Routes = [
           {path: 'propiedades', component: AgentPropiedadesComponent},
           {path: 'nuevo-inmueble', component: AgregarInmuebleComponent},
           {path: 'editar-inmueble/:id', component: EditarInmuebleComponent},
-        ]
+        ],
+        canActivate: [RolesGuard],
+        data: {allowedRoles: ['agente']}
       }
 
 

@@ -10,8 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
   // errorMessage: string = null;
   @Output() messageEvent = new EventEmitter();
-
-  constructor(private authService: AuthService) { }
+  captchaDone: boolean = false;
+  sitekey: string;
+  constructor(private authService: AuthService) {
+    this.sitekey = '6LfOoyMdAAAAAIC72eI0xWcCOMLMcvkHrosc3D2M';
+   }
 
   ngOnInit(): void {
   }
@@ -42,6 +45,10 @@ export class SignupComponent implements OnInit {
       })
       // err => this.errorMessage = err
     );
+  }
+
+  handleSuccess($event: Event) {
+    this.captchaDone = true;
   }
 
 }

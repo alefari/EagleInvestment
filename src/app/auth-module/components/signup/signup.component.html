@@ -26,10 +26,18 @@
     <label class="text-muted label-small spacing">CONFIRMAR CONTRASEÑA</label>
     <input type="password" class="form-control rounded-0 border-0 input py-2" required #passwordConfirmation="ngModel" ngModel name="passwordConfirmation">
   </div>
+  <div class="row justify-content-center mb-3">
+    <div class="col-12 col-md-8">
+      <div class="d-flex justify-content-center">
+        <ngx-recaptcha2 #captchaElem [siteKey]="sitekey" (success)="handleSuccess($event)">
+        </ngx-recaptcha2>
+      </div>
+    </div>
+  </div>
 
   <div class="pt-2 mb-4 d-grid">
     <button type="submit"
-      [disabled]="!authForm.valid || password.value != passwordConfirmation.value"
+      [disabled]="!authForm.valid || password.value != passwordConfirmation.value || !captchaDone"
       class="btn btn-golden text-white shadow rounded-0 fondo-dorado bg-gradient border-0 py-3 ingresar-button">
       REGISTRARSE
     </button>

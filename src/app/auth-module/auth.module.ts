@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { AuthBaseComponent } from './components/auth-base/auth-base.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 
@@ -18,7 +19,8 @@ import { AuthBaseComponent } from './components/auth-base/auth-base.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxCaptchaModule
   ]
 })
 export class AuthModule { }
