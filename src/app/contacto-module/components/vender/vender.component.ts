@@ -20,7 +20,7 @@ export class VenderComponent implements OnInit {
   }
 
   enviarFormulario(form: NgForm) {
-    let solicitud: Solicitud = {...form.value, pendiente: true, tipoSolicitud: 'Venta', fecha: new Date()}
+    let solicitud: Solicitud = {...form.value, estado: 'Pendiente', tipoSolicitud: 'Venta', fecha: new Date()}
     this.solicitudesService.addSolicitud(solicitud);
     this.sent = true;
   }

@@ -49,7 +49,7 @@ export class MainMenuComponent implements OnInit {
   }
 
   onHacerSolicitud(form: NgForm) {
-    let solicitudGeneral: SolicitudGeneral = {...form.value, tipoSolicitud: "General", estado: "Pendiente"};
+    let solicitudGeneral: SolicitudGeneral = {...form.value, tipoSolicitud: "General", estado: "Pendiente", fecha: new Date()};
     this.sendingSolicitud = true;
     this.solicitudesService.addSolicitudGeneral(solicitudGeneral).then(
       res => {
